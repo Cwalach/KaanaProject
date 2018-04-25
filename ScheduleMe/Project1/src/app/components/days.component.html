@@ -1,0 +1,13 @@
+﻿<style>
+    .d {
+        display: inline-block;
+        margin: 10px;
+    }
+</style>
+    <h1>Days in Week</h1>
+<div  class="d" *ngFor="let item of dayInWeek;let i=index" >{{item}}<br/>
+    <select >
+    <option *ngFor="let i of getVolunteerByDays(i)"  >{{i.name}}
+        </option>
+    </select> 
+  </div>
