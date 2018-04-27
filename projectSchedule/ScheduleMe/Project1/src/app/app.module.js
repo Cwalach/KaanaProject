@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./components/app.component");
+var dateRangeSelector_component_1 = require("./components/dateRangeSelector.component");
 var platform_browser_1 = require("@angular/platform-browser");
 //import { TaskDetails } from "./components/task-details.component"
 var ScheduleService_1 = require("./Services/ScheduleService");
@@ -20,9 +21,9 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        declarations: [app_component_1.AppComponent],
+        declarations: [app_component_1.AppComponent, dateRangeSelector_component_1.DateRangeSelectorComponent],
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
-        bootstrap: [app_component_1.AppComponent],
+        bootstrap: [dateRangeSelector_component_1.DateRangeSelectorComponent],
         providers: [ScheduleService_1.ScheduleService]
     })
 ], AppModule);

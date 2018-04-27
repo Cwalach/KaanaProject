@@ -1,6 +1,7 @@
 ﻿import { NgModule } from "@angular/core"
 import { FormsModule } from "@angular/forms"
 import { AppComponent } from "./components/app.component"
+import { DateRangeSelectorComponent } from "./components/dateRangeSelector.component"
 
 
 import { BrowserModule } from "@angular/platform-browser"
@@ -8,9 +9,9 @@ import { BrowserModule } from "@angular/platform-browser"
 import {ScheduleService  } from "./Services/ScheduleService"
 import { HttpModule} from "@angular/http"
 @NgModule({
-    declarations: [AppComponent],
-    imports: [BrowserModule, HttpModule ,FormsModule],
-    bootstrap: [AppComponent],
+    declarations: [AppComponent,DateRangeSelectorComponent],
+    imports: [BrowserModule, HttpModule, FormsModule],
+    bootstrap: [DateRangeSelectorComponent],
     providers: [ScheduleService]
 })
 
