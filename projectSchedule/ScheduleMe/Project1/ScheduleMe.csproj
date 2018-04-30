@@ -99,7 +99,9 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="src\app\components\app.component.html" />
+    <Content Include="src\app\components\courseInSchedule.html" />
     <Content Include="src\app\components\dateRangeSelector.component.html" />
+    <Content Include="src\app\components\scheduleBoard.html" />
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -134,7 +136,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\app\components\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\components\courseInSchedule.ts" />
     <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
+    <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
     <TypeScriptCompile Include="src\app\Services\ScheduleService.ts" />
     <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>

@@ -10,8 +10,9 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./components/app.component");
 var dateRangeSelector_component_1 = require("./components/dateRangeSelector.component");
+var scheduleBoard_1 = require("./components/scheduleBoard");
+var courseInSchedule_1 = require("./components/courseInSchedule");
 var platform_browser_1 = require("@angular/platform-browser");
-//import { TaskDetails } from "./components/task-details.component"
 var ScheduleService_1 = require("./Services/ScheduleService");
 var http_1 = require("@angular/http");
 var AppModule = (function () {
@@ -21,9 +22,9 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        declarations: [app_component_1.AppComponent, dateRangeSelector_component_1.DateRangeSelectorComponent],
+        declarations: [app_component_1.AppComponent, dateRangeSelector_component_1.DateRangeSelectorComponent, scheduleBoard_1.scheduleBoard, courseInSchedule_1.CourseInSchedule],
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
-        bootstrap: [dateRangeSelector_component_1.DateRangeSelectorComponent],
+        bootstrap: [scheduleBoard_1.scheduleBoard],
         providers: [ScheduleService_1.ScheduleService]
     })
 ], AppModule);
