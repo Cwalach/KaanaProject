@@ -327,3 +327,9 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+#Exclude tsc generated files
+js/*.map
+js/ts.js
+src/**/*.map
+src/**/*.js
