@@ -13,7 +13,7 @@ import { HttpModule} from "@angular/http"
 @NgModule({
     declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule],
     imports: [BrowserModule, HttpModule, FormsModule],
-    bootstrap: [scheduleBoard],
+    bootstrap: [AppComponent],
     providers: [ScheduleService]
 })
 

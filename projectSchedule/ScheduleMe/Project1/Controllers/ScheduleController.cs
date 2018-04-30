@@ -17,7 +17,7 @@ namespace Schedule_Model.Controllers
         }
         public int Get()
         {
-            courseService.Repository.GetByID(4);
+           
             return 0;
          }
 

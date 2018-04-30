@@ -24,7 +24,7 @@ AppModule = __decorate([
     core_1.NgModule({
         declarations: [app_component_1.AppComponent, dateRangeSelector_component_1.DateRangeSelectorComponent, scheduleBoard_1.scheduleBoard, courseInSchedule_1.CourseInSchedule],
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
-        bootstrap: [scheduleBoard_1.scheduleBoard],
+        bootstrap: [app_component_1.AppComponent],
         providers: [ScheduleService_1.ScheduleService]
     })
 ], AppModule);
