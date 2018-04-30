@@ -7,41 +7,35 @@ using Schedule_Dal;
 using Schedule_Model;
 namespace Schedule_Bl
 {
-    public class CourseService
+  public  class GroupService
     {
-        private CourseRepository repository;
+        private GroupRepository repository;
         private ScheduleDB context;
-        public CourseService()
+        public GroupService()
         {
             context = new ScheduleDB();
-            repository = new CourseRepository(context);
+            repository = new GroupRepository(context);
         }
-        public void Insert(Course c)
+        public void Insert(Group g)
         {
-            repository.Insert(c);
+            repository.Insert(g);
         }
-        public Course GetByID(int id)
+        public Group GetByID(int id)
         {
             return repository.GetByID(id);
         }
 
-
-        public void Update(Course c)
+        public void Update(Group g)
         {
-            repository.Update(c);
+            repository.Update(g);
         }
         public void DeleteById(int id)
         {
             repository.Delete(id);
         }
-        public void Delete(Course c)
+        public void Delete(Group g)
         {
-            repository.Delete(c);
+            repository.Delete(g);
         }
-
-
-
-
-
     }
 }
