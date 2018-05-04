@@ -1,16 +1,17 @@
-﻿import { Component } from "@angular/core"
+﻿
 
-import { ScheduleService } from "../Services/ScheduleService"
-
+import { Component } from "@angular/core"
 @Component({
     //template: "<h1>Hello To :{{title}}</h1>",
-    templateUrl: "./src/app/components/app.component.html",
-    selector: "Shira-app"
-
+    templateUrl:"./src/app/components/app.component.html",
+    selector:"Shira-app"
+       
 })
-export class AppComponent {
+export class AppComponent
+{
+ 
+    title: string = "our final project";
+   
 
-    constructor(private volonteerService: ScheduleService) {
 
-    }
 }

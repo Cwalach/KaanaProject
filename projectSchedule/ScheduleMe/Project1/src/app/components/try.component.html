@@ -1,0 +1,33 @@
+﻿<h1>WELLCOME</h1>
+
+<div class="col-sm-11">
+</div>
+<!--<button class="btn btn-default" (click)="clickEvent()" *ngIf="status==true"
+     [ngClass]="''btn btn-danger''" >
+    Some content
+</button>-->
+<!--עיצוב לאורך עמוד משני-->
+    <div class="col-sm-1"  style="background-size:cover;background-color:lightgray;height:20vw;width:10vw;float:right">
+        <button class="btn btn-success btn btn-lg" id="1" style="height:5vw;width:5vw; text-align:center"
+                (click)="clickEvent(1)"
+                [ngClass]="!statusbtn1 ? 'btn btn-success btn btn-lg' :'btn btn-danger'"
+                routerLink="/GroupSystem">
+            <span class="glyphicon glyphicon-alert-link"></span> מערכת קבוצות
+        </button><br /><br />
+
+        <button class="btn btn-success btn btn-lg" id="2" style="height:5vw;width:5vw;"
+                (click)="clickEvent(2)"
+                [ngClass]="!statusbtn2 ? 'btn btn-success btn btn-lg' :'btn btn-danger'" routerLink="/manage">
+            <span class="glyphicon glyphicon-alert-link"></span> ניהול
+        </button><br /><br />
+        <button class="btn btn-success btn btn-lg" id="3" style="height:5vw;width:5vw;" 
+                (click)="clickEvent(3)"
+                [ngClass]="!statusbtn3 ? 'btn btn-success btn btn-lg' :'btn btn-danger'"
+                routerLink="/try">
+            <span class="glyphicon glyphicon-alert-link"></span> דוחות
+        </button>
+    </div>
+<router-outlet></router-outlet>
+
+
+

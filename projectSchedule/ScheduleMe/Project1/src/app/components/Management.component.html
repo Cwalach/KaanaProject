@@ -1,0 +1,7 @@
+﻿<h1>ניהול</h1>
+<div *ngIf="buttonClicked==false" (click)="HideDiv()">
+<input class="btn btn-success" id="Button1" type="button" value="קורסים" routerLink="/manage/courses" ng-/><br/>
+<input class="btn btn-success"id="Button2" type="button" value="קבוצות" /><br/>
+<input class="btn btn-success"id="Button3" type="button" value="ימים לא פעילים"/><br/>
+</div>
+<router-outlet></router-outlet>

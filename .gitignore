@@ -333,3 +333,5 @@ js/*.map
 js/ts.js
 src/**/*.map
 src/**/*.js
+scripts/*.js.map
+

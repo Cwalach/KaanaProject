@@ -1,1 +1,32 @@
-﻿
+﻿<h1>WELLCOME :{{title}}</h1>
+<div class="col-sm-11">
+</div>
+<!--עמוד ראשי עיצוב שונה-->
+<div class="col-sm-1">
+    <button class="btn btn-success btn btn-lg" routerLink="/days">
+        <span class="glyphicon glyphicon-alert-link"></span> button 2
+    </button>
+    <br/><br/>
+    <button class="btn btn-success btn btn-lg" routerLink="/try">
+        <span class="glyphicon glyphicon-alert-link"></span> ניהול
+    </button>
+</div>
+<!--<button class="btn btn-link" routerLink="/days">button 2</button><br/>
+<button class="btn btn-link"  routerLink="/try">ניהול</button>-->
+<router-outlet></router-outlet>
+<div>
+
+    <!--<button class="btn btn-primary" (click)="addNewVolunteer()" volunteerDetails.submitted= "false;">
+        <span class="glyphicon glyphicon-plus"></span> Add New Volunteer
+    </button>-->
+</div>
+
+<!--div>
+    <button class="btn btn-success" (click)="saveAllVolunteersToServer()">
+        <span class="glyphicon glyphicon-save"></span> Save All Volunteers
+    </button>
+</div>-->
+<!--<volunteer-details  [volunteer]="currentVolunteer" *ngIf="currentVolunteer" (onSaveNewVolunteer)="saveNewVolunteer($event)" ></volunteer-details>-->
+<style>
+
+</style>
