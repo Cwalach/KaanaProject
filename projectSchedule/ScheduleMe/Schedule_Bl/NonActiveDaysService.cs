@@ -5,41 +5,44 @@ using System.Text;
 using System.Threading.Tasks;
 using Schedule_Dal;
 using Schedule_Model;
+using Schedule_Dal;
 namespace Schedule_Bl
 {
-  public  class GroupService
+  public  class NonActiveDaysService
     {
-        private GroupRepository repository;
+        private NonActiveDaysRepository repository;
         private ScheduleDB context;
-        public GroupService()
+        public NonActiveDaysService()
         {
             context = new ScheduleDB();
-            repository = new GroupRepository(context);
+            repository = new NonActiveDaysRepository(context);
         }
-        public void Insert(Group g)
+        public void Insert(NonActiveDays n)
         {
-            repository.Insert(g);
+            repository.Insert(n);
         }
-        public Group GetByID(int id)
+        public NonActiveDays GetByID(int id)
         {
             return repository.GetByID(id);
         }
-        public ICollection<Group> GetAll()
+        public ICollection<NonActiveDays> GetAll()
         {
             return repository.GetAll();
         }
 
-        public void Update(Group g)
+        public void Update(NonActiveDays n)
         {
-            repository.Update(g);
+            repository.Update(n);
         }
         public void DeleteById(int id)
         {
             repository.Delete(id);
         }
-        public void Delete(Group g)
+        public void Delete(NonActiveDays n)
         {
-            repository.Delete(g);
+            repository.Delete(n);
         }
+
+
     }
 }

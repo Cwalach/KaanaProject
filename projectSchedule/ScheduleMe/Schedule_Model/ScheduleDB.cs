@@ -15,6 +15,7 @@ namespace Schedule_Model
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<ExistingCourses> ExistingCourses { get; set; }
         public virtual DbSet<Group> Group { get; set; }
+        public virtual DbSet<NonActiveDays> NonactiveDays { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

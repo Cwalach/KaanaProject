@@ -25,6 +25,10 @@ namespace Schedule_Bl
         {
             return repository.GetByID(id);
         }
+        public ICollection<ExistingCourses> GetAll()
+        {
+            return repository.GetAll();
+        }
 
         public void Update(ExistingCourses e)
         {

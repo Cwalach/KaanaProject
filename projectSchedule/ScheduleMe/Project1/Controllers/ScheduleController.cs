@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Schedule_Bl;
+using System.Collections.ObjectModel;
 
 namespace Schedule_Model.Controllers
 {
@@ -17,7 +18,7 @@ namespace Schedule_Model.Controllers
         }
         public int Get()
         {
-           
+          ICollection<Course>l=  courseService.GetAll();
             return 0;
          }
 
