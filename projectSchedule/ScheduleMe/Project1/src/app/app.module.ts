@@ -4,23 +4,14 @@ import { AppComponent } from "./components/app.component"
 import { DateRangeSelectorComponent } from "./components/dateRangeSelector.component"
 import {scheduleBoard}from"./components/scheduleBoard"
 import { CourseInSchedule } from "./components/courseInSchedule"
-<<<<<<< HEAD
 import {vacation } from "./components/vacation.component"
-
-=======
 import { ReportComponent} from "./components/Report.component"
->>>>>>> add report and ts models
-
 import { BrowserModule } from "@angular/platform-browser"
 
 import {ScheduleService  } from "./Services/ScheduleService"
 import { HttpModule} from "@angular/http"
 @NgModule({
-<<<<<<< HEAD
-    declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule,vacation],
-=======
-    declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, ReportComponent],
->>>>>>> add report and ts models
+    declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, ReportComponent],
     imports: [BrowserModule, HttpModule, FormsModule],
     bootstrap: [scheduleBoard],
     providers: [ScheduleService]
