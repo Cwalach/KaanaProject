@@ -1,0 +1,28 @@
+﻿<h1>קבוצות</h1>
+<button class="btn btn-success" (click)="GetGroups()">קבוצות</button>
+<div *ngIf="groupsList">
+    <h1>Result</h1>
+    <div *ngFor="let item of groupsList">
+        <ul class="list-group">
+            <li [class.active]="item==currentGroup">
+                <div class="col-sm-2">{{item.Name}}</div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" (click)="EditGroup(item)">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-default" (click)="removeGroup(item)">
+                        <span class="glyphicon glyphicon-trash"></span> Remove
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-default" (click)="saveToServer(item)">
+                        <span class="glyphicon glyphicon-cloud"></span> Save To Server
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+<group-details [group]="currentGroup" *ngIf="currentGroup"></group-details>
+</div>

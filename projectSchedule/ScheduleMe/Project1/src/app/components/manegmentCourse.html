@@ -1,0 +1,29 @@
+﻿<h1>ניהול</h1>
+<button class="btn btn-success" (click)="GetCourse()">קורסים</button>
+<div *ngIf="courseList">
+    <h1>Result</h1>
+    <div *ngFor="let item of courseList">
+        <ul class="list-group">
+            <li [class.active]="item==currentCourse">
+                <div class="col-sm-2">{{item.Name}}</div>
+                <div class="col-sm-2">{{item.Instructor}}</div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" (click)="EditCourse(item)">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-default" (click)="removeCourse(item)">
+                        <span class="glyphicon glyphicon-trash"></span> Remove
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-default" (click)="saveToServer(item)">
+                        <span class="glyphicon glyphicon-cloud"></span> Save To Server
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <course-details [course]="currentCourse" *ngIf="currentCourse"></course-details>
+</div>

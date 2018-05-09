@@ -175,6 +175,10 @@
     <Content Include="src\app\components\try.component.html" />
     <Content Include="src\app\components\GroupsSystem.component.html" />
     <Content Include="src\app\components\volunteer-details.component.html" />
+    <Content Include="src\app\components\course-details.html" />
+    <Content Include="src\app\components\group-details.html" />
+    <Content Include="src\app\components\manegmentCourse.html" />
+    <Content Include="src\app\components\manegmentGroup.html" />
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -183,11 +187,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\WeeklyScheduleController.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="ExistingCourses.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Group.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +246,15 @@
     <TypeScriptCompile Include="src\app\Services\WeeklyScheduleService.ts" />
     <TypeScriptCompile Include="src\app\Services\ScheduleBoardStateManager.ts" />
     <TypeScriptCompile Include="src\app\Services\ExistingCoursesService.ts" />
-
+    <TypeScriptCompile Include="src\app\components\course-details.ts" />
+    <TypeScriptCompile Include="src\app\components\group-details.ts" />
+    <TypeScriptCompile Include="src\app\components\manegmentCourse.ts" />
+    <TypeScriptCompile Include="src\app\components\manegmentGroup.ts" />
+    <TypeScriptCompile Include="src\app\models\course.ts" />
+    <TypeScriptCompile Include="src\app\models\group.ts" />
+    <TypeScriptCompile Include="src\app\Services\manegmentCourses-service.ts" />
+    <TypeScriptCompile Include="src\app\Services\manegmentGroups-service.ts" />
+    <TypeScriptCompile Include="src\app\Services\ScheduleService.ts" />
     <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>
   <ItemGroup>

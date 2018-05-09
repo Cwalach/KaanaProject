@@ -1,0 +1,21 @@
+﻿    <div *ngIf="course">
+        <h4>פרטי קורס</h4>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Course id: {{course.id}}
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3 control-label">
+                    Course Name:
+                    <input class="form-control" type="text" [(ngModel)]="course.name"/>
+                    <!--name="name" #name #nameModel="ngModel"--> 
+                </div>
+                <div class="col-sm-3 control-label">
+                    Course Instructor:
+                    <input class="form-control" type="text" [(ngModel)]="course.instructor" name="instructor" #instructor #nameModel="ngModel" />
+                </div>
+            </div>
+        </div>
+    </div>

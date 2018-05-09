@@ -16,6 +16,7 @@ namespace Schedule_Bl
             context = new ScheduleDB();
             repository = new CourseRepository(context);
         }
+
         public void Insert(Course c)
         {
             repository.Insert(c);
@@ -41,10 +42,5 @@ namespace Schedule_Bl
         {
             repository.Delete(c);
         }
-
-
-
-
-
     }
 }
