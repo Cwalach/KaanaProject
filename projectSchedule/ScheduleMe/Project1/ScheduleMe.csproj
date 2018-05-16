@@ -98,15 +98,17 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <TypeScriptCompile Include="src\app\components\AllDays.component.ts" />
+    <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
+    <TypeScriptCompile Include="src\app\components\ReportDetails.ts" />
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
+    <Content Include="src\app\components\AllDays.component.html" />
+    <Content Include="src\app\components\DayInSchedule.component.html" />
+    <Content Include="src\app\components\ReportDetails.html" />
     <Content Include="src\app\components\vacation.component.html" />
     <Content Include="src\app\components\app.component.html" />
-    <Content Include="src\app\components\courseInSchedule.html" />
-<<<<<<< HEAD
-    <Content Include="src\app\components\dateRangeSelector.component.html" />
+    <Content Include="src\app\components\courseInSchedule.html" /> 
     <Content Include="src\app\components\Report.component.html" />
-=======
->>>>>>> merge
     <Content Include="src\app\components\scheduleBoard.html" />
     <Content Include="src\app\components\PopUp.component.html" />
     <Content Include="src\app\components\dateRangeSelector.component.html" />
@@ -151,16 +153,13 @@
     <TypeScriptCompile Include="src\app\components\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\components\courseInSchedule.ts" />
-<<<<<<< HEAD
     <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\Report.component.ts" />
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
     <TypeScriptCompile Include="src\app\models\Course.ts" />
     <TypeScriptCompile Include="src\app\models\ExistingCourses.ts" />
     <TypeScriptCompile Include="src\app\models\Group.ts" />
-=======
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
-
     <TypeScriptCompile Include="src\app\components\PopUp.component.ts" />
     <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\Courses.component.ts" />
@@ -168,7 +167,7 @@
     <TypeScriptCompile Include="src\app\components\try.component.ts" />
     <TypeScriptCompile Include="src\app\components\GroupsSystem.component.ts" />
     <TypeScriptCompile Include="src\app\components\volunteer-details.component.ts" />
->>>>>>> merge
+    <TypeScriptCompile Include="src\app\Services\ReportDetailsService.ts" />
     <TypeScriptCompile Include="src\app\Services\ScheduleService.ts" />
     <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>
