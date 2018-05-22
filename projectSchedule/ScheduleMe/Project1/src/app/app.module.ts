@@ -6,25 +6,20 @@ import {scheduleBoard}from"./components/scheduleBoard"
 import { CourseInSchedule } from "./components/courseInSchedule"
 import {vacation } from "./components/vacation.component"
 import { ReportComponent} from "./components/Report.component"
-import { PopUp } from "./components/PopUp.component"
+import { SaveCoursesBoard } from "./components/SaveCoursesBoard.component"
 import { VolunteerDetails } from "./components/volunteer-details.component"
 import { Try } from "./components/try.component"
 import { Courses } from "./components/Courses.component"
 import { GroupsSystem } from "./components/GroupsSystem.component"
 import { Management } from "./components/Management.component"
 import { BrowserModule } from "@angular/platform-browser"
-<<<<<<< HEAD
 import { HttpModule } from "@angular/http"
 import { RouterModule, Routes } from '@angular/router'
-=======
 import { ReportDetails } from "./components/ReportDetails"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
-
-
-
->>>>>>> add vacation components
 import {SaveChangesBoardService  } from "./Services/ScheduleService"
+
 const route: Routes =
     [
         //{
@@ -49,17 +44,12 @@ const route: Routes =
         }
     ]
 @NgModule({
-<<<<<<< HEAD
-
-    declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,PopUp,ReportComponent],
+    declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,
+         ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
-    bootstrap: [Try],
-=======
-    declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, ReportDetails,AllDays,DayInSchedule],
-    imports: [BrowserModule, HttpModule, FormsModule],
-    bootstrap: [AllDays],
->>>>>>> add vacation components
+    bootstrap: [SaveCoursesBoard],
     providers: [SaveChangesBoardService]
+
 })
 
 

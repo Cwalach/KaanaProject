@@ -1,0 +1,51 @@
+﻿<div dir="rtl" class="Border container">
+    <input id="Button1" class="btn btn-success" type="button" value="שמירה" (click)="Save()" />
+    <div>
+        <div *ngIf="btnSave">
+            <h1>שמור שינוי זה עבור</h1>
+            <div class="form-group">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="week" ng-model="week.chickenEgg">
+                        שבוע זה בלבד
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="week" ng-model="week.chickenEgg">
+                        שבוע זה עד לתאריך
+                    </label>
+                    <input type="date" [value]="date | date:'yyyy-MM-dd'" (input)="date=parseDate($event.target.value)" />
+                    <!--<input type="date" [value]="demoUser.date | date:'yyyy-MM-dd'" (input)="demoUser.date=parseDate($event.target.value)" />-->
+                </div>
+            </div>
+            <textarea id="TextArea1" rows="4" cols="20" class="Border" placeholder="...הערות" title="הערות"></textarea><br />
+
+            <button id="Button1" class="btn btn-default Border" (click)="SaveChanges()">
+                <span><img src="../../../image_40.png" />שמור</span>
+            </button>
+        </div>
+        <div *ngIf="btnSaveChange">
+            <h5>שינוי זה דורס את השינויים הקודמים שלך האם להמשיך </h5>
+            <!-- <input id="Button1" class="glyphicon glyphicon-trash" type="button" value="ביטול" (click)="CancelProcess()" />-->
+            <button id="ButtonCancel" class="btn btn-success" (click)="CancelProcess()">
+                <span class="glyphicon glyphicon-trash">ביטול</span>
+            </button>
+            <button id="ButtonSave" class="btn btn-default Border">
+                <span><img src="../../../image_40.png" dir="rtl" />שמור</span>
+            </button>
+
+        </div>
+    </div>
+</div>
+<!--SaveCoursesBoardComponnent-->
+<style>
+    .Border {
+        border: 2px solid #266587;
+    }
+    .container {
+        position:absolute;
+        height:20vw;
+        width:20vw;
+    }
+</style>

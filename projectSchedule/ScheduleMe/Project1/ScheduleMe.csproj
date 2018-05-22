@@ -97,6 +97,7 @@
     <Content Include="Content\bootstrap\css\bootstrap.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="image_40.png" />
     <Content Include="index.html" />
     <TypeScriptCompile Include="src\app\components\AllDays.component.ts" />
     <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
@@ -108,9 +109,12 @@
     <Content Include="src\app\components\vacation.component.html" />
     <Content Include="src\app\components\app.component.html" />
     <Content Include="src\app\components\courseInSchedule.html" /> 
+    <Content Include="src\app\components\courseInSchedule.html" />
+    <Content Include="src\app\components\vacation.component.html" />
+    <Content Include="src\app\components\app.component.html" />
     <Content Include="src\app\components\Report.component.html" />
     <Content Include="src\app\components\scheduleBoard.html" />
-    <Content Include="src\app\components\PopUp.component.html" />
+    <Content Include="src\app\components\SaveCoursesBoard.component.html" />
     <Content Include="src\app\components\dateRangeSelector.component.html" />
     <Content Include="src\app\components\Courses.component.html" />
     <Content Include="src\app\components\Management.component.html" />
@@ -161,6 +165,7 @@
     <TypeScriptCompile Include="src\app\models\Group.ts" />
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
     <TypeScriptCompile Include="src\app\components\PopUp.component.ts" />
+    <TypeScriptCompile Include="src\app\components\SaveCoursesBoard.component.ts" />
     <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\Courses.component.ts" />
     <TypeScriptCompile Include="src\app\components\Management.component.ts" />
