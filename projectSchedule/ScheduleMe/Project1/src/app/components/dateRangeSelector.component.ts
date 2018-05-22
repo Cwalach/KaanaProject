@@ -10,11 +10,13 @@ export class DateRangeSelectorComponent {
     sunday: number;
     saturday: number;
     currentMonth: number;
+    sun: number 
     constructor() {
         this.currentDate = new Date();
         this.leftDay = new Date();
         this.rightDay = new Date();
         this.UpdateVariables();
+        this.sun = this.currentDate.getDay()+1;
     }
     UpdateVariables(): any {
         this.sunday = this.GetLeftDay();
@@ -32,11 +34,11 @@ export class DateRangeSelectorComponent {
 
     //???????לבדוק למה לא ממעדכן כראוי
     GetLeftDay(): number {
-        this.leftDay.setDate(this.currentDate.getDate() - (this.currentDate.getDay() - 1));
-        return this.leftDay.getDate()-1;
+        this.leftDay.setDate(this.currentDate.getDate() - ((this.currentDate.getDay()+1) - 1));
+        return this.leftDay.getDate();
     }
     GetRightDay(): number {
-        this.rightDay.setDate(this.currentDate.getDate() + (7 - this.currentDate.getDay()));
-        return this.rightDay.getDate()-1;
+        this.rightDay.setDate(this.currentDate.getDate() + (7 - (this.currentDate.getDay()+1)));
+        return this.rightDay.getDate();
     }
 }

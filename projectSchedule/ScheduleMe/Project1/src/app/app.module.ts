@@ -19,7 +19,7 @@ import { ReportDetails } from "./components/ReportDetails"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
 import {SaveChangesBoardService  } from "./Services/ScheduleService"
-
+import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 const route: Routes =
     [
         //{
@@ -45,10 +45,11 @@ const route: Routes =
     ]
 @NgModule({
     declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,
-         ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent],
+    ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
     bootstrap: [Try],
-    providers: [SaveChangesBoardService]
+    providers: [SaveChangesBoardService, WeeklyScheduleService]
+
 })
 
 
