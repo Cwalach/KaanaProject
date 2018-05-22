@@ -24,10 +24,10 @@ namespace Schedule_Model
                 .Property(e => e.Id)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Course>()
-                .HasMany(e => e.ExistingCourses)
-                .WithOptional(e => e.Course)
-                .WillCascadeOnDelete();
+            //modelBuilder.Entity<Course>()
+            //    .HasMany(e => e.ExistingCourses)
+            //    .WithOptional(e => e.Course)
+            //    .WillCascadeOnDelete();
 
             modelBuilder.Entity<ExistingCourses>()
                 .Property(e => e.Id)
