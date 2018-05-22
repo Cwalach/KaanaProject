@@ -47,9 +47,8 @@ const route: Routes =
     declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,
          ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
-    bootstrap: [SaveCoursesBoard],
+    bootstrap: [Try],
     providers: [SaveChangesBoardService]
-
 })
 
 
