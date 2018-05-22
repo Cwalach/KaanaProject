@@ -6,7 +6,7 @@ import { Course } from "../models/Course"
 import { ExistingCourse } from "../models/ExistingCourses"
 
 @Injectable()
-export class ScheduleService {
+export class SaveChangesBoardService {
     //מערך הקורסים שהשתנו
     public ExistingCoursesThatWasChangedList: Array<ExistingCourse>;
     constructor(private http: Http) {

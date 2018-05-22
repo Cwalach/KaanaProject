@@ -24,7 +24,7 @@ import { DayInSchedule } from "./components/DayInSchedule.component"
 
 
 >>>>>>> add vacation components
-import {ScheduleService  } from "./Services/ScheduleService"
+import {SaveChangesBoardService  } from "./Services/ScheduleService"
 const route: Routes =
     [
         //{
@@ -59,7 +59,7 @@ const route: Routes =
     imports: [BrowserModule, HttpModule, FormsModule],
     bootstrap: [AllDays],
 >>>>>>> add vacation components
-    providers: [ScheduleService]
+    providers: [SaveChangesBoardService]
 })
 
 
