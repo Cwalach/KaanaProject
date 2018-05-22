@@ -17,10 +17,11 @@ export class SaveChangesBoardService {
         this.ExistingCoursesThatWasChangedList.push(existingCourses);
     }
     //קבלת מערך השיוניים
-    GetAllExistingCourseThatWasChanged(any): Array<ExistingCourse>
+    GetAllExistingCourseThatWasChanged(): Array<ExistingCourse>
     {
         return this.ExistingCoursesThatWasChangedList;
     }
+
     //מחיקת מערך השינויים לאחר שכל השינויים התעדכנו
     ClearExistingCoursesThatWasChangeList(any): any
     {

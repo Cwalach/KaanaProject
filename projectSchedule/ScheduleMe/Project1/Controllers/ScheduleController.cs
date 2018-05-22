@@ -21,6 +21,6 @@ namespace Schedule_Model.Controllers
           ICollection<Course>l=  courseService.GetAll();
             return 0;
          }
-
+        //להוסיף ב-controller פונקציה  post saveUpdateCourses ולשלוח אליו את הנתונים
     }
 }

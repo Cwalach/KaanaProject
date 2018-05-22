@@ -32,9 +32,12 @@
                 <span class="glyphicon glyphicon-trash">ביטול</span>
             </button>
             <button id="ButtonSave" class="btn btn-default Border">
-                <span><img src="../../../image_40.png" dir="rtl" />שמור</span>
+                <span><img src="../../../image_40.png" dir="rtl" (click)="EndSave()"/>שמור</span>
             </button>
 
+        </div>
+        <div *ngIf="btnEndSave">
+           <h5>שינוייך נשמרו בהצלחה</h5> 
         </div>
     </div>
 </div>
