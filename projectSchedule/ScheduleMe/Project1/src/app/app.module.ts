@@ -22,34 +22,36 @@ import {SaveChangesBoardService  } from "./Services/ScheduleService"
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 const route: Routes =
     [
-        //{
-        //    path: 'days', component: VolunteerDetails
-        //},
-        //{
-        //    path: 'try', component: Try, children: [
-        //        { path: 'try2', component: VolunteerDetails }
-        //    ],
-        //},
-       
+        
         {
             path: 'GroupSystem', component: GroupsSystem
         },
+
         {
             path: 'manage', component: Management, children:
             [
-                { path: 'courses', component: Courses }
+                { path: 'courses', component: Courses },
+                { path: 'NonActiveDays', component: AllDays}
                
                 
             ],
-        }
+        },
+        {
+            path: 'ReportDetails', component: ReportDetails
+        },
     ]
 @NgModule({
     declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,
     ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
+<<<<<<< HEAD
     bootstrap: [Try],
     providers: [SaveChangesBoardService, WeeklyScheduleService]
 
+=======
+    bootstrap: [SaveCoursesBoard],
+    providers: [SaveChangesBoardService]
+>>>>>>> Add new vacation changes
 })
 
 

@@ -6,18 +6,14 @@
 })
 export class vacation {
    
-    status: boolean;
+   
     @Input()
-    set st(st: boolean) {
-        this.status = (st );
-    }
-
-    get st(): boolean { return this.status; }
-
+    status: boolean;
+   
 
     constructor()
     {
-       // this.status = st;
+       
     }
     Update()
     {

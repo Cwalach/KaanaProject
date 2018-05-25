@@ -1,11 +1,11 @@
 ﻿
 <input id="Button1" type="button" class="activeDay" (click)="Update()"
-        [ngClass]="st?'activeDay':'notactiveDay'" />
+        [ngClass]="status?'activeDay':'nonActiveDay'" />
 <style>
     .activeDay{
         background-color:skyblue;
     }
-    .notactiveDay{
+    .nonActiveDay{
          background-color:gray;
     }
 </style>
