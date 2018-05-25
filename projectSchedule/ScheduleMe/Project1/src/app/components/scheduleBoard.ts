@@ -11,15 +11,16 @@ export class scheduleBoard {
     date: Date;
     d: Date = new Date();
     dayInWeek: string[];
-    Courses: ExistingCourse[];
+    Courses: ExistingCourse[] = new Array;
     Groups: Group[];
     CurrentCourse: ExistingCourse;
     constructor(private weeklyScheduleService: WeeklyScheduleService) {
         this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.Courses = data }, error => { });
-        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => { this.Groups = data }, error => { });
+        //this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => { this.Groups = data }, error => { });
         this.dayInWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
         this.date = new Date();
     }
+    //לעשות שישתנו הימים בעת מעבר לשבוע הבא/הקודם
     getday(i: number): number {
         this.d.setDate(this.date.getDate() - ((this.date.getDay() + 1) - (i + 1)));
         return this.d.getDate();

@@ -17,10 +17,12 @@ namespace ScheduleMe.Controllers
         }
         ExistingCourseService ECservice = new ExistingCourseService();
         GroupService Gservice = new GroupService();
+         [Route("ExistingCourses")]
         public ICollection<ExistingCourses> GetExistingCourses()
         {
              return ECservice.GetAll();
         }
+      //  [Route("Groups")]
         public ICollection<Group> GetGroups()
         {
             return Gservice.GetAll();
