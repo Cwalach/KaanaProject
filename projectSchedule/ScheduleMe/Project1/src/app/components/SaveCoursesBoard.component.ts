@@ -1,12 +1,13 @@
 ﻿import { Component } from "@angular/core"
 import { ExistingCourse } from "../models/ExistingCourses"
-import { SaveChangesBoardService} from "../Services/ScheduleService"
+import { ScheduleBoardStateManager } from "../Services/ScheduleBoardStateManager"
+import { ExistingCoursesService} from "../Services/ExistingCoursesService"
 @Component({
     templateUrl: "./src/app/components/SaveCoursesBoard.component.html",
     selector: "SaveCoursesBoard"
 })
 export class SaveCoursesBoard {
-    constructor(private saveChangesBoardService: SaveChangesBoardService) { }
+    constructor(private ScheduleBoardStateManager: ScheduleBoardStateManager, private existingCoursesService: ExistingCoursesService) { }
     public date: Date;
     btnSave: boolean = false;
     btnSaveChange: boolean = false;
@@ -18,8 +19,8 @@ export class SaveCoursesBoard {
     SaveChanges() {
         this.btnSave = false;
         this.btnSaveChange = true;
-        this.listExistingCourse=this.saveChangesBoardService.GetAllExistingCourseThatWasChanged();
-       
+         this.listExistingCourse=this.ScheduleBoardStateManager.GetAllExistingCourseThatWasChanged();
+         this.existingCoursesService.save(this.listExistingCourse).subscribe(data => { alert("Saved succsessed!!!") });
     }
     CancelProcess() {
         this.btnSaveChange = false;

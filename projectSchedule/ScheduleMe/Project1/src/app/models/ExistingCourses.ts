@@ -16,5 +16,7 @@ export class ExistingCourse {
         this.Course = course;
         this.Group = group;
     }
+    //public existingCourse: Array<ExistingCourse> = [
+    //    { Id: 1, GroupId: 1 }]
 
 }

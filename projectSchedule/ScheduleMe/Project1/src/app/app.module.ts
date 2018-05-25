@@ -18,8 +18,12 @@ import { RouterModule, Routes } from '@angular/router'
 import { ReportDetails } from "./components/ReportDetails"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
-import {SaveChangesBoardService  } from "./Services/ScheduleService"
+
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
+
+import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
+import { ExistingCoursesService } from "./Services/ExistingCoursesService"
+
 const route: Routes =
     [
         
@@ -44,14 +48,9 @@ const route: Routes =
     declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,
     ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
-<<<<<<< HEAD
-    bootstrap: [Try],
-    providers: [SaveChangesBoardService, WeeklyScheduleService]
+    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService],
+    bootstrap: [SaveCoursesBoard]
 
-=======
-    bootstrap: [SaveCoursesBoard],
-    providers: [SaveChangesBoardService]
->>>>>>> Add new vacation changes
 })
 
 

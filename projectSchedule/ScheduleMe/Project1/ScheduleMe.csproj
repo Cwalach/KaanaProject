@@ -163,7 +163,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="src\app\components\vacation.component.html" />
     <Content Include="src\app\components\app.component.html" />
-    <Content Include="src\app\components\courseInSchedule.html" /> 
+    <Content Include="src\app\components\courseInSchedule.html" />
     <Content Include="src\app\components\courseInSchedule.html" />
     <Content Include="src\app\components\app.component.html" />
     <Content Include="src\app\components\Report.component.html" />
@@ -225,7 +225,6 @@
     <TypeScriptCompile Include="src\app\models\ExistingCourses.ts" />
     <TypeScriptCompile Include="src\app\models\Group.ts" />
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
-    <TypeScriptCompile Include="src\app\components\PopUp.component.ts" />
     <TypeScriptCompile Include="src\app\components\SaveCoursesBoard.component.ts" />
     <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\Courses.component.ts" />
@@ -235,8 +234,10 @@
     <TypeScriptCompile Include="src\app\components\volunteer-details.component.ts" />
     <TypeScriptCompile Include="src\app\Services\ReportDetailsService.ts" />
     <TypeScriptCompile Include="src\app\Services\Changes-services.ts" />
-    <TypeScriptCompile Include="src\app\Services\ScheduleService.ts" />
     <TypeScriptCompile Include="src\app\Services\WeeklyScheduleService.ts" />
+    <TypeScriptCompile Include="src\app\Services\ScheduleBoardStateManager.ts" />
+    <TypeScriptCompile Include="src\app\Services\ExistingCoursesService.ts" />
+
     <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>
   <ItemGroup>
