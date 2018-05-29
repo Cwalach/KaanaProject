@@ -197,7 +197,6 @@
     <Content Include="src\app\components\manegmentCourse.html" />
     <Content Include="src\app\components\manegmentGroup.html" />
     <Content Include="src\app\components\NoActiveScheduleComponent.html" />
-
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -207,13 +206,10 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\WeeklyScheduleController.cs" />
-    <Compile Include="Course.cs" />
-    <Compile Include="ExistingCourses.cs" />
     <Compile Include="Controllers\NoActiveDayController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Group.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -275,7 +271,6 @@
     <TypeScriptCompile Include="src\app\models\NoActiveDay.ts" />
     <TypeScriptCompile Include="src\app\Services\nonActiveDayService.ts" />
     <TypeScriptCompile Include="src\app\Services\nonActiveDayStateManager.ts" />
-
     <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>
   <ItemGroup>
