@@ -64,6 +64,7 @@ namespace Schedule_Model
             // should do the follwing after create the db in the first time
             //fillNonVactionDaysFromApi(DateTime.Now, DateTime.Now.AddYears(20));
            
+
         }
 
         private void fillNonVactionDaysFromApiJustIfNotExistAndForNextYears()
@@ -82,7 +83,7 @@ namespace Schedule_Model
                         NonActiveDays day = new NonActiveDays();
                         day.Date = publicHolidays.ElementAt(i).Date;
                         day.OrderNumber = orderNumber;
-                        day.Reason = "оитн дзйрек дтцоай";
+                        day.Reason = "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ";
                         dbSets.Add(day);
                         contexts.SaveChanges();                       
                     }
@@ -106,7 +107,7 @@ namespace Schedule_Model
                     NonActiveDays day = new NonActiveDays();
                     day.Date = publicHolidays.ElementAt(i).Date;
                     day.OrderNumber = orderNumber;
-                    day.Reason = "оитн дзйрек дтцоай";
+                    day.Reason = "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ";
                     dbSets.Add(day);
                     contexts.SaveChanges();                  
                 if (orderNumber == 17)

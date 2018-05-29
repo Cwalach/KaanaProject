@@ -4,6 +4,7 @@ import "rxjs/add/operator/map"
 import { Observable } from "rxjs/Observable"
 import { Course } from "../models/Course"
 import { ExistingCourse } from "../models/ExistingCourses"
+import { Group } from "../models/Group"
 
 @Injectable()
 export class SaveChangesBoardService {
@@ -36,10 +37,12 @@ export class SaveChangesBoardService {
     //Get
     getAllCoursesFromService(): Observable<Course[]> {
         this.ExistingCoursesThatWasChangedList = new Array<ExistingCourse>();
-        return this.http.get("api/Schedule/Get").map(res => { return res.json() as Course[] });
+        return this.http.get("api/Schedule/GetAllCourses").map(res => { return res.json() as Course[] });
        
     }
-
+    AllGroupesFromService(): Observable<Group[]> {
+        return this.http.get("api/Schedule/AllGroups").map(res => { return res.json() as Group[] });
+    }
     //Post
     saveAllCoursesToService(): Observable<boolean> {
         return this.http.post("api/Schedule/Post", this.ExistingCoursesThatWasChangedList).map(res => { return true; });

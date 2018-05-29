@@ -185,8 +185,7 @@
     <Content Include="src\app\components\vacation.component.html" />
     <Content Include="src\app\components\app.component.html" />
     <Content Include="src\app\components\courseInSchedule.html" />
-    <Content Include="src\app\components\courseInSchedule.html" />
-    <Content Include="src\app\components\app.component.html" />
+    <Content Include="src\app\components\course.component.html" />
     <Content Include="src\app\components\Report.component.html" />
     <Content Include="src\app\components\scheduleBoard.html" />
     <Content Include="src\app\components\SaveCoursesBoard.component.html" />
@@ -248,6 +247,7 @@
     <TypeScriptCompile Include="src\app\components\courseInSchedule.ts" />
     <TypeScriptCompile Include="src\app\components\Report.component.ts" />
     <TypeScriptCompile Include="src\app\models\Course.ts" />
+    <TypeScriptCompile Include="src\app\components\course.component.ts" />
     <TypeScriptCompile Include="src\app\models\ExistingCourses.ts" />
     <TypeScriptCompile Include="src\app\models\Group.ts" />
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
@@ -276,6 +276,7 @@
     <TypeScriptCompile Include="src\app\models\NoActiveDay.ts" />
     <TypeScriptCompile Include="src\app\Services\nonActiveDayService.ts" />
     <TypeScriptCompile Include="src\app\Services\nonActiveDayStateManager.ts" />
+    <TypeScriptCompile Include="src\app\Services\SaveChangesBoardService.ts" />
     <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -307,7 +308,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57260</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

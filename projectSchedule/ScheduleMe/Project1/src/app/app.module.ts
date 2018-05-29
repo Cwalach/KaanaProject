@@ -12,15 +12,14 @@ import { Try } from "./components/try.component"
 import { Courses } from "./components/Courses.component"
 import { GroupsSystem } from "./components/GroupsSystem.component"
 import { Management } from "./components/Management.component"
+import { CourseComponent } from "./components/course.component"
 import { BrowserModule } from "@angular/platform-browser"
 import { HttpModule } from "@angular/http"
 import { RouterModule, Routes } from '@angular/router'
 import { ReportDetails } from "./components/ReportDetails"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
-
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
-
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
 import { ExistingCoursesService } from "./Services/ExistingCoursesService"
 import { ManegmentCourse } from "./components/manegmentCourse"
@@ -29,10 +28,10 @@ import { ManegmentGroup } from "./components/manegmentGroup"
 import { GroupDetails } from "./components/group-details"
 import { ManegmentCoursesService } from "./Services/manegmentCourses-service"
 import { ManegmentGroupsService } from "./Services/manegmentGroups-service"
-import {SaveChangesBoardService  } from "./Services/ScheduleService"
 import { NoActiveSchedule } from "./components/NoActiveSchedule"
 import { nonActiveDayStateManager } from "./Services/nonActiveDayStateManager"
 import { nonActiveDayService } from "./Services/nonActiveDayService"
+import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 
 const route: Routes =
     [
@@ -54,12 +53,14 @@ const route: Routes =
         },
     ]
 @NgModule({
-    declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,
 
-    ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails, ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
+    declarations: [CourseComponent,AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try,
+         GroupsSystem, Management, Courses,ReportComponent,ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
+          ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
-    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, nonActiveDayService, nonActiveDayStateManager],
-    bootstrap: [Try]
+    bootstrap: [CourseComponent],
+    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, 
+        nonActiveDayService, nonActiveDayStateManager]
 
 })
 
