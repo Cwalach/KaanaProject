@@ -1,7 +1,17 @@
-﻿<h1>ניהול</h1>
-<div *ngIf="buttonClicked==false" (click)="HideDiv()">
-<input class="btn btn-success" id="Button1" type="button" value="קורסים" routerLink="/manage/courses" ng-/><br/>
-<input class="btn btn-success"id="Button2" type="button" value="קבוצות" /><br/>
-<input class="btn btn-success"id="Button3" type="button" value="ימים לא פעילים" routerLink="/manage/NonActiveDays" ng-/><br/>
+
+﻿<div>
+    <div class="rec"></div>
+    <h1 class="col-md-offset-1">ניהול</h1>
+    <div class="rec"></div>
+</div>
+<div id="manegmentButtons" *ngIf="buttonClicked==false" (click)="HideDiv()" class="col-md-offset-2">
+
+<input class="btn_Manegment" id="Button1" type="button" value="קורסים" 
+       routerLink="/manage/manegmentCourse" ng-/><br/>
+
+<input class="btn_Manegment" id="Button2" type="button" value="קבוצות" 
+       routerLink="/manage/manegmentGroup" /><br/>
+
+<input class="btn_Manegment" id="Button3" type="button" value="ימים לא פעילים"/><br/>
 </div>
 <router-outlet></router-outlet>

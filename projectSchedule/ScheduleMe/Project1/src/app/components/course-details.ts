@@ -13,10 +13,10 @@ export class CourseDetails
     c: Course;
     nameCourse: string;
     constructor() {
-        this.c = new Course();
-        this.c.id = 1;
-        this.c.name = "aaaaaaa";
-        alert(this.c.id + "    " + this.c.name);
-        alert(this.course);
+        //this.c = new Course();
+        //this.c.id = 1;
+        //this.c.name = "aaaaaaa";
+        //alert(this.c.id + "    " + this.c.name);
+        //alert(this.course);
     }
 }

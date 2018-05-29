@@ -17,16 +17,18 @@ namespace ScheduleMe.Controllers
             new Course { Id=4,Name="התעמלות",Instructor="חיה רוט"} ,
             new Course { Id=5,Name="התעמלות",Instructor="חיה רוט"} };
         CourseService service;
+        Schedule_Dal.ScheduleRepository<Course> s;
 
         public CourseController()
         {
+            //s = new 
             service = new CourseService();
         }
         // GET api/<controller>
         public IEnumerable<Course> Get()
         {
-            //return CoursesList;
-            return 
+            return CoursesList;
+            //return service.Repository.Get();
         }
         public void Post(Course newCourse)
         {

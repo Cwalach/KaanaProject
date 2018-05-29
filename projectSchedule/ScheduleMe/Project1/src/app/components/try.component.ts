@@ -10,18 +10,19 @@ export class Try {
     statusbtn3: boolean = false;
     clickEvent(id: string)
     {
-        if (id == "1")
+        if (id == "schduleGroups")
         {
-        this.statusbtn1 = true;
+            this.statusbtn1 = true;
             this.statusbtn2 = false;
             this.statusbtn3 = false;
           
         }
-        if (id == "2") {
+        if (id == "manegement") {
             this.statusbtn2 = true;
                this.statusbtn1 = false;
-               this.statusbtn3 = false;}
-        if (id == "3") {
+               this.statusbtn3 = false;
+        }
+        if (id == "report") {
             this.statusbtn3 = true;
                 this.statusbtn1 = false;
                 this.statusbtn2 = false;
@@ -47,3 +48,12 @@ export class Try {
     //    this.submitted = true;         
     //    this.volunteer = null;
     //}
+
+
+//<style>
+//.MyClass123{
+//    content: url("http://imgur.com/SZ8Cm.jpg");
+//}
+//</style>
+
+//    < img class="MyClass123" />
