@@ -161,11 +161,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="image_40.png" />
     <Content Include="index.html" />
-    <TypeScriptCompile Include="src\app\components\AllDays.component.ts" />
-    <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
-    <TypeScriptCompile Include="src\app\components\ReportDetails.ts" />
+    <TypeScriptCompile Include="src\app\components\NoActiveSchedule.ts" />
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
     <Content Include="src\app\components\AllDays.component.html" />
     <Content Include="src\app\components\DayInSchedule.component.html" />
@@ -199,6 +196,8 @@
     <Content Include="src\app\components\group-details.html" />
     <Content Include="src\app\components\manegmentCourse.html" />
     <Content Include="src\app\components\manegmentGroup.html" />
+    <Content Include="src\app\components\NoActiveScheduleComponent.html" />
+
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -210,6 +209,7 @@
     <Compile Include="Controllers\WeeklyScheduleController.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="ExistingCourses.cs" />
+    <Compile Include="Controllers\NoActiveDayController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,6 +272,10 @@
     <TypeScriptCompile Include="src\app\Services\manegmentCourses-service.ts" />
     <TypeScriptCompile Include="src\app\Services\manegmentGroups-service.ts" />
     <TypeScriptCompile Include="src\app\Services\ScheduleService.ts" />
+    <TypeScriptCompile Include="src\app\models\NoActiveDay.ts" />
+    <TypeScriptCompile Include="src\app\Services\nonActiveDayService.ts" />
+    <TypeScriptCompile Include="src\app\Services\nonActiveDayStateManager.ts" />
+
     <TypeScriptCompile Include="src\index.ts" />
   </ItemGroup>
   <ItemGroup>

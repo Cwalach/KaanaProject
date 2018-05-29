@@ -8,12 +8,17 @@ export class nonActiveDayStateManager {
    private nonActiveDaysList: NoActiveDay[]; 
    private activeDaysList: Array<number>;
 
-    GetChangeInListAddNoActiveDay(): Array<NoActiveDay>
+   constructor() {
+       this.nonActiveDaysList = new Array<NoActiveDay>();
+       this.activeDaysList=new Array<number>();
+   }
+
+   GetChangeInNonActiveDaysList(): Array<NoActiveDay>
     {
         return this.nonActiveDaysList;
     }
 
-    GetChangeInListRemoveNoActiveDay(): Array<number> {
+   GetChangeInActiveDaysList(): Array<number> {
         return this.activeDaysList;
     }
 

@@ -29,6 +29,10 @@ import { ManegmentGroup } from "./components/manegmentGroup"
 import { GroupDetails } from "./components/group-details"
 import { ManegmentCoursesService } from "./Services/manegmentCourses-service"
 import { ManegmentGroupsService } from "./Services/manegmentGroups-service"
+import {SaveChangesBoardService  } from "./Services/ScheduleService"
+import { NoActiveSchedule } from "./components/NoActiveSchedule"
+import { nonActiveDayStateManager } from "./Services/nonActiveDayStateManager"
+import { nonActiveDayService } from "./Services/nonActiveDayService"
 
 const route: Routes =
     [
@@ -51,10 +55,12 @@ const route: Routes =
     ]
 @NgModule({
     declarations: [AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try, GroupsSystem, Management, Courses,
-    ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails, ManegmentCourse, ManegmentGroup, GroupDetails],
+
+    ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails, ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
-    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService],
+    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, nonActiveDayService, nonActiveDayStateManager],
     bootstrap: [Try]
+
 })
 
 export class AppModule {
