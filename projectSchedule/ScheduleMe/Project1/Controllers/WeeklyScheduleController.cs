@@ -11,10 +11,10 @@ namespace ScheduleMe.Controllers
     public class WeeklyScheduleController : ApiController
     {
        // GET: WeeklySchedule
-       public ActionResult Index()
-       {
-           return View();
-       }
+       //public ActionResult Index()
+       //{
+       //    return View();
+       //}
        ExistingCourseService ECservice = new ExistingCourseService();
        GroupService Gservice = new GroupService();
         [Route("ExistingCourses")]

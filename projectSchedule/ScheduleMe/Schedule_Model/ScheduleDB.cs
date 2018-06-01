@@ -49,10 +49,10 @@ namespace Schedule_Model
                 .Property(e => e.Id)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Group>()
-               .HasMany(e => e.ExistingCourses)
-               .WithOptional(e => e.Group)
-               .WillCascadeOnDelete();
+            //modelBuilder.Entity<Group>()
+            //   .HasMany(e => e.ExistingCourses)
+            //   .WithOptional(e => e.Group)
+            //   .WillCascadeOnDelete();
         }
 
 
