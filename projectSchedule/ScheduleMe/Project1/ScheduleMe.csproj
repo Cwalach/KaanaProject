@@ -162,6 +162,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
     <TypeScriptCompile Include="src\app\components\NoActiveSchedule.ts" />
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
     <Content Include="src\app\components\AllDays.component.html" />

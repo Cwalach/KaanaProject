@@ -18,6 +18,7 @@ namespace ScheduleMe.Controllers
             service = new GroupService();
             GroupList = service.GetAll().ToList();
         }
+        
         public IEnumerable<Group> Get()
         {
             return GroupList;
@@ -30,6 +31,7 @@ namespace ScheduleMe.Controllers
             //g.Name = newGroup.Name;
             //g.ExistingCourses = newGroup.ExistingCourses;
         }
+
         [Route("api/Group/RemoveGroup/{removedGroup}")]
         [HttpPost]
         public void RemoveGroup(Group removedGroup)
