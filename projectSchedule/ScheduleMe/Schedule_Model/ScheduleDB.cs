@@ -53,6 +53,7 @@ namespace Schedule_Model
             //   .HasMany(e => e.ExistingCourses)
             //   .WithOptional(e => e.Group)
             //   .WillCascadeOnDelete();
+
         }
 
 
