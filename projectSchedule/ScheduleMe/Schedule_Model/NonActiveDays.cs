@@ -11,9 +11,11 @@ namespace Schedule_Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class NonActiveDays
     {
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public decimal Id { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<decimal> OrderNumber { get; set; }

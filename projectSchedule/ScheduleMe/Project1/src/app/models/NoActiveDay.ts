@@ -6,8 +6,7 @@ export class NoActiveDay {
     public OrderNumber: number;
     public Reason: string;
     
-    constructor(id, date, nameOrderNumber, reason) {
-        this.Id = id;
+    constructor( date, nameOrderNumber, reason) {           
         this.Date = date;
         this.OrderNumber = nameOrderNumber;
         this.Reason = reason;

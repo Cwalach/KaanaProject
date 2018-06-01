@@ -12,14 +12,16 @@
             <td *ngFor="let item of dayInWeek">{{item}}&nbsp;&nbsp;&nbsp;</td>
         </tr>
         <tr *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-            <td *ngFor="let item of dayInWeek; let i=index">{{indexs}}:{{i}} </td>
+            <td *ngFor="let item of dayInWeek;let i=index"> <vacation></vacation></td>
         </tr>
     </table>
     <button (click)="AddDay()" class="btn btn-primary"><span>Add Day</span></button>
     <button (click)="Remove()" class="btn btn-primary"><span>remove</span></button>
     <button (click)="SaveAll()" class="btn btn-primary"><span>SaveAll</span></button>
     <button (click)="Exit()" class="btn btn-primary" ><span>Can I Exit</span></button>
+    <div>{{DateTimeCurrently}}/sunday:{{SundayCurrently()}}</div>    
     {{name}}
+    <button (click)="changeEveryone()" class="btn btn-primary"><span>change!</span></button>
 </body>
 </html>
 

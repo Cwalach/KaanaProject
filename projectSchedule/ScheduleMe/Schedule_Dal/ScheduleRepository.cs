@@ -35,10 +35,11 @@ namespace Schedule_Dal
         public virtual void Insert(T entity)
         {
             dbSet.Add(entity);
+            context.SaveChanges();
         }
 
         public virtual void Delete(object id)
-        {
+        {        
             T entityToDelete = dbSet.Find(id);
             Delete(entityToDelete);
         }
@@ -50,12 +51,14 @@ namespace Schedule_Dal
                 dbSet.Attach(entityToDelete);
             }
             dbSet.Remove(entityToDelete);
+            context.SaveChanges();
         }
 
         public virtual void Update(T entityToUpdate)
         {
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
+            context.SaveChanges();
         }
     }
 }
