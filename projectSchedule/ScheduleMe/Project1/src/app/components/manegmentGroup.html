@@ -12,29 +12,57 @@
            (click)="clickEvent('btnCourse')" />
     <input class="btn_Manegment btn_Add" id="btn_AddGroup" type="button" value="הוספת קבוצה" />
 </div>
-<div *ngIf="groupsList">
-    <h1>Result</h1>
+<div id="divGroup" *ngIf="groupsList">
+    <h4>שם קבוצה</h4>
     <div *ngFor="let item of groupsList">
         <ul class="list-group">
             <li [class.active]="item==currentGroup">
-                <div class="col-sm-2">{{item.Name}}</div>
-                <div class="col-sm-2">
-                    <button class="btn btn-primary" (click)="EditGroup(item)">
-                        <span class="glyphicon glyphicon-pencil"></span> Edit
-                    </button>
-                </div>
                 <div class="col-sm-2">
                     <button class="btn btn-default" (click)="removeGroup(item)">
-                        <span class="glyphicon glyphicon-trash"></span> Remove
+                        <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
                 <div class="col-sm-2">
                     <button class="btn btn-default" (click)="saveToServer(item)">
-                        <span class="glyphicon glyphicon-cloud"></span> Save To Server
+                        <span class="glyphicon glyphicon-cloud"></span>
                     </button>
                 </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" (click)="EditGroup(item)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </div>
+                <div class="col-sm-2">{{item.Name}}</div>
             </li>
         </ul>
     </div>
 <group-details [group]="currentGroup" *ngIf="currentGroup"></group-details>
 </div>
+
+<style>
+    #divGroup button {
+        height: 2vw;
+        width: 2vw;
+        margin:0vw;
+    }
+
+    #divGroup li {
+        display: inline-block;
+        width: 54.5vw;
+        height: 2.2vw;
+    }
+
+    #divGroup ul {
+        margin-top: 1vw;
+    }
+
+    #divGroup h4 {
+        display: inline-block;
+        float: right;
+    }
+
+    #divGroup li div {
+        border: solid 0.1vw;
+        height: 2.2vw;
+    }
+</style>

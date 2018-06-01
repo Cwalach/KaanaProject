@@ -19,4 +19,5 @@ export class CourseDetails
         //alert(this.c.id + "    " + this.c.name);
         //alert(this.course);
     }
+
 }

@@ -24,7 +24,6 @@ export class ManegmentCourse {
             subscribe(data => { this.courseList = data }, error => { alert("error!"); });
     }
     EditCourse(item: Course) {
-
         this.currentCourse = item;
     }
     removeCourse(item: Course) {
@@ -34,7 +33,8 @@ export class ManegmentCourse {
         this.courseService.removeCourseFromServer(item).subscribe(data => { alert("נמחק") }, error => { alert("שגיאה") });
     }
     saveToServer(item: Course) {
-        this.courseService.saveCourseToServer(item).subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+        this.courseService.saveCourseToServer(item).
+            subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
     }
     clickEvent(id: string) {
         if (id == 'btnCourse') {

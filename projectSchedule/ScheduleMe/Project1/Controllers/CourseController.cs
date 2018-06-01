@@ -10,37 +10,33 @@ namespace ScheduleMe.Controllers
 {
     public class CourseController : ApiController
     {
-        public static ICollection<Course> CoursesList = new List<Course> {
-            new Course { Id=1,Name="התעמלות",Instructor="חיה רוט"},
-            new Course { Id=2,Name="ריתמיקה",Instructor="שולמית רוט"},
-            new Course { Id=3,Name="יצירה",Instructor="חיה רוט"},
-            new Course { Id=4,Name="התעמלות",Instructor="חיה רוט"} ,
-            new Course { Id=5,Name="התעמלות",Instructor="חיה רוט"} };
         CourseService service;
-        Schedule_Dal.ScheduleRepository<Course> s;
+        IEnumerable<Course> CoursesList;
 
         public CourseController()
         {
-            //s = new 
             service = new CourseService();
+            CoursesList = service.GetAll();
+
         }
         // GET api/<controller>
         public IEnumerable<Course> Get()
         {
             return CoursesList;
-            //return service.Repository.Get();
         }
         public void Post(Course newCourse)
         {
-            Course c = CoursesList.First(x => x.Id == newCourse.Id);
-            c.Name = newCourse.Name;
-            c.Instructor = newCourse.Instructor;
+            //Course c = CoursesList.First(x => x.Id == newCourse.Id);
+            //c.Name = newCourse.Name;
+            //c.Instructor = newCourse.Instructor;
+            service.Update(newCourse);
         }
         [Route("api/Course/RemoveCourse/{removedCourse}")]
         [HttpPost]
         public void RemoveCourse(Course removedCourse)
         {
-           // CoursesList.Remove(CoursesList.Find(r => r.Id == removedCourse.Id));
+            // CoursesList.Remove(CoursesList.Find(r => r.Id == removedCourse.Id));
+            service.Delete(removedCourse);
         }
     }
 }
