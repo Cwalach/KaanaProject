@@ -24,7 +24,7 @@
 </button>
 
 <select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox(selectedCourse)">
-    <option *ngFor="let item of CourseList">{{item.Name}}-{{item.Group}}</option>
+    <option *ngFor="let item of CourseList">{{item.Name}}</option>
 </select>
 <!--<select (click)="courseService.GetAll()" itemscope="">
     <option></option>

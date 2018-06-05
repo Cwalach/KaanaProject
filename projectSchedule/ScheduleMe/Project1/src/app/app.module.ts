@@ -19,7 +19,6 @@ import { RouterModule, Routes } from '@angular/router'
 import { ReportDetailsComponent } from "./components/ReportDetails.component"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
-import { ScheduleService } from "./Services/ScheduleService"
 import { ReportDetailsService } from "./Services/ReportDetailsService"
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
@@ -59,7 +58,7 @@ const route: Routes =
     ]
 @NgModule({
     declarations: [SingleCourseinBoardComponent, scheduleBoard,AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
-         GroupsSystem, Management, Courses,ReportComponent,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
+         GroupsSystem, Management, Courses,ReportDetailsComponent,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
     bootstrap: [Try],
