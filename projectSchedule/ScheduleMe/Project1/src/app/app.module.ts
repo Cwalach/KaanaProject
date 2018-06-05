@@ -19,7 +19,6 @@ import { RouterModule, Routes } from '@angular/router'
 import { ReportDetailsComponent } from "./components/ReportDetails.component"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
-import { ScheduleService } from "./Services/ScheduleService"
 import { ReportDetailsService } from "./Services/ReportDetailsService"
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
