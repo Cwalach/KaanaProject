@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Schedule_Bl;
 using Schedule_Model;
+using System.Data.SqlClient;
 
 
 namespace ScheduleMe.Controllers
@@ -13,6 +14,7 @@ namespace ScheduleMe.Controllers
     public class ReportController : ApiController
     {
         CourseService courseService = new CourseService();
+        GroupService groupService = new GroupService();
         ExistingCourseService existingCourseService = new ExistingCourseService();
         ReportDetails reportDetailsCs = new ReportDetails();
         private static List<ReportDetails> reportDetailsList = new List<ReportDetails>() {
@@ -56,11 +58,49 @@ namespace ScheduleMe.Controllers
 
         [Route("api/Report/GetCourses")]
         [HttpGet]
-        public ICollection<ReportDetails> GetCourses()//to the comboBox
+        //DateTime startDate,DateTime endDate,string name
+        public ICollection<Course> GetCourses()//to the comboBox
         {
-            //List<Course> ac = new List<Course>();
-            //ac = courseService.GetAll().ToList();//.Where(e=>e.Id==id).ToList();
-            return reportDetailsList.ToList();
+            List<Course> ac = new List<Course>();
+            ac = courseService.GetAll().ToList();//.Where(e=>e.Id==id).ToList();
+            return ac.ToList();
+        }
+
+        public ICollection<Group> GetGroups()//to the comboBox
+        {
+            List<Group> gr = new List<Group>();
+            gr = groupService.GetAll().ToList();//.Where(e=>e.Id==id).ToList();
+            return gr.ToList();
+        }
+
+
+
+
+
+        public ReportDetails getReportDeatilsFromServer(DateTime startDate, DateTime endDate, string courseName)
+        {
+            ReportDetails rs = new ReportDetails();
+            //DateTime startDate = DateTime.Parse(startDate);
+            int result = 0;
+            using (var ctx = new ScheduleDB())
+            {
+                SqlParameter name, sDate, eDate;
+               // foreach (ReportDetails item in ExistingCoursesToSave)
+               //{
+                    sDate = new SqlParameter("@Date", rs.SrartDate);
+                    eDate = new SqlParameter("@Date", rs.EndDate);
+                    name = new SqlParameter("@Name",rs.Name);
+
+                    result = ctx.Database.ExecuteSqlCommand("ReportResponse, @CourseName nvarchar(50), @StartDate smalldatetime, @EndDate smalldatetime",courseName, startDate, endDate);
+               // }
+                //int h = 0; 
+                //SqlParameter courseName= new SqlParameter("@courseName", "cobol");
+                //SqlParameter coursId = new SqlParameter("@coursId", 1);
+
+                //result = ctx.Database.ExecuteSqlCommand("SaveTry @courseName,@coursId", courseName,coursId);
+
+            }
+            return rs;
         }
     }
 }

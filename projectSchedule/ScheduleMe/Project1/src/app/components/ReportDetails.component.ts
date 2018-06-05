@@ -1,5 +1,6 @@
 ﻿import { Component } from "@angular/core"
 import { Course } from "../models/Course"
+import { Group } from "../models/group"
 import { ExistingCourse } from "../models/ExistingCourses"
 import "rxjs/add/operator/map"
 import { Observable } from "rxjs/Observable"
@@ -17,6 +18,7 @@ export class ReportDetailsComponent {
     //list: ReportDetailsCs[];
     ReportDeatilsList: ReportDetails[];
     CourseList: Course[];
+    GroupList: Group[];
     //existingCourse: Course[];
     CurrentCourse: Course;
     public date1: Date;
