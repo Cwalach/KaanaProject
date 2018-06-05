@@ -143,8 +143,11 @@
     <Content Include="src\app\components\SingleCourseinBoard.component.html" />
     <Content Include="src\app\components\courseInSchedule.html" />
     <Content Include="src\app\components\courseInSchedule.html" />
-    <Content Include="src\app\components\app.component.html" />
+    <TypeScriptCompile Include="src\app\components\ReportDetails.component.ts" />
+    <Content Include="src\app\components\ReportDetails.component.html" />
     <Content Include="src\app\components\Report.component.html" />
+    <Content Include="src\app\components\courseInSchedule.html" />
+    <Content Include="src\app\components\dateRangeSelector.component.html" />
     <Content Include="src\app\components\scheduleBoard.html" />
     <Content Include="src\app\components\SaveCoursesBoard.component.html" />
     <Content Include="src\app\components\dateRangeSelector.component.html" />
@@ -165,6 +168,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\WeeklyScheduleController.cs" />
     <Compile Include="Controllers\NoActiveDayController.cs" />
@@ -227,6 +231,7 @@
     <TypeScriptCompile Include="src\app\models\group.ts" />
     <TypeScriptCompile Include="src\app\Services\manegmentCourses-service.ts" />
     <TypeScriptCompile Include="src\app\Services\manegmentGroups-service.ts" />
+    <TypeScriptCompile Include="src\app\models\ReportDetails.ts" />
     <TypeScriptCompile Include="src\app\Services\ScheduleService.ts" />
     <TypeScriptCompile Include="src\app\models\NoActiveDay.ts" />
     <TypeScriptCompile Include="src\app\Services\nonActiveDayService.ts" />

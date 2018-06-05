@@ -84,6 +84,7 @@
     <Compile Include="NonActiveDays.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDetails.cs" />
     <Compile Include="ScheduleDB.cs" />
     <Compile Include="sysdiagrams.cs" />
   </ItemGroup>
