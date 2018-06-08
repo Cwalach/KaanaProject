@@ -221,6 +221,7 @@
     <TypeScriptCompile Include="src\app\components\GroupsSystem.component.ts" />
     <TypeScriptCompile Include="src\app\components\volunteer-details.component.ts" />
     <TypeScriptCompile Include="src\app\Services\PopUpService.ts" />
+    <TypeScriptCompile Include="src\app\Services\PrintHtmlService.ts" />
     <TypeScriptCompile Include="src\app\Services\ReportDetailsService.ts" />
     <TypeScriptCompile Include="src\app\Services\Changes-services.ts" />
     <TypeScriptCompile Include="src\app\Services\WeeklyScheduleService.ts" />
