@@ -1,15 +1,18 @@
-﻿import { Component, Output, Input, EventEmitter } from "@angular/core"
+﻿import { Component, Output, Input, EventEmitter , ViewChild , AfterViewInit } from "@angular/core"
 import { WeeklyScheduleService } from "../Services/WeeklyScheduleService"
 import { CourseInSchedule } from "../components/courseInSchedule"
 import { ExistingCourse } from "../models/ExistingCourses"
 import { Course } from "../models/Course"
 import { Group } from "../models/Group"
+import { DateRangeSelectorComponent } from "./dateRangeSelector.component"
+
 @Component({
     templateUrl: "./src/app/components/scheduleBoard.html",
     selector: "scheduleBoard"
 })
 export class scheduleBoard {
     date: Date;
+    DateTimeCurrently: Date;
     d: Date = new Date();
     dayInWeek: string[];
     Groups: Group[];
@@ -18,14 +21,18 @@ export class scheduleBoard {
     CurrentExistingCourse: ExistingCourse;
     Courses: Course[];
     CurrentCourse: Course;
+    CurrentGroup: Group;
+    GroupList: Group[];
     constructor(private weeklyScheduleService: WeeklyScheduleService) {
         this.weeklyScheduleService.GetAllCoursesFromServer().subscribe(data => { this.Courses = data }, error => { alert("error!"); });
         this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
         this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => { this.Groups = data }, error => { alert("error!"); });
+        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => { this.GroupList = data }, error => { });
+
         this.dayInWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
         this.date = new Date();
+        this.DateTimeCurrently = new Date();
     }
-    //לעשות שישתנו הימים בעת מעבר לשבוע הבא/הקודם
     getday(i: number): number {
         this.d.setDate(this.date.getDate() - ((this.date.getDay() + 1) - (i + 1)));
         return this.d.getDate();
@@ -58,5 +65,16 @@ export class scheduleBoard {
         //this.SelectedGroup = selectedGroup;
         //שינוי-עדכון הטבלה בעת בחירת קבוצה
         //html-איך אני עוברת על הטבלה - איך תופסים אלמנט מה
+        //return this.GroupList[i+1].Name;
+    }
+    onChangeGroup(Group) {
+        this.CurrentGroup = this.GroupList.find(g => g.Id == Group);
+    }
+    @ViewChild(DateRangeSelectorComponent)
+    private dateTimeCurrentlyFromComponent: DateRangeSelectorComponent;
+
+    ngAfterViewInit() {
+        setTimeout(this.date = this.dateTimeCurrentlyFromComponent.currentDate, 0);
+        this.DateTimeCurrently = this.dateTimeCurrentlyFromComponent.leftDay;
     }
 }

@@ -185,7 +185,7 @@
     <Content Include="src\app\components\vacation.component.html" />
     <Content Include="src\app\components\app.component.html" />
     <Content Include="src\app\components\courseInSchedule.html" />
-    <Content Include="src\app\components\course.component.html" />
+    <Content Include="src\app\components\SingleCourseinBoard.component.html" />
     <Content Include="src\app\components\Report.component.html" />
     <Content Include="src\app\components\scheduleBoard.html" />
     <Content Include="src\app\components\SaveCoursesBoard.component.html" />
@@ -247,7 +247,7 @@
     <TypeScriptCompile Include="src\app\components\courseInSchedule.ts" />
     <TypeScriptCompile Include="src\app\components\Report.component.ts" />
     <TypeScriptCompile Include="src\app\models\Course.ts" />
-    <TypeScriptCompile Include="src\app\components\course.component.ts" />
+    <TypeScriptCompile Include="src\app\components\SingleCourseinBoard.component.ts" />
     <TypeScriptCompile Include="src\app\models\ExistingCourses.ts" />
     <TypeScriptCompile Include="src\app\models\Group.ts" />
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />

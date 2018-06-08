@@ -12,7 +12,7 @@ import { Try } from "./components/try.component"
 import { Courses } from "./components/Courses.component"
 import { GroupsSystem } from "./components/GroupsSystem.component"
 import { Management } from "./components/Management.component"
-import { CourseComponent } from "./components/course.component"
+import { CourseComponent } from "./components/SingleCourseinBoard.component"
 import { BrowserModule } from "@angular/platform-browser"
 import { HttpModule } from "@angular/http"
 import { RouterModule, Routes } from '@angular/router'
@@ -54,7 +54,7 @@ const route: Routes =
     ]
 @NgModule({
 
-    declarations: [CourseComponent,AppComponent, DateRangeSelectorComponent, scheduleBoard, CourseInSchedule, vacation, VolunteerDetails, Try,
+    declarations: [CourseComponent, scheduleBoard,AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
          GroupsSystem, Management, Courses,ReportComponent,ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],

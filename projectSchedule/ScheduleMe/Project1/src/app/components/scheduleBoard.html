@@ -6,9 +6,11 @@
 </head>
 <body dir="rtl">
     <h1>מערכת קבוצות</h1>
-    <select>
-        <!--[SelectedGroup]="selectedGroup"-->
+    <select>        
         <option [(ngModel)]="selectedGroup"  *ngFor="let g of Groups; let i =index" (change)="ChangeTable(selectedGroup)">{{g.Name}}</option>
+    </select>
+    <select [(ngModel)]="selectedGroups" (change)="onChangeGroup(selectedGroups)">
+        <option *ngFor="let item of GroupList" value="{{item.Id}}">{{item.Instructor}} {{item.Name}}</option>
     </select>
     <!--<select>
         <option *ngFor="let c of Courses; let i =index">{{c.Name}}</option>
@@ -26,15 +28,19 @@
             <!--למה הוספת היום בחודש עושה בעיות-->
             <td *ngFor="let item of dayInWeek; let m=index"><span>{{getday(m)}}-</span>{{item}}&nbsp;&nbsp;&nbsp;</td>
         </tr>
-        <tr *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-            <!--לבדוק למה לא עובד בקורס קיים - עם תאריך!!!!-->
-            <!-- day-להוסיף--->
-            <td *ngFor="let x of dayInWeek; let k=index">{{getExistingCourseName(1,indexs)}}</td>
-            <!--<td *ngFor="let x of dayInWeek; let k=index">{{getCourseNameById(k)}}</td>-->
-        </tr>  
+
+        <tr dir="ltr" *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
+            <td *ngFor="let x of dayInWeek; let k=index">
+                <Course_Component [CurrentComponentId]="k+1" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="CurrentGroup"></Course_Component>
+            </td>
+        </tr>     
     </table>
 </body>
 </html>
- 
+ <style>
+     Course_Component {
+     margin:0.5vw;
+     }
+ </style>
 
 

@@ -49,7 +49,9 @@ export class ScheduleBoardStateManager {
         return this.http.get("api/Schedule/Get").map(res => { return res.json() as Course[] });
        
     }
-
+    AllGroupesFromService(): Observable<Group[]> {
+        return this.http.get("api/Schedule/AllGroups").map(res => { return res.json() as Group[] });
+    }
     //Post
     saveAllCoursesToService(): Observable<boolean> {
          return this.http.post("api/Schedule/Post", this.ExistingCoursesThatWasChangedList).map(res => { return true; });

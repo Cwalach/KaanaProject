@@ -40,6 +40,12 @@ namespace ScheduleMe.Controllers
         {
             listGroups= Gservice.GetAll();
             return listGroups;
+        [Route("api/WeeklySchedule/AllGroups")]
+        [HttpGet]
+        public List<Group> AllGroups()
+        {
+            return Gservice.GetAll().ToList();
+
         }
 
         //public Group Get()
