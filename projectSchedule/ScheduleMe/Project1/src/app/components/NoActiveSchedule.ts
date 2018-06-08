@@ -13,7 +13,8 @@ export class NoActiveSchedule {
     dayInWeek: string[] = ["Sunday", "Monday", "Tuesday ", "Wednesday", "Thursday ", "Friday"];
 
     constructor(private _nonActiveDaysStateManager: nonActiveDayStateManager, private _nonActiveDaysService: nonActiveDayService) {
-        this.DateTimeCurrently = new Date();   
+        this.DateTimeCurrently = new Date();
+        _nonActiveDaysService.getAllNoActiveDayFromService().subscribe(d => { this.noActiveDays = d });  
     }
     noActiveDays: NoActiveDay[];
     
@@ -61,6 +62,7 @@ num: number = 0;
     Exit() {
         alert("did you can exit? " + this._nonActiveDaysStateManager.IsStillChanges());
     }
+
 }
 
 
