@@ -1,5 +1,5 @@
 ﻿using System;
-using Nager.Date;
+//using Nager.Date;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -27,27 +27,28 @@ namespace Schedule_Model.Controllers
             //fillNonVactionDaysFromApi(DateTime.Now, DateTime.Now.AddYears(20));
             return getNoActiveDays;
         }
-        private void fillNonVactionDaysFromApi(DateTime startDate, DateTime endDate)
-        {
-            ////this.contexts = new ScheduleDB();
-            ////this.dbSets = this.contexts.Set<NonActiveDays>();
-            var publicHolidays = DateSystem.GetPublicHoliday(CountryCode.IS, startDate, endDate);
-            for (int i = 0, orderNumber = 1; i < publicHolidays.Count() && orderNumber <= 17; orderNumber++)
-            {
-                NonActiveDays day = new NonActiveDays();
-                day.Date = publicHolidays.ElementAt(i).Date;
-                day.OrderNumber = orderNumber;
-                day.Reason = "מטעם החינוך העצמאי";
-                noActiveDaysService.Insert(day);
-                ////dbSets.Add(day);
-               // //contexts.SaveChanges();
-                if (orderNumber == 17)
-                {
-                    orderNumber = 0;
-                    i++;
-                }
-            }
-        }
+        //private void fillNonVactionDaysFromApi(DateTime startDate, DateTime endDate)
+        //{
+        //    ////this.contexts = new ScheduleDB();
+        //    ////this.dbSets = this.contexts.Set<NonActiveDays>();
+        //    //var publicHolidays = DateSystem.GetPublicHoliday(CountryCode.IS, startDate, endDate);
+        //    //for (int i = 0, orderNumber = 1; i < publicHolidays.Count() && orderNumber <= 17; orderNumber++)
+        //    {
+        //        NonActiveDays day = new NonActiveDays();
+        //        day.Date = publicHolidays.ElementAt(i).Date;
+        //        day.OrderNumber = orderNumber;
+        //        day.Reason = "מטעם החינוך העצמאי";
+        //        noActiveDaysService.Insert(day);
+        //        ////dbSets.Add(day);
+        //       // //contexts.SaveChanges();
+        //        if (orderNumber == 17)
+        //        {
+        //            orderNumber = 0;
+        //            i++;
+        //        }
+        //    }
+        //}
+
         [Route("api/NoActiveDay/AddNoActiveDay")]
         [HttpPost]
         public void AddNoActiveDay(List<NonActiveDays> ListAddNoActiveDay)

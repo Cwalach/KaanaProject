@@ -60,7 +60,7 @@ const route: Routes =
          GroupsSystem, Management, Courses,ReportComponent,ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
-    bootstrap: [scheduleBoard],
+    bootstrap: [Try],
     providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, 
         nonActiveDayService, nonActiveDayStateManager]
 
