@@ -53,6 +53,7 @@ const route: Routes =
         {
             path: 'ReportDetails', component: ReportDetails
         },
+        { path: "SaveCoursesBoard", component: SaveCoursesBoard}
     ]
 @NgModule({
 
@@ -60,11 +61,16 @@ const route: Routes =
          GroupsSystem, Management, Courses,ReportComponent,ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
+<<<<<<< HEAD
     bootstrap: [Try],
     providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, 
         nonActiveDayService, nonActiveDayStateManager]
 
 
+=======
+    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService],
+    bootstrap: [scheduleBoard]
+>>>>>>> step 6
 })
 
 export class AppModule {

@@ -56,15 +56,6 @@ namespace Schedule_Model
                 .HasPrecision(18, 0);
 
 
-            //modelBuilder.Entity<Group>()
-            //   .HasMany(e => e.ExistingCourses)
-            //   .WithOptional(e => e.Group)
-            //   .WillCascadeOnDelete();
-
-            // should do the follwing after create the db in the first time
-            //fillNonVactionDaysFromApi(DateTime.Now, DateTime.Now.AddYears(20));
-           
-
         }
 
         private void fillNonVactionDaysFromApiJustIfNotExistAndForNextYears()
@@ -96,7 +87,6 @@ namespace Schedule_Model
 
             }
         }
-
         private void fillNonVactionDaysFromApi(DateTime startDate, DateTime endDate)
         {
             this.contexts = new ScheduleDB();
@@ -117,5 +107,7 @@ namespace Schedule_Model
                 }
             }
         }
+
     }
+
 }

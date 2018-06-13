@@ -8,24 +8,27 @@ import { ExistingCoursesService} from "../Services/ExistingCoursesService"
 })
 export class SaveCoursesBoard {
     constructor(private ScheduleBoardStateManager: ScheduleBoardStateManager, private existingCoursesService: ExistingCoursesService) { }
-    public date: Date;
+    public date;
+    dateToPost: Date;
     btnSave: boolean = false;
     btnSaveChange: boolean = false;
     btnEndSave: boolean = false;
+    isChecked: boolean;
     listExistingCourse: ExistingCourse[];
-    Save() {
-        this.btnSave = true;
-    }
+    comments: string;
+    valid: boolean = true;
     SaveChanges() {
         this.btnSave = false;
         this.btnSaveChange = true;
-         this.listExistingCourse=this.ScheduleBoardStateManager.GetAllExistingCourseThatWasChanged();
-         this.existingCoursesService.save(this.listExistingCourse).subscribe(data => { alert("Saved succsessed!!!") });
+        this.listExistingCourse=this.ScheduleBoardStateManager.GetAllExistingCourseThatWasChanged();
+        this.existingCoursesService.save(this.listExistingCourse, this.dateToPost, this.comments).subscribe(data => { alert("Saved succsessed!!!") });
+    
     }
     CancelProcess() {
         this.btnSaveChange = false;
     }
     EndSave() {
+      
         this.btnSaveChange = false;
         this.btnEndSave = true;
     }
@@ -33,9 +36,17 @@ export class SaveCoursesBoard {
         if (dateString) {
             alert(dateString + " is selected");
             this.date = new Date(dateString);
+            this.dateToPost = this.date;
             return this.date;
         } else {
             return null;
         }
+    }
+    SetChecked() { 
+        this.isChecked= true;
+    }
+    ThisWeekUntil() {
+       
+        this.dateToPost = new Date("12-12-18");
     }
 }

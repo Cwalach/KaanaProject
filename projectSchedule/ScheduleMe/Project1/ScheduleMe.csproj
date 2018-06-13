@@ -157,7 +157,11 @@
     <Content Include="src\app\components\group-details.html" />
     <Content Include="src\app\components\manegmentCourse.html" />
     <Content Include="src\app\components\manegmentGroup.html" />
+<<<<<<< HEAD
     <Content Include="src\app\components\NoActiveScheduleComponent.html" />
+=======
+    <Content Include="StyleSheet1.css" />
+>>>>>>> step 6
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -167,7 +171,10 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\WeeklyScheduleController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\NoActiveDayController.cs" />
+=======
+>>>>>>> step 6
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,8 +230,6 @@
     <TypeScriptCompile Include="src\app\components\group-details.ts" />
     <TypeScriptCompile Include="src\app\components\manegmentCourse.ts" />
     <TypeScriptCompile Include="src\app\components\manegmentGroup.ts" />
-    <TypeScriptCompile Include="src\app\models\course.ts" />
-    <TypeScriptCompile Include="src\app\models\group.ts" />
     <TypeScriptCompile Include="src\app\Services\manegmentCourses-service.ts" />
     <TypeScriptCompile Include="src\app\Services\manegmentGroups-service.ts" />
     <TypeScriptCompile Include="src\app\Services\ScheduleService.ts" />

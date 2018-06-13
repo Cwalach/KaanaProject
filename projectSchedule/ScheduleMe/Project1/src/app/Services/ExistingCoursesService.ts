@@ -15,8 +15,8 @@ export class ExistingCoursesService {
     }
 
     //Post
-    save(ExistingCoursearr:Array<ExistingCourse>): Observable<boolean> {
-         return this.http.post("Schedule/PostData", ExistingCoursearr).map(res => { return true; });
+    save(ExistingCourseArr: Array<ExistingCourse>, DateToUpdate: Date,Comments:string): Observable<boolean> {
+        return this.http.post("api/Schedule/" + DateToUpdate.toDateString() + "/" + Comments, ExistingCourseArr).map(res => { return true; });
          //return this.http.post("api/Schedule/Post", ExistingCoursearr).map(res => { return true; });
 
       }
