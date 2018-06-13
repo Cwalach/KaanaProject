@@ -5,11 +5,11 @@ import { Course } from "../models/Course"
 import { Group } from "../models/Group"
 
 @Component({
-    templateUrl: "./src/app/components/course.component.html",
-    selector: "Course_Component"
-})
-export class CourseComponent {
-
+    templateUrl: "./src/app/components/SingleCourseinBoard.component.html",
+    selector: "SingleCourseinBoard_Component"
+}) 
+export class  SingleCourseinBoardComponent{
+    //CourseComponent course.component.html
     constructor(private scheduleService: SaveChangesBoardService) {
         this.IsChange = false;
         this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
@@ -38,7 +38,6 @@ export class CourseComponent {
             this.flag = false;
         else
             this.flag = true;
-        //this.flag == true ? false : true;
         this.IsChange = false;
     }
     RemoveCourse(course: Course) {
@@ -59,12 +58,12 @@ export class CourseComponent {
                 this.CurrentCourse = this.CourseList.find(c => c.Id == eachObj.id);
             }
         };
-        //this.SetDateForEachDayInWeek();
+        this.SetDateForEachDayInWeek();
         this.IsChange = true;
-        //this.CurrentExistingCourses = new ExistingCourse(15, this.CurrentDateOfSun, this.CurrentCourse, this.CurrentGroup);
-        //this.CurrentExistingCourses.CourseId = this.CurrentCourse.Id;
-        //this.CurrentExistingCourses.GroupId = this.CurrentGroup.Id;
-        //this.scheduleService.AddExistingCourseThatWasChangedToList(this.CurrentExistingCourses);
+        this.CurrentExistingCourses = new ExistingCourse(15, this.CurrentDateOfSun, this.CurrentCourse, this.CurrentGroup);
+        this.CurrentExistingCourses.CourseId = this.CurrentCourse.Id;
+        this.CurrentExistingCourses.GroupId = this.CurrentGroup.Id;
+        this.scheduleService.AddExistingCourseThatWasChangedToList(this.CurrentExistingCourses);
     }
     SetDateForEachDayInWeek() {
         this.CurrentDateOfToday = this.CurrentDateOfSun;

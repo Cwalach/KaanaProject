@@ -22,7 +22,8 @@ namespace ScheduleMe.Controllers
         ICollection<ExistingCourses> ECourseslist;
         ICollection<Course> Courseslist;
         ICollection<Group> listGroups;
-        [Route("WeeklySchedule/GetExistingCourses")]
+        [Route("api/WeeklySchedule/GetExistingCourses")]
+        [HttpGet]
         public ICollection<ExistingCourses> GetExistingCourses()
         {
             ECourseslist = ECservice.GetAll();
@@ -38,8 +39,9 @@ namespace ScheduleMe.Controllers
         [Route("WeeklySchedule/GetGroups")]
         public ICollection<Group> GetGroups()
         {
-            listGroups= Gservice.GetAll();
+            listGroups = Gservice.GetAll();
             return listGroups;
+        }
         [Route("api/WeeklySchedule/AllGroups")]
         [HttpGet]
         public List<Group> AllGroups()

@@ -12,7 +12,7 @@ export class WeeklyScheduleService {
     }
     public GetAllExistingCoursesFromServer(): Observable<ExistingCourse[]>
     {
-        return this.http.get("WeeklySchedule/GetExistingCourses").map(
+        return this.http.get("api/WeeklySchedule/GetExistingCourses").map(
             data => {
                 return data.json() as ExistingCourse[]
             });
