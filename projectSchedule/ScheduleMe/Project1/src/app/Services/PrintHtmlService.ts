@@ -35,7 +35,6 @@ export class PrintHtmlService {
             </style>
         </head>
         <body onload="window.print();window.close()">${printContents.innerHTML}</body>
-
       </html>`
         );
         popupWin.document.close();

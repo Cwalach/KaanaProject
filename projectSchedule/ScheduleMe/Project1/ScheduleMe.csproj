@@ -65,6 +65,7 @@
     <Reference Include="Nager.Date, Version=1.20.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nager.Date.1.20.2\lib\net45\Nager.Date.dll</HintPath>
       <Private>True</Private>
+    <Reference Include="Microsoft.CSharp" />
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
@@ -140,6 +141,7 @@
     <Content Include="src\app\components\DayInSchedule.component.html" />
     <Content Include="src\app\components\PrintHtmlComponent.html" />
     <Content Include="src\app\components\ReportDetails.html" />
+
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
