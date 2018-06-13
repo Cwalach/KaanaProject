@@ -3,23 +3,22 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
+    <link href="../../../CSS/NonActiveDay.css" rel="stylesheet" />
 </head>
 <body dir="rtl">
     <h1>מערכת קבוצות</h1>
-    <!--<ul>
-        <li >
-            <span>{{item}}</span>
-        </li>
-    </ul>-->
-    <table>
+    <DateRangeSelector></DateRangeSelector>   
+    <table id="tblAllDays">
         <tr>
-            <td *ngFor="let item of dayInWeek">{{item}}<br/><DayInSchedule [dayInWeek]="dayInWeek"></DayInSchedule></td>
+            <td *ngFor="let item of dayInWeek; let m=index" id="tdDays">
+                <span class="span-day-in-week">{{getday(m)}}-{{item}}</span><br />
+                <div id="dayInWeek">
+                    <DayInSchedule [dayInWeek]="dayInWeek" [currentDay]=item [currentDate]="day"></DayInSchedule>
+                </div>
+            </td>
             
-        <!--</tr>
-        <tr *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-            <td *ngFor="let item of dayInWeek; let i=index">{{indexs}}:{{i}} <vacation [st]='isVacation'>></vacation></td>
-        </tr>-->
+        </tr>
     </table>
-
+    <div>{{DateTimeCurrently}}</div>
 </body>
 </html>

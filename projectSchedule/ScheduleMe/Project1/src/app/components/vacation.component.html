@@ -1,11 +1,5 @@
-﻿
-<input id="Button1" type="button" class="activeDay" (click)="Update()"
+﻿<link href="../../../CSS/NonActiveDay.css" rel="stylesheet" />
+<input id="btnStatus" type="button" class="activeDay" (click)="Update()"
         [ngClass]="status?'activeDay':'nonActiveDay'" />
-<style>
-    .activeDay{
-        background-color:skyblue;
-    }
-    .nonActiveDay{
-         background-color:gray;
-    }
-</style>
+<!--<span>{{date}}</span>-->
+<!--<span *ngIf="index<=1">{{updateDate()}}</span>-->

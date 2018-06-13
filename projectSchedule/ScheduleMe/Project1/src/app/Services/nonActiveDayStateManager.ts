@@ -9,11 +9,13 @@ export class nonActiveDayStateManager {
    private activeDaysList: Array<number>;
 
    constructor() {
+       //change to no active
        this.nonActiveDaysList = new Array<NoActiveDay>();
-       this.activeDaysList=new Array<number>();
+       //change to active
+       this.activeDaysList = new Array<number>();
    }
 
-   GetChangeInNonActiveDaysList(): Array<NoActiveDay>
+    GetChangeInListAddNoActiveDay(): Array<NoActiveDay>
     {
         return this.nonActiveDaysList;
     }
@@ -28,12 +30,19 @@ export class nonActiveDayStateManager {
         this.nonActiveDaysList.push(noActiveDay);
     }
 
-    //Cancel no Active day that was adding
+    //Cancel no Active day 
     CencelNoActiveDay(noActiveDay: NoActiveDay) {
-        let index = this.nonActiveDaysList.indexOf(noActiveDay);
-        this.nonActiveDaysList.splice(index, 1);
+        if (this.nonActiveDaysList.indexOf(noActiveDay) >= 0)
+        {
+            let index = this.nonActiveDaysList.indexOf(noActiveDay);
+            this.nonActiveDaysList.splice(index, 1);
+        }
+        else
+            this.RemoveNoActiveDay(noActiveDay);
+
     }
 
+    
     //clear lists
     ClearNoActiveDay() {
         this.nonActiveDaysList.splice(0, this.nonActiveDaysList.length);
@@ -45,7 +54,7 @@ export class nonActiveDayStateManager {
         return this.nonActiveDaysList[0] == null && this.activeDaysList[0] == null;
     }
 
-    //Remove from the db
+    //update for remove from db
     RemoveNoActiveDay(noActiveDay: NoActiveDay)
     {
         this.activeDaysList.push(noActiveDay.Id);

@@ -3,17 +3,17 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
+    <link href="../../../CSS/NonActiveDay.css" rel="stylesheet" />
 </head>
 <body dir="rtl">
-    <table>
-        <tr>
-            <td ><button class="changeAll" (click)="ChangeAll()"></button></td>
-
-        </tr>
-        <tr *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-          <td>  {{indexs}} <vacation [status]='isVacation'></vacation></td>
-        </tr>
-    </table>
+         
+                <input id="changeAll" type="button" class="activeDay" (click)="ChangeAll()" value="כל השיעורים"
+                       [ngClass]="isVacation?'activeDay':'nonActiveDay'" />
+           
+        <div *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
+          <div id=vacationComponent><vacation [status]='isVacation' [currentHour]=indexs [date]="currentDate"></vacation></div>
+        </div>
+ 
 
 </body>
 </html>

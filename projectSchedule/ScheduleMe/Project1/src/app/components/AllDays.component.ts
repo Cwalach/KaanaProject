@@ -1,4 +1,5 @@
-﻿import { Component, Output, Input, EventEmitter } from "@angular/core"
+﻿import { Component, Output, Input, EventEmitter, ViewChild, AfterViewInit } from "@angular/core"
+import { DateRangeSelectorComponent } from "./dateRangeSelector.component"
 
 //import {CourseInSchedule }from "../components/courseInSchedule"
 @Component({
@@ -8,10 +9,29 @@
 })
 export class AllDays {
     isVacation: boolean = true;
-    dayInWeek: string[] = ["Sunday", "Monday", "Tuesday ", "Wednesday", "Thursday ", "Friday"];
+   
+    day: Date = new Date();
+    dayInWeek: string[] = ["ראשון", "שני", "שלישי ", "רביעי", "חמישי ", "שישי"];
+    DateTimeCurrently: Date;
+    constructor() {
+        this.DateTimeCurrently= new Date();
+    }
+    @ViewChild(DateRangeSelectorComponent)
+    private dateTimeCurrentlyFromComponent: DateRangeSelectorComponent;
     ChangeAll()
     {
         this.isVacation = !this.isVacation;
+    }
+    ngAfterViewInit()
+    {
+        setTimeout(this.DateTimeCurrently = this.dateTimeCurrentlyFromComponent.currentDate, 0);
+    }
+    getday(i: number): number {
+        if (i == 0)
+            this.day.setDate(this.DateTimeCurrently.getDate() - ((this.DateTimeCurrently.getDay() + 1) - (i + 1)));
+        else
+            this.day.setDate(this.day.getDate()+1)
+        return this.day.getDate();
     }
 }
 

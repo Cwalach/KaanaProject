@@ -49,13 +49,13 @@ num: number = 0;
     Remove() {
         //this.day = new NoActiveDay( new Date("2018,04,27"), 2, "חתונת הבת של המנהלת");
         //this.day.Id = 2;
-        if (this._nonActiveDaysStateManager.GetChangeInNonActiveDaysList().indexOf(this.day) >= 0)
+        if (this._nonActiveDaysStateManager.GetChangeInListAddNoActiveDay().indexOf(this.day) >= 0)
             this._nonActiveDaysStateManager.CencelNoActiveDay(this.day);
         else
             this._nonActiveDaysStateManager.RemoveNoActiveDay(this.day);
     }
     SaveAll() {
-        this._nonActiveDaysService.saveNonActiveDaysListToService(this._nonActiveDaysStateManager.GetChangeInNonActiveDaysList()).subscribe(data => { alert("save success!!") });
+        this._nonActiveDaysService.saveNonActiveDaysListToService(this._nonActiveDaysStateManager.GetChangeInListAddNoActiveDay()).subscribe(data => { alert("save success!!") });
         this._nonActiveDaysService.saveActiveDaysListToService(this._nonActiveDaysStateManager.GetChangeInActiveDaysList()).subscribe(data => { alert("save success!!") });
         this._nonActiveDaysStateManager.ClearNoActiveDay();
     }

@@ -10,7 +10,10 @@ export class DayInSchedule {
     isVacation: boolean = true;
     @Input()
     dayInWeek: string[];
-
+    @Input()
+    currentDay: string;
+    @Input()
+    currentDate: Date;
     ChangeAll() {
         this.isVacation = !this.isVacation;
     }

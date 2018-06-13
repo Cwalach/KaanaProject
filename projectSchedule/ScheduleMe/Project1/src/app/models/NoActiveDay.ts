@@ -3,7 +3,7 @@ export class NoActiveDay {
 
     public Id: number;
     public Date: Date;
-    public OrderNumber: number;
+    public OrderNumber: string;
     public Reason: string;
     
     constructor( date, nameOrderNumber, reason) {           

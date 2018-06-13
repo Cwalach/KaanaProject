@@ -33,6 +33,7 @@ import { nonActiveDayStateManager } from "./Services/nonActiveDayStateManager"
 import { nonActiveDayService } from "./Services/nonActiveDayService"
 import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 
+
 const route: Routes =
     [
         {
@@ -46,6 +47,7 @@ const route: Routes =
                 { path: 'NonActiveDays', component: AllDays},
                 { path: 'manegmentCourse', component: ManegmentCourse },
                 { path: 'manegmentGroup', component: ManegmentGroup }
+                
             ],
         },
         {
@@ -61,6 +63,7 @@ const route: Routes =
     bootstrap: [CourseComponent],
     providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, 
         nonActiveDayService, nonActiveDayStateManager]
+
 
 })
 
