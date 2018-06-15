@@ -133,7 +133,6 @@
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
     <Content Include="src\app\components\AllDays.component.html" />
     <Content Include="src\app\components\DayInSchedule.component.html" />
-    <Content Include="src\app\components\ReportDetails.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
