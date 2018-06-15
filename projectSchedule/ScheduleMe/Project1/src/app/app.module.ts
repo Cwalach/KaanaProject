@@ -55,12 +55,13 @@ const route: Routes =
         }
     ]
 @NgModule({
-    declarations: [SingleCourseinBoardComponent, scheduleBoard,AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
-         GroupsSystem, Management, Courses,ReportComponent,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
+    declarations: [SingleCourseinBoardComponent, scheduleBoard, AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
+        GroupsSystem, Management, Courses, ReportDetailsComponent, AllDays, DayInSchedule, SaveCoursesBoard, CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
     bootstrap: [Try],
-    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, 
+    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService,
+        ReportDetailsService, ManegmentCoursesService, ManegmentGroupsService, SaveChangesBoardService, 
         nonActiveDayService, nonActiveDayStateManager]
 })
 
