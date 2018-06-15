@@ -19,6 +19,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { ReportDetailsComponent } from "./components/ReportDetails.component"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
+import { ScheduleService } from "./Services/ScheduleService"
 import { ReportDetailsService } from "./Services/ReportDetailsService"
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
@@ -46,6 +47,9 @@ const route: Routes =
             path: 'ReportDetails', component: ReportDetailsComponent
         },
         {
+            path: 'ReportDetails', component: ReportDetailsComponent
+        },
+        {
             path: 'manage', component: Management, children:
             [
                 { path: 'courses', component: Courses },
@@ -53,13 +57,17 @@ const route: Routes =
                 { path: 'manegmentCourse', component: ManegmentCourse },
                 { path: 'manegmentGroup', component: ManegmentGroup }
                 
-            ],
+            ]
+        },
+        { 
+            path: "SaveCoursesBoard", component: SaveCoursesBoard
         }
     ]
 @NgModule({
     declarations: [SingleCourseinBoardComponent, ScheduleBoard, AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
-        GroupsSystem, Management, Courses, ReportDetailsComponent, AllDays, DayInSchedule, SaveCoursesBoard, CourseDetails,
+        GroupsSystem, Management, Courses, ReportDetailsComponent, ReportComponent, AllDays, DayInSchedule, SaveCoursesBoard, CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule, PrintHtml],
+
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
     bootstrap: [Try],
     providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService,
