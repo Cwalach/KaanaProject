@@ -34,6 +34,7 @@ namespace Schedule_Model.Controllers
         public List<Group> AllGroups()
         {
             return groupService.GetAll().ToList();
+        }
         [Route("api/Schedule/{dateToUpdate}/{Comments}")]
         [HttpPost]
         public void Post(ExistingCourses[] ExistingCoursesToSave,string dateToUpdate,string Comments)
