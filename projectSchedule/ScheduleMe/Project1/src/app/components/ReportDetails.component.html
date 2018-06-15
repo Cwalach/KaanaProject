@@ -1,0 +1,100 @@
+﻿<h1>דוחות</h1>
+
+
+
+<!--<select>
+    <option *ngfor="let item in ReportDeatils;let i=index">{{GetCourseName(i)}}</option>
+</select>-->
+
+ <!--(change)="onChangeGroup(selectCourses)"-->
+
+
+<button class="btn btn-default ToShow" (click)="Print_Html()">
+    הדפס
+    <span class="glyphicon glyphicon-print"></span>
+</button>
+
+<input type="date"  [(ngModel)]="dateStart" [value]="date1 | date:'yyyy-MM-dd'" (input)="date1=parseDate($event.target.value)" />
+<input type="date"  [value]="date2 | date:'yyyy-MM-dd'" (input)="date2=parseDate($event.target.value)"/>
+
+
+<button class="btn btn-default ToShow" (click)="GetReport1(date2,date1)"> 
+    הצג
+    <span class="glyphicon glyphicon-search"></span>
+</button>
+
+<select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox(selectedCourse)">
+    <option *ngFor="let item of CourseList">{{item.Name}}-{{item.Group}}</option>
+</select>
+<!--<select (click)="courseService.GetAll()" itemscope="">
+    <option></option>
+</select>-->
+
+
+
+
+
+<div id="print-section">
+    <table>
+        <tr class="headerTableReport">
+            <td>מס' שעות בפועל</td>
+            <td>קבוצה</td>
+            <td>מורה</td>
+            <td>קורס</td>
+        </tr>
+        <tr *ngFor="let item of ReportDeatilsList">
+            <td>{{item.NumHours}}</td>
+            <td>{{item.Group}}</td>
+            <td>{{item.Teacher}}</td>
+            <td>{{item.Name}}</td>
+        </tr>
+    </table>
+</div>
+<style>
+    table {
+        border: solid;
+    }
+
+    td {
+        padding: 3px;
+        border-style: solid;
+        border-width: thin;
+        width: 14vw;
+        text-align: center;
+    }
+
+    .headerTableReport {
+        font-weight: bold;
+    }
+
+    .ToShow {
+        text-align: center;
+        margin: 1vw;
+    }
+</style>
+
+<!--
+
+
+
+<style>
+    table{
+        border:solid;
+    }
+    td{
+    padding: 3px;
+    border-style: solid;
+    border-width: thin;
+    width: 14vw;
+    text-align: center;
+    }
+    .headerTableReport{
+        font-weight:bold;
+    }
+    .ToShow{
+        text-align:center;      
+       margin:1vw;
+    }
+</style>
+
+-->

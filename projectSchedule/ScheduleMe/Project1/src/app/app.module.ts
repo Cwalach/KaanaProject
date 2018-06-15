@@ -16,9 +16,10 @@ import { SingleCourseinBoardComponent } from "./components/SingleCourseinBoard.c
 import { BrowserModule } from "@angular/platform-browser"
 import { HttpModule } from "@angular/http"
 import { RouterModule, Routes } from '@angular/router'
-import { ReportDetails } from "./components/ReportDetails"
+import { ReportDetailsComponent } from "./components/ReportDetails.component"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
+import { ScheduleService } from "./Services/ScheduleService"
 import { ReportDetailsService } from "./Services/ReportDetailsService"
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
@@ -41,7 +42,9 @@ const route: Routes =
         {
             path: 'GroupSystem', component: GroupsSystem
         },
-
+        {
+            path: 'ReportDetails', component: ReportDetailsComponent
+        },
         {
             path: 'manage', component: Management, children:
             [
@@ -52,18 +55,13 @@ const route: Routes =
                 
             ],
         },
-        {
-            path: 'ReportDetails', component: ReportDetails
-        },
         { path: "SaveCoursesBoard", component: SaveCoursesBoard}
     ]
 @NgModule({
-
     declarations: [SingleCourseinBoardComponent, scheduleBoard,AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
-         GroupsSystem, Management, Courses,ReportComponent,ReportDetails,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
+         GroupsSystem, Management, Courses,ReportComponent,AllDays,DayInSchedule, SaveCoursesBoard,ReportComponent,CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
-
     bootstrap: [Try],
     providers: [ScheduleBoardStateManager, ReportDetailsService, ExistingCoursesService, WeeklyScheduleService, ManegmentCoursesService, ManegmentGroupsService,SaveChangesBoardService, 
         nonActiveDayService, nonActiveDayStateManager, PrintHtmlService]
