@@ -10,7 +10,7 @@ import { DateRangeSelectorComponent } from "./dateRangeSelector.component"
     templateUrl: "./src/app/components/scheduleBoard.html",
     selector: "scheduleBoard"
 })
-export class scheduleBoard {
+export class ScheduleBoard {
     date: Date;
     DateTimeCurrently: Date;
     d: Date = new Date();

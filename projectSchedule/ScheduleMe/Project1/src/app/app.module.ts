@@ -2,7 +2,7 @@
 import { FormsModule } from "@angular/forms"
 import { AppComponent } from "./components/app.component"
 import { DateRangeSelectorComponent } from "./components/dateRangeSelector.component"
-import {scheduleBoard}from"./components/scheduleBoard"
+import { ScheduleBoard }from"./components/scheduleBoard"
 import { CourseInSchedule } from "./components/courseInSchedule"
 import {vacation } from "./components/vacation.component"
 import { ReportComponent} from "./components/Report.component"
@@ -38,7 +38,7 @@ import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 const route: Routes =
     [
         {
-            path: 'GroupSystem', component: GroupsSystem
+            path: 'GroupSystem', component: ScheduleBoard
         },
         {
             path: 'ReportDetails', component: ReportDetailsComponent
@@ -55,7 +55,7 @@ const route: Routes =
         }
     ]
 @NgModule({
-    declarations: [SingleCourseinBoardComponent, scheduleBoard, AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
+    declarations: [SingleCourseinBoardComponent, ScheduleBoard, AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
         GroupsSystem, Management, Courses, ReportDetailsComponent, AllDays, DayInSchedule, SaveCoursesBoard, CourseDetails,
           ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule],
     imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],

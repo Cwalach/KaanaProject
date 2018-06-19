@@ -335,3 +335,5 @@ src/**/*.map
 src/**/*.js
 scripts/*.js.map
 
+projectSchedule/ScheduleMe/Project1/src/**/**/*.map
+projectSchedule/ScheduleMe/Project1/src/**/**/*.js
