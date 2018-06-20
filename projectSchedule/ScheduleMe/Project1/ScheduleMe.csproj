@@ -126,9 +126,14 @@
     <TypeScriptCompile Include="src\app\components\AllDays.component.ts" />
     <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
     <TypeScriptCompile Include="src\app\components\NoActiveSchedule.ts" />
+    <TypeScriptCompile Include="src\app\components\PrintHtmlComponent.ts" />
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
     <Content Include="src\app\components\AllDays.component.html" />
     <Content Include="src\app\components\DayInSchedule.component.html" />
+
+    <Content Include="src\app\components\PrintHtmlComponent.html" />
+    <Content Include="src\app\components\ReportDetails.html" />
+
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -164,6 +169,8 @@
     <Content Include="src\app\components\manegmentCourse.html" />
     <Content Include="src\app\components\manegmentGroup.html" />
     <Content Include="src\app\components\NoActiveScheduleComponent.html" />
+
+    <Content Include="StyleSheet1.css" />
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>

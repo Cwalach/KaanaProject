@@ -4,6 +4,7 @@ import { nonActiveDayService } from "../Services/nonActiveDayService"
 import { NoActiveDay } from "../models/NoActiveDay"
 import { nonActiveDayStateManager } from "../Services/nonActiveDayStateManager"
 import { vacation } from "./vacation.component"
+import { PrintHtml } from "./PrintHtmlComponent"
 
 @Component({
     templateUrl: "./src/app/components/NoActiveScheduleComponent.html",

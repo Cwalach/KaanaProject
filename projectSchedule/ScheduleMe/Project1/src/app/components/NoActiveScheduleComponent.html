@@ -7,7 +7,7 @@
 <body dir="rtl">
     <h1>מערכת קבוצות</h1>
     <DateRangeSelector></DateRangeSelector>   
-    <table>
+    <table #name>
         <tr>
             <td *ngFor="let item of dayInWeek">{{item}}&nbsp;&nbsp;&nbsp;</td>
         </tr>
@@ -22,6 +22,7 @@
     <div>{{DateTimeCurrently}}/sunday:{{SundayCurrently()}}</div>    
     {{name}}
     <button (click)="changeEveryone()" class="btn btn-primary"><span>change!</span></button>
+    <print_html [TextToPrint]="name"></print_html>
 </body>
 </html>
 
