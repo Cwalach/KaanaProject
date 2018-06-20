@@ -3,6 +3,7 @@ using Schedule_Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,10 @@ namespace Schedule_Bl
         public void Delete(ExistingCourses e)
         {
             repository.Delete(e);
+        }
+        public IQueryable<ExistingCourses> GetByQuery(Expression<Func<ExistingCourses, bool>> p)
+        {
+            return repository.GetByQuery(p);
         }
     }
 }

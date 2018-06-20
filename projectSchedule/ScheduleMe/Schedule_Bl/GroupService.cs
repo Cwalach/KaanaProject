@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Schedule_Dal;
 using Schedule_Model;
+using System.Linq.Expressions;
+
 namespace Schedule_Bl
 {
   public  class GroupService
@@ -40,6 +42,10 @@ namespace Schedule_Bl
         public void Delete(Group g)
         {
             repository.Delete(g);
+        }
+        public IQueryable<Group> GetByQuery(Expression<Func<Group, bool>> p)
+        {
+            return repository.GetByQuery(p);
         }
     }
 }

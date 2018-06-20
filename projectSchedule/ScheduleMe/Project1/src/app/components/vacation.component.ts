@@ -10,14 +10,12 @@ export class vacation {
    
     @Input()
     status: boolean;
-    active: NoActiveDay;
-
     @Input()
     currentHour: string;
     @Input()
     date: Date;
     index: number=0;
-
+  active: NoActiveDay;
  
     constructor(private nonActiveStateManager: nonActiveDayStateManager)
     {
@@ -25,13 +23,14 @@ export class vacation {
         this.active = new NoActiveDay("","","");
        
        
-    }
+  }
+ 
     Update()
     {
         this.status = !this.status;
         this.active.OrderNumber = this.currentHour;
-       // this.active.Date = this.date;
-        alert(this.date);
+
+       //alert(this.date);
     //    changed to active
         if (status)
             this.nonActiveStateManager.CencelNoActiveDay(this.active);
