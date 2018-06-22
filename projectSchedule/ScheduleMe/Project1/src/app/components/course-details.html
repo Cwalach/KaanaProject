@@ -1,21 +1,26 @@
-﻿    <div *ngIf="course">
-        <h4>פרטי קורס</h4>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Course id: {{course.id}}
+﻿<div class="container course-details">
+    <div class="row editData">
+        <div class="col-sm-3">
+            <input type="text" value="{{course.Name}}" [(ngModel)]="course.Name" />
+            <label>שם קורס</label>
         </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-sm-3 control-label">
-                    Course Name:
-                    <input class="form-control" type="text" [(ngModel)]="course.name"/>
-                    <!--name="name" #name #nameModel="ngModel"--> 
-                </div>
-                <div class="col-sm-3 control-label">
-                    Course Instructor:
-                    <input class="form-control" type="text" [(ngModel)]="course.instructor" name="instructor" #instructor #nameModel="ngModel" />
-                </div>
-            </div>
+        <div class="col-sm-3">
+            <input type="text" value="{{course.Instructor}}" [(ngModel)]="course.Instructor" />
+            <label>שם מורה</label>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <button (click)="saveToServer(course)">
+                <b>שמור</b>
+                <img src="../../../Content/Images/image_40.png" />
+            </button>
+        </div>
+        <div class="col-sm-2">
+            <button (click)="cancelChanges()">
+                <b>ביטול</b>
+                <b class="glyphicon glyphicon-trash"></b>
+            </button>
+        </div>
+    </div>
+</div>

@@ -10,27 +10,25 @@
            routerLink="/manage/manegmentCourse"
            [ngClass]="!btnCourse ? 'btn_Manegment' : 'btn_default3'"
            (click)="clickEvent('btnCourse')" />
-    <input class="btn_Manegment btn_Add" id="btn_AddCourse" type="button" value="הוספת קורס" />
+    <input class="btn_Manegment btn_Add" id="btn_AddCourse" type="button" value="הוספת קורס"
+           (click)="newCourse()" />
 </div>
 <div id="divCourse" *ngIf="courseList">
-    <h4>שם מורה</h4>
-    <h4>שם קורס</h4>
+    <div class="headerTable">
+        <b>שם מורה</b>
+        <b>שם קורס</b>
+    </div>
     <div *ngFor="let item of courseList">
         <ul class="list-group">
             <li [class.active]="item==currentCourse">
                 <div class="col-sm-2">
                     <button (click)="removeCourse(item)">
-                        <span class="glyphicon glyphicon-trash"></span> <!--Remove-->
-                    </button>
-                </div>
-                <div class="col-sm-2">
-                    <button (click)="saveToServer(item)">
-                        <span class="glyphicon glyphicon-cloud"></span> <!--Save To Server-->
+                        <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
                 <div class="col-sm-2">
                     <button (click)="EditCourse(item)">
-                        <span class="glyphicon glyphicon-pencil"></span> <!--Edit-->
+                        <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </div>
                 <div class="col-sm-3">{{item.Instructor}}</div>
@@ -38,28 +36,57 @@
             </li>
         </ul>
     </div>
-    <course-details [course]="currentCourse" *ngIf="currentCourse"></course-details>
 </div>
 <style>
     #divCourse button {
         height: 2vw;
         width: 2vw;
-        margin:0vw;
+        margin: 0vw;
+        background-color: white;
     }
+
     #divCourse li {
         display: inline-block;
-        width: 36.5vw;
+        width: 27.5vw;
+        margin-left: 6vw;
         height: 2.2vw;
     }
+
     #divCourse ul {
         margin-top: 1vw;
     }
-    #divCourse h4 {
-        display: inline-block;
-        float:right;
+
+    .headerTable {
+        margin-top: 3vw;
     }
-    #divCourse li div{
-        border:solid 0.1vw;
-        height:2.2vw;
+
+    #divCourse b {
+        display: inline-block;
+        position: relative;
+        left: 19vw;
+        color: #266587;
+        font-size: 1.3vw;
+    }
+
+        #divCourse b:first-child {
+            left: 16.5vw;
+        }
+
+    #divCourse li div {
+        border: solid 0.1vw;
+        height: 2.2vw;
+    }
+
+    #divCourse img {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+
+    #divCourse span {
+        color: black;
+        margin-top: 0.3vw;
+        margin-left: 0.4vw;
     }
 </style>
+
+<!--fa fa-close	&#xf00d;-->

@@ -1,0 +1,15 @@
+﻿<div class="admin-modal modal-dialog" 
+     [ngStyle]="{'width': modalWidth + 'px', 'max-width': modalWidth + 'px', 'height': tableHeight + 'px'}">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">{{title}}</h4>
+            <!--<span class="csldn-iconclose-popup close-popup"></span>-->
+            <!--<button class="close-button-container" type="button" (click)="close()"
+                    aria-label="Close"
+                    title="close">
+                <span class="csldn-iconmobile-menu-close">Close</span>
+            </button>-->
+        </div>
+        <ng-container #content></ng-container>
+    </div>
+</div>

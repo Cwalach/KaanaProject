@@ -1,4 +1,4 @@
-﻿(function (global) {
+﻿    (function (global) {
     System.config({
         paths: {
             'npm:': 'node_modules/'
@@ -18,13 +18,15 @@
             '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
             '@angular/forms': 'node_modules/@angular/forms/bundles/forms.umd.js',
             'reflect-metadata': 'node_modules/reflect-metadata/Reflect.js',
-            'rxjs': 'node_modules/rxjs',
-            'tslib': 'node_modules/tslib/tslib.js'
+            'rxjs': 'npm:rxjs',
+            'tslib': 'node_modules/tslib/tslib.js',
+            'ng2-bootstrap-modal': 'npm:ng2-bootstrap-modal/dist'   
         },
         packages: {
             "app": { main: './index.js', defaultExtension: 'js' },
-            "rxjs": { defaultExtension: 'js' },
-            "reflect-metadata": { defaultExtension: 'js' }
+            "rxjs": { defaultExtension: 'js', main: 'Rx.js' },
+            "reflect-metadata": { defaultExtension: 'js' },
+            'ng2-bootstrap-modal': { defaultExtension: 'js', main: 'index.js' }
         }
     });
 })(this);

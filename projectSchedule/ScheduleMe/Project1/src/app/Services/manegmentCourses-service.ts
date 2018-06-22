@@ -19,4 +19,7 @@ export class ManegmentCoursesService {
     removeCourseFromServer(courseToRemove: Course): Observable<boolean> {
         return this.http.post("api/Course/RemoveCourse/" + courseToRemove, courseToRemove).map(res => { return true; });
     }
+    newCourse(newCourse: Course): Observable<boolean> {
+        return this.http.post("api/Course/AddCourse/" + newCourse, newCourse).map(res => { return true; });
+    }
 }

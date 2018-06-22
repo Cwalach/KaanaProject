@@ -4,6 +4,9 @@ import { Course } from "../models/course"
 import "rxjs/add/operator/map"
 import { Observable } from "rxjs/Observable"
 import { ManegmentCoursesService } from "../Services/manegmentCourses-service"
+import { DialogOptions, DialogService } from "ng2-bootstrap-modal";
+import { ModalData } from './modal/models/modal-data'
+import { ModalService } from './modal/services/modal'
 @Component({
     templateUrl: "./src/app/components/manegmentCourse.html",
     selector: "Courses"
@@ -15,7 +18,8 @@ export class ManegmentCourse {
     btnGroup: boolean = false;
     btnDays: boolean = false;
 
-    constructor(private courseService: ManegmentCoursesService) {
+    constructor(private courseService: ManegmentCoursesService,
+        private modalService: ModalService) {
         this.GetCourse();
         this.btnCourse = true;
     }
@@ -23,8 +27,26 @@ export class ManegmentCourse {
         this.courseService.GetCoursesFromServer().
             subscribe(data => { this.courseList = data }, error => { alert("error!"); });
     }
+    newCourse() {
+        //this.currentCourse = null;
+        const modalData = new ModalData();
+        modalData.component = CourseDetails;
+        modalData.modalHeight = 500;
+        modalData.modalWidth = 500;
+        //modalData.options = this.currentCourse;
+        this.modalService.openModal(modalData);
+
+        //const newC = new Course(1,);
+        ////this.courseService.newCourse()
+    }
     EditCourse(item: Course) {
         this.currentCourse = item;
+        const modalData = new ModalData();
+        modalData.component = CourseDetails;
+        modalData.modalHeight = 500;
+        modalData.modalWidth = 500;
+        modalData.options = this.currentCourse;
+        this.modalService.openModal(modalData);
     }
     removeCourse(item: Course) {
         var index = this.courseList.indexOf(item);

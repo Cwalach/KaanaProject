@@ -26,17 +26,25 @@ namespace ScheduleMe.Controllers
         }
         public void Post(Course newCourse)
         {
-            //Course c = CoursesList.First(x => x.Id == newCourse.Id);
-            //c.Name = newCourse.Name;
-            //c.Instructor = newCourse.Instructor;
-            service.Update(newCourse);
+            if (newCourse.Id != 0)
+                service.Update(newCourse);
+            else
+                service.Insert(newCourse);
         }
+
         [Route("api/Course/RemoveCourse/{removedCourse}")]
         [HttpPost]
         public void RemoveCourse(Course removedCourse)
         {
             // CoursesList.Remove(CoursesList.Find(r => r.Id == removedCourse.Id));
             service.Delete(removedCourse);
+        }
+
+        [Route("api/Course/AddCourse/{newCourse}")]
+        [HttpPost]
+        public void AddCourse(Course newCourse)
+        {
+            service.Insert(newCourse);
         }
     }
 }

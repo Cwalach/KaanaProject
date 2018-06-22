@@ -10,25 +10,23 @@
            routerLink="/manage/manegmentCourse"
            [ngClass]="!btnCourse ? 'btn_Manegment' : 'btn_default3'"
            (click)="clickEvent('btnCourse')" />
-    <input class="btn_Manegment btn_Add" id="btn_AddGroup" type="button" value="הוספת קבוצה" />
+    <input class="btn_Manegment btn_Add" id="btn_AddGroup" type="button" value="הוספת קבוצה"
+           (click)="newGroup()" />
 </div>
 <div id="divGroup" *ngIf="groupsList">
-    <h4>שם קבוצה</h4>
+    <div class="headerTable">
+        <b>שם קבוצה</b>
+    </div>
     <div *ngFor="let item of groupsList">
         <ul class="list-group">
             <li [class.active]="item==currentGroup">
                 <div class="col-sm-2">
-                    <button class="btn btn-default" (click)="removeGroup(item)">
+                    <button (click)="removeGroup(item)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-default" (click)="saveToServer(item)">
-                        <span class="glyphicon glyphicon-cloud"></span>
-                    </button>
-                </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-primary" (click)="EditGroup(item)">
+                    <button (click)="EditGroup(item)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </div>
@@ -36,19 +34,21 @@
             </li>
         </ul>
     </div>
-<group-details [group]="currentGroup" *ngIf="currentGroup"></group-details>
+    <!--<group-details [group]="currentGroup" *ngIf="currentGroup"></group-details>-->
 </div>
 
 <style>
     #divGroup button {
         height: 2vw;
         width: 2vw;
-        margin:0vw;
+        margin: 0vw;
+        background-color: white;
     }
 
     #divGroup li {
         display: inline-block;
-        width: 54.5vw;
+        width: 27.5vw;
+        margin-left: 6vw;
         height: 2.2vw;
     }
 
@@ -56,13 +56,39 @@
         margin-top: 1vw;
     }
 
-    #divGroup h4 {
-        display: inline-block;
-        float: right;
+    .headerTable {
+        margin-top: 3vw;
     }
 
     #divGroup li div {
         border: solid 0.1vw;
         height: 2.2vw;
+    }
+
+    #divGroup b {
+        display: inline-block;
+        position: relative;
+        left: 19vw;
+        color: #266587;
+        font-size: 1.3vw;
+    }
+
+        #divGroup b:first-child {
+            left: 16.5vw;
+        }
+
+    #divGroup img {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+
+    #divGroup span {
+        color: black;
+        margin-top: 0.3vw;
+        margin-left: 0.4vw;
+    }
+
+    #divGroup div:last-child {
+        width: 14vw;
     }
 </style>

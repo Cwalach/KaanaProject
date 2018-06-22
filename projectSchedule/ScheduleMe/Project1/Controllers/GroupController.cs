@@ -18,7 +18,6 @@ namespace ScheduleMe.Controllers
             service = new GroupService();
             GroupList = service.GetAll().ToList();
         }
-        
         public IEnumerable<Group> Get()
         {
             return GroupList;
@@ -26,18 +25,24 @@ namespace ScheduleMe.Controllers
 
         public void Post(Group newGroup)
         {
-            service.Update(newGroup);
-            //Group g = GroupList.First(n => n.Id == newGroup.Id);
-            //g.Name = newGroup.Name;
-            //g.ExistingCourses = newGroup.ExistingCourses;
+            if (newGroup.Id != 0)
+                service.Update(newGroup);
+            else
+                service.Insert(newGroup);
         }
-
         [Route("api/Group/RemoveGroup/{removedGroup}")]
         [HttpPost]
         public void RemoveGroup(Group removedGroup)
         {
             service.Delete(removedGroup);
             //GroupList.Remove(GroupList.Find(g => g.Id == removedGroup.Id));
+        }
+
+        [Route("api/Group/AddGroup/{newGroup}")]
+        [HttpPost]
+        public void AddGroup(Group newGroup)
+        {
+            service.Insert(newGroup);
         }
     }
 }

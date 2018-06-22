@@ -35,6 +35,9 @@ import { nonActiveDayService } from "./Services/nonActiveDayService"
 import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 import { PrintHtmlService } from "./Services/PrintHtmlService"
 import { PrintHtml } from "./components/PrintHtmlComponent"
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+import { ModalService } from '../app/components/modal/services/modal'
+import { ModalComponent } from '../app/components/modal/ModalComponent';
 
 const route: Routes =
     [
@@ -65,18 +68,51 @@ const route: Routes =
         }
     ]
 @NgModule({
-    declarations: [SingleCourseinBoardComponent, ScheduleBoard, AppComponent, DateRangeSelectorComponent, CourseInSchedule, vacation, VolunteerDetails, Try,
-        GroupsSystem, Management, Courses, ReportDetailsComponent, ReportComponent, AllDays, DayInSchedule, SaveCoursesBoard, CourseDetails,
-          ManegmentCourse, ManegmentGroup, GroupDetails, NoActiveSchedule, PrintHtml],
+    declarations: [SingleCourseinBoardComponent,
+        ScheduleBoard,
+        AppComponent,
+        DateRangeSelectorComponent,
+        CourseInSchedule,
+        vacation,
+        VolunteerDetails,
+        Try,
+        GroupsSystem,
+        Management,
+        Courses,
+        ReportDetailsComponent,
+        ReportComponent,
+        AllDays,
+        DayInSchedule,
+        SaveCoursesBoard,
+        CourseDetails,
+        ManegmentCourse,
+        ManegmentGroup,
+        GroupDetails,
+        NoActiveSchedule,
+        PrintHtml,
+        ModalComponent],
 
 
-    imports: [BrowserModule, HttpModule, FormsModule, RouterModule.forRoot(route)],
+    imports: [BrowserModule,
+        HttpModule,
+        FormsModule,
+        RouterModule.forRoot(route),
+        BootstrapModalModule.forRoot({ container: document.body })],
     bootstrap: [Try],
-    providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService,
-        ReportDetailsService, ManegmentCoursesService, ManegmentGroupsService, SaveChangesBoardService, 
-
-        nonActiveDayService, nonActiveDayStateManager, PrintHtmlService]
-
+    providers: [ScheduleBoardStateManager,
+        ExistingCoursesService,
+        WeeklyScheduleService,
+        ReportDetailsService,
+        ManegmentCoursesService,
+        ManegmentGroupsService,
+        SaveChangesBoardService,
+        nonActiveDayService,
+        nonActiveDayStateManager,
+        ModalService,
+        PrintHtmlService],
+    entryComponents: [ModalComponent,
+        CourseDetails,
+        GroupDetails]
 })
 
 export class AppModule {

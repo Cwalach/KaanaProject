@@ -1,4 +1,4 @@
-﻿import { Injectable }from "@angular/core"
+﻿import { Injectable } from "@angular/core"
 import { Group } from "../models/group"
 import { Http } from "@angular/http"
 import "rxjs/add/operator/map"
@@ -19,5 +19,7 @@ export class ManegmentGroupsService {
     removeGroupFromServer(groupToRemove: Group): Observable<boolean> {
         return this.http.post("api/Group/RemoveGroup/" + groupToRemove, groupToRemove).map(res => { return true; });
     }
-
+    newGroup(newGroup: Group): Observable<boolean> {
+        return this.http.post("api/Group/AddGroup/" + newGroup, newGroup).map(res => { return true; });
+    }
 }

@@ -1,14 +1,22 @@
-﻿<h4>פרטי קורס</h4>
-<div class="panel panel-default" >
-    <div class="panel panel-heading">
-        Group Id: {{group.id}}
+﻿<div class="container course-details">
+    <div class="row editData">
+        <div class="col-sm-3">
+            <input type="text" value="{{group.Name}}" [(ngModel)]="group.Name" />
+            <label>שם קבוצה</label>
+        </div>
     </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-sm-3 control-label">
-                Group Name:
-                <input type="text" class="form-control" [(ngModel)]="group.name"/>
-            </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <button (click)="saveToServer(group)">
+                <b>שמור</b>
+                <img src="../../../Content/Images/image_40.png" />
+            </button>
+        </div>
+        <div class="col-sm-2">
+            <button (click)="cancelChanges(group)">
+                <b>ביטול</b>
+                <b class="glyphicon glyphicon-trash"></b>
+            </button>
         </div>
     </div>
 </div>
