@@ -23,6 +23,7 @@ export class ReportDetailsComponent {
     CurrentCourse: Course;
     public date1: Date;
     public date2: Date;
+    selectedCourse:string = '';
     constructor(private ReportDetailsList: ReportDetailsService) {
         this.ReportDetailsList.GetCoursesFromServer().subscribe(data => { this.CourseList = data }, error => { alert("errorComboBox!"); });
     }
@@ -42,16 +43,22 @@ export class ReportDetailsComponent {
     //    return this.ReportDeatils;
     //}
 
-   
-    GetReportCourseByComboBox(selectedCourse) {//combo box selected
-        var options = selectedCourse.list.options;
-    for (let eachObj of options) {
-        if (selectedCourse.value == eachObj.value) {
-            alert(eachObj.id);
-            this.CurrentCourse = this.CourseList.find(c => c.Id == eachObj.id);
-        }
+   //שירה
+    GetReportCourseByComboBox($event) {
+        console.log(this.selectedCourse);
+       
     }
- };
+    //תהילה
+   
+ //   GetReportCourseByComboBox(selectedCourse) {//combo box selected
+ //       var options = selectedCourse.list.options;
+ //   for (let eachObj of options) {
+ //       if (selectedCourse.value == eachObj.value) {
+ //           alert(eachObj.id);
+ //           this.CurrentCourse = this.CourseList.find(c => c.Id == eachObj.id);
+ //       }
+ //   }
+ //};
 
 
     Print_Html(): void {//מחגית חרזי הדפס
@@ -101,11 +108,14 @@ export class ReportDetailsComponent {
         }
     }
 
-    GetReport1(date1: Date,date2: Date): void {
-        this.ReportDetailsList.GetReportDetailsFromServer(date1,date2).subscribe
+    //GetReport1(date1: Date,date2: Date): void {
+        //this.ReportDetailsList.GetReportDetailsFromServer(date1,date2).subscribe
+            //(data => { this.ReportDeatilsList = data }, error => { alert("erroraaa!"); });
+    //}
+    GetReport1(date1: Date, date2: Date): void {
+        this.ReportDetailsList.GetReportDetailsFromServer(date1, date2, this.selectedCourse).subscribe
             (data => { this.ReportDeatilsList = data }, error => { alert("erroraaa!"); });
     }
-
 
     //pac(selectedCourse):void
     //{

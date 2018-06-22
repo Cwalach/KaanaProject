@@ -10,8 +10,8 @@ export class ReportDetailsService {
     constructor(private http: Http) {
     }
     //id: number
-    GetReportDetailsFromServer(startDate: Date, endDate: Date): Observable<ReportDetails[]> {
-        return this.http.get("api/Report/GetReportDetails/" + startDate.toDateString() + "/" + endDate.toDateString()).map(
+    GetReportDetailsFromServer(startDate: Date, endDate: Date,courseName:string): Observable<ReportDetails[]> {
+        return this.http.get("api/Report/GetReportDetails/" + startDate.toDateString() + "/" + endDate.toDateString() + "/" + courseName).map(
             data => {
                 return data.json() as ReportDetails[]
             });

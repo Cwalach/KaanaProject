@@ -12,7 +12,6 @@ import { Try } from "./components/try.component"
 import { Courses } from "./components/Courses.component"
 import { GroupsSystem } from "./components/GroupsSystem.component"
 import { Management } from "./components/Management.component"
-import { SingleCourseinBoardComponent } from "./components/SingleCourseinBoard.component"
 import { BrowserModule } from "@angular/platform-browser"
 import { HttpModule } from "@angular/http"
 import { RouterModule, Routes } from '@angular/router'
@@ -20,19 +19,25 @@ import { ReportDetailsComponent } from "./components/ReportDetails.component"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
 import { ReportDetailsService } from "./Services/ReportDetailsService"
+
+import { SingleCourseinBoardComponent } from "./components/SingleCourseinBoard.component"
+
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
+import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
 import { ExistingCoursesService } from "./Services/ExistingCoursesService"
+import { HebrewDate } from "./Services/HebrewDate"
 import { ManegmentCourse } from "./components/manegmentCourse"
 import { CourseDetails } from "./components/course-details"
 import { ManegmentGroup } from "./components/manegmentGroup"
 import { GroupDetails } from "./components/group-details"
 import { ManegmentCoursesService } from "./Services/manegmentCourses-service"
 import { ManegmentGroupsService } from "./Services/manegmentGroups-service"
+
 import { NoActiveSchedule } from "./components/NoActiveSchedule"
 import { nonActiveDayStateManager } from "./Services/nonActiveDayStateManager"
 import { nonActiveDayService } from "./Services/nonActiveDayService"
-import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
+
 import { PrintHtmlService } from "./Services/PrintHtmlService"
 import { PrintHtml } from "./components/PrintHtmlComponent"
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
@@ -42,7 +47,7 @@ import { ModalComponent } from '../app/components/modal/ModalComponent';
 const route: Routes =
     [
         {
-            path: 'GroupSystem', component: ScheduleBoard
+            path: 'GroupSystem', component: scheduleBoard
         },
         {
             path: 'ReportDetails', component: ReportDetailsComponent
@@ -60,7 +65,6 @@ const route: Routes =
                 { path: 'NonActiveDays', component: AllDays},
                 { path: 'manegmentCourse', component: ManegmentCourse },
                 { path: 'manegmentGroup', component: ManegmentGroup }
-
             ]
         },
         { 
@@ -68,7 +72,8 @@ const route: Routes =
         }
     ]
 @NgModule({
-    declarations: [SingleCourseinBoardComponent,
+    declarations: [
+        SingleCourseinBoardComponent,
         ScheduleBoard,
         AppComponent,
         DateRangeSelectorComponent,
@@ -109,7 +114,8 @@ const route: Routes =
         nonActiveDayService,
         nonActiveDayStateManager,
         ModalService,
-        PrintHtmlService],
+        PrintHtmlService,
+        HebrewDate],
     entryComponents: [ModalComponent,
         CourseDetails,
         GroupDetails]

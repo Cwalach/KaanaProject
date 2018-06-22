@@ -23,9 +23,12 @@
     <span class="glyphicon glyphicon-search"></span>
 </button>
 
-<select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox(selectedCourse)">
+<select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox($event)">
     <option *ngFor="let item of CourseList">{{item.Name}}</option>
 </select>
+<!--<select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox(selectedCourse)">
+    <option *ngFor="let item of CourseList">{{item.Name}}</option>
+</select>-->
 <!--<select (click)="courseService.GetAll()" itemscope="">
     <option></option>
 </select>-->
