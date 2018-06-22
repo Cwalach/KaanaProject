@@ -24,8 +24,8 @@ export class ScheduleBoardStateManager {
     {
         return [
             {
-                Id: 1, Date: new Date("2018/12/01"), OrderNumber: 1, CourseId: 1, GroupId: 1,
-                Course: new Course(1, "aaa", "Chani"), Group: new Group(1, "Computer")
+                Id: 1, Date: new Date("2014/12/01",), OrderNumber: 1, CourseId: 1,GroupId: 1,
+                Course: new Course(1, "aaa", "Chani"), Group: new Group(1, "Computer"),Comments:"None"
             }
 
         ]

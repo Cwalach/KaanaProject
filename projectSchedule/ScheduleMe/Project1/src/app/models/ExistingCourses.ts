@@ -9,7 +9,7 @@ export class ExistingCourse {
     public GroupId: number;
     public Course: Course;
     public Group: Group;
-
+    public Comments: string;
     constructor(id, date, course, group) {
         this.Id = id;
         this.Date = date;
@@ -18,5 +18,5 @@ export class ExistingCourse {
     }
     //public existingCourse: Array<ExistingCourse> = [
     //    { Id: 1, GroupId: 1 }]
-
+   
 }

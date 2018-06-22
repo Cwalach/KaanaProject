@@ -12,7 +12,6 @@ namespace Schedule_Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Group()
         {
-            //ExistingCourses = new HashSet<ExistingCourses>();
         }
 
         [Column(TypeName = "numeric")]

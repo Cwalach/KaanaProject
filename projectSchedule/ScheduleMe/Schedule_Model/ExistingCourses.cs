@@ -24,6 +24,8 @@ namespace Schedule_Model
         [Column(TypeName = "numeric")]
         public decimal? GroupId { get; set; }
 
+        [StringLength(50)]
+        public string Comments { get; set; }
         public virtual Course Course { get; set; }
 
         public virtual Group Group { get; set; }

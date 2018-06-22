@@ -36,11 +36,13 @@ import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 import { PrintHtmlService } from "./Services/PrintHtmlService"
 import { PrintHtml } from "./components/PrintHtmlComponent"
 
-
 const route: Routes =
     [
         {
             path: 'GroupSystem', component: ScheduleBoard
+        },
+        {
+            path: 'ReportDetails', component: ReportDetailsComponent
         },
         {
             path: 'ReportDetails', component: ReportDetailsComponent
@@ -55,7 +57,7 @@ const route: Routes =
                 { path: 'NonActiveDays', component: AllDays},
                 { path: 'manegmentCourse', component: ManegmentCourse },
                 { path: 'manegmentGroup', component: ManegmentGroup }
-                
+
             ]
         },
         { 
@@ -72,6 +74,7 @@ const route: Routes =
     bootstrap: [Try],
     providers: [ScheduleBoardStateManager, ExistingCoursesService, WeeklyScheduleService,
         ReportDetailsService, ManegmentCoursesService, ManegmentGroupsService, SaveChangesBoardService, 
+
         nonActiveDayService, nonActiveDayStateManager, PrintHtmlService]
 
 })
