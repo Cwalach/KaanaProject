@@ -1,5 +1,5 @@
 ﻿import { Component, Output, Input, EventEmitter, ViewChild, AfterViewInit } from "@angular/core"
-import { DateRangeSelectorComponent } from "./dateRangeSelector.component"
+import { DateRangeSelector } from "./dateRangeSelector.component"
 
 //import {CourseInSchedule }from "../components/courseInSchedule"
 @Component({
@@ -16,8 +16,8 @@ export class AllDays {
     constructor() {
         this.DateTimeCurrently= new Date();
     }
-    @ViewChild(DateRangeSelectorComponent)
-    private dateTimeCurrentlyFromComponent: DateRangeSelectorComponent;
+    @ViewChild(DateRangeSelector)
+    private dateTimeCurrentlyFromComponent: DateRangeSelector;
     ChangeAll()
     {
         this.isVacation = !this.isVacation;

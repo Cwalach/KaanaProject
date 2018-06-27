@@ -1,5 +1,6 @@
-﻿import { Component, EventEmitter,ViewChild,ViewChildren,AfterViewInit } from "@angular/core"
-import { DateRangeSelectorComponent } from "./dateRangeSelector.component"
+
+import { Component, Output, Input, EventEmitter,ViewChild,ViewChildren,AfterViewInit } from "@angular/core"
+import { DateRangeSelector } from "./dateRangeSelector.component"
 import { nonActiveDayService } from "../Services/nonActiveDayService"
 import { NoActiveDay } from "../models/NoActiveDay"
 import { nonActiveDayStateManager } from "../Services/nonActiveDayStateManager"
@@ -21,8 +22,8 @@ export class NoActiveSchedule {
     
     day: NoActiveDay;
 
-    @ViewChild(DateRangeSelectorComponent)
-    private dateTimeCurrentlyFromComponent: DateRangeSelectorComponent;
+    @ViewChild(DateRangeSelector)
+    private dateTimeCurrentlyFromComponent: DateRangeSelector;
 
     DateTimeCurrently: Date;
     SundayCurrently() { return 0; };

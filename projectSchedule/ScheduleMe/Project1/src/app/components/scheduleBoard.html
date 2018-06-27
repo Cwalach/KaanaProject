@@ -2,29 +2,38 @@
 <html>
 <head>
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <link href="../../../Content/bootstrap/css/ScheduleBoard.css" rel="stylesheet" />
 </head>
 <body dir="rtl">
-    <h1>מערכת קבוצות</h1>
-    <select [(ngModel)]="selectCourses" (change)="onChangeGroup(selectCourses)">
-        <option *ngFor="let item of GroupList" value="{{item.Id}}">{{item.Instructor}} {{item.Name}}</option>
-    </select>
-
-    <DateRangeSelector></DateRangeSelector><br />
-    <button value="">עריכה כללית</button>
-    <button value="">שמירה</button>
-    <button value="">מחיקה</button>
-    <button value="">הדפסה</button>
-  
-    <table >
-        <tr>
-            <!--למה הוספת היום בחודש עושה בעיות-->
-            <td *ngFor="let item of dayInWeek; let m=index"><span>{{getday(m)}}-</span>{{item}}&nbsp;&nbsp;&nbsp;</td>
+    <div>
+        <div class="rec"></div>
+        <h1 class="col-md-offset-1">מערכת קבוצות</h1>
+        <div class="rec"></div>
+    </div>
+    <div style="margin-right: 20vw;margin-top:3vh">
+        <span id="spnGroupName">שם קבוצה</span>
+        <!--<select id="selectGroup" [(ngModel)]="selectedGroup" [SelectedGroup]="selectedGroup" (change)="SelectGroup(selectedGroup)"/>-->
+            <select id="selectGroup" (change)="SelectGroup(selectedGroup)">
+                <!--[SelectedGroup]="selectedGroup"-->
+                <option *ngFor="let g of GroupList; let i =index" value="{{g.Id}}">{{g.Instructor}} {{g.Name}}</option>
+            </select>
+            <DateRangeSelector></DateRangeSelector>
+            <br />
+</div>
+    <div id="div-buttons" >
+        <button (click)="ClickEvent('btnEdit')"  [ngClass]="!isbtn1clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">עריכה כללית</button>
+        <button (click)="ClickEvent('btnSave')"  [ngClass]="!isbtn2clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">שמירה</button>
+        <button (click)="ClickEvent('btnPrint')" [ngClass]="!isbtn3clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">הדפסה</button>
+    </div>
+    <table id="table_schedule">
+        <tr id="tr-Day">
+            <td *ngFor="let item of dayInWeek; let m=index"><span class="dayOfMonth">{{getday(m)}}-</span>{{item}}&nbsp;&nbsp;&nbsp;</td>
         </tr>
-
         <tr dir="ltr" *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
             <td *ngFor="let x of dayInWeek; let k=index">
-                <SingleCourseinBoard_Component [CurrentComponentId]="k+1" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="CurrentGroup"></SingleCourseinBoard_Component>
+                <!--<span>{{table[k][indexs].Course.Name}}</span>-->
+                <SingleCourseinBoard_Component [CurrentDayInWeek]="k" [namecourse]="hghg" [CurrentComponentOrder]="indexs" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup"></SingleCourseinBoard_Component>
             </td>
         </tr>     
     </table>
@@ -35,5 +44,27 @@
      margin:0.5vw;
      }
  </style>
+            <!-- לבדוק למה לא עובד בקורס קיים - עם תאריך!!!!
+            <! day-להוסיף--> 
+            <!-- <td *ngFor="let x of dayInWeek; let k=index">{{getExistingCourseName(indexs)}}</td> -->
+
+            <!--<td *ngFor="let x of dayInWeek; let k=index">{{getCourseNameById(k)}}</td>-->
+        <!-- </tr>
+    </table>
+</body>
+</html> --> 
 
 
+<!--<script>
+    var isclicked = false;
+    $(".btn_schedulboard").click(function () {
+        if (IsCustomBG == false) {
+            $(this).css("background-color", "red");
+            IsCustomBG = true;
+        }
+        else {
+            $(this).css("background-color", "");
+            IsCustomBG = false;
+        }
+    });
+</script>-->

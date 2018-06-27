@@ -9,28 +9,29 @@ import { Group } from "../models/Group"
     selector: "SingleCourseinBoard_Component"
 }) 
 export class  SingleCourseinBoardComponent{
-    //CourseComponent course.component.html
     constructor(private scheduleService: SaveChangesBoardService) {
         this.IsChange = false;
         this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
-        this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
+        //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
     }
 
     @Input()
     CurrentDateOfSun: Date;
-    CurrentDateOfToday: Date;
+    CurrentDateOfToday= new Date();  
     CourseList: Course[];
-    GroupList: Group[];
+    //GroupList: Group[];
     CurrentCourse: Course;
     @Input()
     CurrentGroup: Group;
     @Input()
-    CurrentComponentId: number;
+    CurrentComponentOrder: number;
+    @Input()
+    CurrentDayInWeek: number;
     CurrentExistingCourses: ExistingCourse;
+    @Input()
     namecourse: string;
     flag = true;
     IsChange: boolean;
-    Dayinweek: number;
 
 
     EditCourse() {
@@ -58,17 +59,20 @@ export class  SingleCourseinBoardComponent{
                 this.CurrentCourse = this.CourseList.find(c => c.Id == eachObj.id);
             }
         };
+        
         this.SetDateForEachDayInWeek();
         this.IsChange = true;
-        this.CurrentExistingCourses = new ExistingCourse(15, this.CurrentDateOfSun, this.CurrentCourse, this.CurrentGroup);
+        alert("order " + this.CurrentComponentOrder);
+        alert("day "+this.CurrentDateOfToday);
+        alert("name "+this.namecourse);
+        this.CurrentExistingCourses = new ExistingCourse(this.CurrentComponentOrder, this.CurrentDateOfToday, this.CurrentCourse, this.CurrentGroup);
         this.CurrentExistingCourses.CourseId = this.CurrentCourse.Id;
-        this.CurrentExistingCourses.GroupId = this.CurrentGroup.Id;
+        //*this.CurrentExistingCourses.GroupId = this.CurrentGroup.Id;
         this.scheduleService.AddExistingCourseThatWasChangedToList(this.CurrentExistingCourses);
     }
     SetDateForEachDayInWeek() {
-        this.CurrentDateOfToday = this.CurrentDateOfSun;
-        this.Dayinweek = 1 + (this.CurrentComponentId - 1);
-        this.CurrentDateOfToday.setDate(this.CurrentDateOfSun.getDate() + this.Dayinweek -1);
+        this.CurrentDateOfToday.setFullYear(this.CurrentDateOfSun.getFullYear(), this.CurrentDateOfSun.getMonth(), this.CurrentDateOfSun.getDate());  
+        this.CurrentDateOfToday.setDate(this.CurrentDateOfToday.getDate() + this.CurrentDayInWeek);
     }
     //onChangeGroup(Group)
     //{

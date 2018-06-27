@@ -105,6 +105,8 @@
     <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
     <Content Include="Content\bootstrap\css\ButtomRouterDesign.css" />
+    <Content Include="Content\bootstrap\css\DateRange.css" />
+    <Content Include="Content\bootstrap\css\ScheduleBoard.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\image_03.png" />
     <Content Include="Content\Images\image_05.png" />
@@ -129,9 +131,14 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <TypeScriptCompile Include="src\app\components\AllDays.component.ts" />
+    <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
     <TypeScriptCompile Include="src\app\components\NoActiveSchedule.ts" />
+<<<<<<< HEAD
     <TypeScriptCompile Include="src\app\components\PrintHtmlComponent.ts" />
+=======
+    <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
+>>>>>>> commit all
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
     <Content Include="src\app\components\AllDays.component.html" />
     <Content Include="src\app\components\DayInSchedule.component.html" />
@@ -215,15 +222,12 @@
     <TypeScriptCompile Include="src\app\components\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\components\courseInSchedule.ts" />
-    <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\Report.component.ts" />
-    <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
     <TypeScriptCompile Include="src\app\models\Course.ts" />
     <TypeScriptCompile Include="src\app\components\SingleCourseinBoard.component.ts" />
     <TypeScriptCompile Include="src\app\models\ExistingCourses.ts" />
     <TypeScriptCompile Include="src\app\models\Group.ts" />
     <TypeScriptCompile Include="src\app\components\SaveCoursesBoard.component.ts" />
-    <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\Courses.component.ts" />
     <TypeScriptCompile Include="src\app\components\Management.component.ts" />
     <TypeScriptCompile Include="src\app\components\try.component.ts" />
@@ -234,6 +238,7 @@
     <TypeScriptCompile Include="src\app\Services\PrintHtmlService.ts" />
     <TypeScriptCompile Include="src\app\Services\ReportDetailsService.ts" />
     <TypeScriptCompile Include="src\app\Services\Changes-services.ts" />
+    <TypeScriptCompile Include="src\app\Services\UpdateScheduleBoard.ts" />
     <TypeScriptCompile Include="src\app\Services\WeeklyScheduleService.ts" />
     <TypeScriptCompile Include="src\app\Services\ScheduleBoardStateManager.ts" />
     <TypeScriptCompile Include="src\app\Services\ExistingCoursesService.ts" />

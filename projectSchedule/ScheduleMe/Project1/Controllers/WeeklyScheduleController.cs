@@ -29,6 +29,28 @@ namespace ScheduleMe.Controllers
             ECourseslist = ECservice.GetAll();
             return ECourseslist;
         }
+        [Route("api/WeeklySchedule/GetExistingCoursesForWeek/{snudayOfWeek}/{selectedGroup}")]
+        //האם חייב להחזיר משהו מסוג
+        //ICollection?????
+        public List<List<ExistingCourses>> GetExistingCoursesForWeek(DateTime snudayOfWeek,Group selectedGroup)
+        {
+            //סנכרון עם הפרוצדורה שרחלי כתבה - שליפה מהדטה בייס לפי תנאי
+            //Expression<Func<ExistingCourses, bool>> 
+         
+              
+
+            ECourseslist = ECservice.GetAll();
+            //ECourseslist = GetExistingCourses();
+            List<List<ExistingCourses>> arr=new List<List<ExistingCourses>>();
+            DateTime d = new DateTime();
+            foreach (var course in ECourseslist)
+            {
+                if (course.Group == selectedGroup && (course.Date >= snudayOfWeek && course.Date <= snudayOfWeek))
+                    arr[(course.Date.Value.Day) - 1].Add(course);
+            }
+            return arr;
+        }
+
         [Route("WeeklySchedule/GetCourses")]
         public ICollection<Course> GetCourses()
         {

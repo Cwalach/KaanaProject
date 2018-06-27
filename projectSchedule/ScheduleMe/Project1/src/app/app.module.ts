@@ -1,8 +1,8 @@
 ﻿import { NgModule,Input } from "@angular/core"
 import { FormsModule } from "@angular/forms"
 import { AppComponent } from "./components/app.component"
-import { DateRangeSelectorComponent } from "./components/dateRangeSelector.component"
 import { ScheduleBoard }from"./components/scheduleBoard"
+import { DateRangeSelector } from "./components/dateRangeSelector.component"
 import { CourseInSchedule } from "./components/courseInSchedule"
 import {vacation } from "./components/vacation.component"
 import { ReportComponent} from "./components/Report.component"
@@ -23,10 +23,9 @@ import { ReportDetailsService } from "./Services/ReportDetailsService"
 import { SingleCourseinBoardComponent } from "./components/SingleCourseinBoard.component"
 
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
-import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
 import { ExistingCoursesService } from "./Services/ExistingCoursesService"
-import { HebrewDate } from "./Services/HebrewDate"
+// import { HebrewDate } from "./Services/HebrewDate"
 import { ManegmentCourse } from "./components/manegmentCourse"
 import { CourseDetails } from "./components/course-details"
 import { ManegmentGroup } from "./components/manegmentGroup"
@@ -37,23 +36,19 @@ import { ManegmentGroupsService } from "./Services/manegmentGroups-service"
 import { NoActiveSchedule } from "./components/NoActiveSchedule"
 import { nonActiveDayStateManager } from "./Services/nonActiveDayStateManager"
 import { nonActiveDayService } from "./Services/nonActiveDayService"
-
 import { PrintHtmlService } from "./Services/PrintHtmlService"
 import { PrintHtml } from "./components/PrintHtmlComponent"
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ModalService } from '../app/components/modal/services/modal'
 import { ModalComponent } from '../app/components/modal/ModalComponent';
+import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
+import { UpdateScheduleBoard} from "./Services/UpdateScheduleBoard"
+
 
 const route: Routes =
     [
         {
-            path: 'GroupSystem', component: scheduleBoard
-        },
-        {
-            path: 'ReportDetails', component: ReportDetailsComponent
-        },
-        {
-            path: 'ReportDetails', component: ReportDetailsComponent
+            path: 'GroupSystem', component: ScheduleBoard
         },
         {
             path: 'ReportDetails', component: ReportDetailsComponent
@@ -76,7 +71,7 @@ const route: Routes =
         SingleCourseinBoardComponent,
         ScheduleBoard,
         AppComponent,
-        DateRangeSelectorComponent,
+        DateRangeSelector,
         CourseInSchedule,
         vacation,
         VolunteerDetails,
@@ -96,8 +91,6 @@ const route: Routes =
         NoActiveSchedule,
         PrintHtml,
         ModalComponent],
-
-
     imports: [BrowserModule,
         HttpModule,
         FormsModule,
@@ -115,7 +108,9 @@ const route: Routes =
         nonActiveDayStateManager,
         ModalService,
         PrintHtmlService,
-        HebrewDate],
+        UpdateScheduleBoard
+        // HebrewDate
+    ],
     entryComponents: [ModalComponent,
         CourseDetails,
         GroupDetails]
