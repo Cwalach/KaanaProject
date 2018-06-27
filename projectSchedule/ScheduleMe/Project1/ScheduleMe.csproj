@@ -134,11 +134,8 @@
     <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
     <TypeScriptCompile Include="src\app\components\NoActiveSchedule.ts" />
-<<<<<<< HEAD
     <TypeScriptCompile Include="src\app\components\PrintHtmlComponent.ts" />
-=======
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
->>>>>>> commit all
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
     <Content Include="src\app\components\AllDays.component.html" />
     <Content Include="src\app\components\DayInSchedule.component.html" />
