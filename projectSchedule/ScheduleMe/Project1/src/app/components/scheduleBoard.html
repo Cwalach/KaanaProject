@@ -18,7 +18,7 @@
                 <!--[SelectedGroup]="selectedGroup"-->
                 <option *ngFor="let g of GroupList; let i =index" value="{{g.Id}}">{{g.Instructor}} {{g.Name}}</option>
             </select>
-            <DateRangeSelector></DateRangeSelector>
+            <DateRangeSelector (eventHandler)="updateWeeklyData($event)"></DateRangeSelector>
             <br />
 </div>
     <div id="div-buttons" >
