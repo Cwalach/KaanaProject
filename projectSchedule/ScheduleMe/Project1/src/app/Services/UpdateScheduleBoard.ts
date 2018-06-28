@@ -26,6 +26,10 @@ export class UpdateScheduleBoard {
         return this.group.asObservable();
     }
 
+    getWeeklyCourses(currentGroup: Group, currentDate: Date) {
+        alert(currentDate);
+        return null;
+    }
     //clearMessage() {
     //    this.subject.next();
     //}

@@ -73,6 +73,13 @@ export class ScheduleBoard {
     SelectGroup(group: Group) {
         this.SelectedGroup = group;
         this.updateScheduleBoard.ChangeGroup(group);
+        //  this.weeklyScheduleService.GetAllExistingCoursesForWeekFromServer(this.DateTimeCurrently, this.ChangeGroup).subscribe(courses => { this.table = courses; });
+        this.updateScheduleBoard.getWeeklyCourses(group, this.DateTimeCurrently);
+    }
+
+    updateWeeklyData(currentDate: Date) {
+      //  this.weeklyScheduleService.GetAllExistingCoursesForWeekFromServer(this.DateTimeCurrently, this.ChangeGroup).subscribe(courses => { this.table = courses; });
+        this.updateScheduleBoard.getWeeklyCourses(this.ChangeGroup, currentDate);
     }
 
     ClickEvent(btnId: string): any {
