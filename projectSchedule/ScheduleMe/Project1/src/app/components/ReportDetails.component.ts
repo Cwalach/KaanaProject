@@ -112,8 +112,8 @@ export class ReportDetailsComponent {
         //this.ReportDetailsList.GetReportDetailsFromServer(date1,date2).subscribe
             //(data => { this.ReportDeatilsList = data }, error => { alert("erroraaa!"); });
     //}
-    GetReport1(date1: Date, date2: Date): void {
-        this.ReportDetailsList.GetReportDetailsFromServer(date1, date2, this.selectedCourse).subscribe
+    GetReport1(date1: Date, date2: Date, courseName: string): void {
+        this.ReportDetailsList.GetReportDetailsFromServer(date1,date2,courseName).subscribe
             (data => { this.ReportDeatilsList = data }, error => { alert("erroraaa!"); });
     }
 
