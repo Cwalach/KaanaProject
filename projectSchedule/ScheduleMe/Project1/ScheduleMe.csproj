@@ -139,6 +139,7 @@
     <TypeScriptCompile Include="src\app\components\modal\models\modal-data.ts" />
     <TypeScriptCompile Include="src\app\components\modal\services\imodal.ts" />
     <TypeScriptCompile Include="src\app\components\modal\services\modal.ts" />
+    <TypeScriptCompile Include="src\app\components\MainPage.component.ts" />
     <TypeScriptCompile Include="src\app\components\NoActiveSchedule.ts" />
     <TypeScriptCompile Include="src\app\components\PrintHtmlComponent.ts" />
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
@@ -157,6 +158,7 @@
     <Content Include="src\app\components\modal\models\modal-data.js" />
     <Content Include="src\app\components\modal\services\imodal.js" />
     <Content Include="src\app\components\modal\services\modal.js" />
+    <Content Include="src\app\components\MainPage.component.html" />
     <Content Include="src\app\components\PrintHtmlComponent.html" />
     <Content Include="src\app\components\ReportDetails.html" />
     <Content Include="Scripts\bootstrap.js" />

@@ -19,9 +19,7 @@ import { ReportDetailsComponent } from "./components/ReportDetails.component"
 import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
 import { ReportDetailsService } from "./Services/ReportDetailsService"
-
 import { SingleCourseinBoardComponent } from "./components/SingleCourseinBoard.component"
-
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
 import { ExistingCoursesService } from "./Services/ExistingCoursesService"
@@ -32,7 +30,6 @@ import { ManegmentGroup } from "./components/manegmentGroup"
 import { GroupDetails } from "./components/group-details"
 import { ManegmentCoursesService } from "./Services/manegmentCourses-service"
 import { ManegmentGroupsService } from "./Services/manegmentGroups-service"
-
 import { NoActiveSchedule } from "./components/NoActiveSchedule"
 import { nonActiveDayStateManager } from "./Services/nonActiveDayStateManager"
 import { nonActiveDayService } from "./Services/nonActiveDayService"
@@ -42,8 +39,10 @@ import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { ModalService } from '../app/components/modal/services/modal'
 import { ModalComponent } from '../app/components/modal/ModalComponent';
 import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
-import { UpdateScheduleBoard} from "./Services/UpdateScheduleBoard"
 import { SaveOrCancelPopUp } from "../app/components/SaveOrCancelPopUp"
+import { UpdateScheduleBoard } from "./Services/UpdateScheduleBoard";
+import { MainPageComponent } from "./components/MainPage.component"
+
 const route: Routes =
     [
         {
@@ -90,13 +89,15 @@ const route: Routes =
         NoActiveSchedule,
         PrintHtml,
         ModalComponent,
-        SaveOrCancelPopUp],
+        SaveOrCancelPopUp,
+        MainPageComponent],
+    
     imports: [BrowserModule,
         HttpModule,
         FormsModule,
         RouterModule.forRoot(route),
         BootstrapModalModule.forRoot({ container: document.body })],
-    bootstrap: [Try],
+    bootstrap: [Try],/*[MainPageComponent],*/
     providers: [ScheduleBoardStateManager,
         ExistingCoursesService,
         WeeklyScheduleService,
