@@ -133,12 +133,30 @@
     <TypeScriptCompile Include="src\app\components\AllDays.component.ts" />
     <TypeScriptCompile Include="src\app\components\dateRangeSelector.component.ts" />
     <TypeScriptCompile Include="src\app\components\DayInSchedule.component.ts" />
+    <TypeScriptCompile Include="src\app\components\modal\ModalComponent.ts" />
+    <TypeScriptCompile Include="src\app\components\modal\models\dynamic.ts" />
+    <TypeScriptCompile Include="src\app\components\modal\models\imodal-data.ts" />
+    <TypeScriptCompile Include="src\app\components\modal\models\modal-data.ts" />
+    <TypeScriptCompile Include="src\app\components\modal\services\imodal.ts" />
+    <TypeScriptCompile Include="src\app\components\modal\services\modal.ts" />
     <TypeScriptCompile Include="src\app\components\NoActiveSchedule.ts" />
     <TypeScriptCompile Include="src\app\components\PrintHtmlComponent.ts" />
     <TypeScriptCompile Include="src\app\components\scheduleBoard.ts" />
+    <TypeScriptCompile Include="src\app\components\SaveOrCancelPopUp.ts" />
     <TypeScriptCompile Include="src\app\components\vacation.component.ts" />
     <Content Include="src\app\components\AllDays.component.html" />
     <Content Include="src\app\components\DayInSchedule.component.html" />
+    <Content Include="src\app\components\modal\dynamic.js" />
+    <Content Include="src\app\components\modal\imodal-data.js" />
+    <Content Include="src\app\components\modal\modal-data.js" />
+    <Content Include="src\app\components\modal\modal.component.html" />
+    <Content Include="src\app\components\modal\modal.js" />
+    <Content Include="src\app\components\modal\ModalComponent.js" />
+    <Content Include="src\app\components\modal\models\dynamic.js" />
+    <Content Include="src\app\components\modal\models\imodal-data.js" />
+    <Content Include="src\app\components\modal\models\modal-data.js" />
+    <Content Include="src\app\components\modal\services\imodal.js" />
+    <Content Include="src\app\components\modal\services\modal.js" />
     <Content Include="src\app\components\PrintHtmlComponent.html" />
     <Content Include="src\app\components\ReportDetails.html" />
     <Content Include="Scripts\bootstrap.js" />
@@ -152,6 +170,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="src\app\components\SaveOrCancelPopUp.html" />
     <Content Include="src\app\components\vacation.component.html" />
     <Content Include="src\app\components\app.component.html" />
     <Content Include="src\app\components\courseInSchedule.html" />
@@ -202,6 +221,17 @@
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="src\app\components\modal\dynamic.js.map" />
+    <Content Include="src\app\components\modal\imodal-data.js.map" />
+    <Content Include="src\app\components\modal\modal-data.js.map" />
+    <Content Include="src\app\components\modal\modal.component.scss" />
+    <Content Include="src\app\components\modal\modal.js.map" />
+    <Content Include="src\app\components\modal\ModalComponent.js.map" />
+    <Content Include="src\app\components\modal\models\dynamic.js.map" />
+    <Content Include="src\app\components\modal\models\imodal-data.js.map" />
+    <Content Include="src\app\components\modal\models\modal-data.js.map" />
+    <Content Include="src\app\components\modal\services\imodal.js.map" />
+    <Content Include="src\app\components\modal\services\modal.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

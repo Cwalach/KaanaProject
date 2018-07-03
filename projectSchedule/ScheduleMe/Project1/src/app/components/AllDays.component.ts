@@ -1,6 +1,8 @@
 ﻿import { Component, Output, Input, EventEmitter, ViewChild, AfterViewInit } from "@angular/core"
 import { DateRangeSelector } from "./dateRangeSelector.component"
 
+import { nonActiveDayService } from "../Services/nonActiveDayService"
+import { nonActiveDayStateManager } from "../Services/nonActiveDayStateManager"
 //import {CourseInSchedule }from "../components/courseInSchedule"
 @Component({
     templateUrl: "./src/app/components/AllDays.component.html",
@@ -13,7 +15,8 @@ export class AllDays {
     day: Date = new Date();
     dayInWeek: string[] = ["ראשון", "שני", "שלישי ", "רביעי", "חמישי ", "שישי"];
     DateTimeCurrently: Date;
-    constructor() {
+    constructor(private nonActiveDayService: nonActiveDayService,
+            private nonActiveDayStateManager: nonActiveDayStateManager) {
         this.DateTimeCurrently= new Date();
     }
     @ViewChild(DateRangeSelector)
@@ -32,6 +35,18 @@ export class AllDays {
         else
             this.day.setDate(this.day.getDate()+1)
         return this.day.getDate();
+    }
+    saveChangesInDB()
+    {
+        if (this.nonActiveDayStateManager.IsStillChanges()) {
+            //DB שמירת הרשימות ב  
+            this.nonActiveDayService.saveActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInActiveDaysList()).
+                subscribe(data => { alert("seccued") }, error => { alert("error"); });
+            this.nonActiveDayService.saveNonActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInListAddNoActiveDay()).
+                subscribe(data => { alert("seccued") }, error => { alert("error"); });
+            //ריקון הרשימות
+            this.nonActiveDayStateManager.ClearNoActiveDay();
+        }
     }
 }
 

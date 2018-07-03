@@ -7,7 +7,8 @@
 </head>
 <body dir="rtl">
     <h1>מערכת קבוצות</h1>
-    <DateRangeSelector></DateRangeSelector>   
+    <DateRangeSelector></DateRangeSelector>
+    <button id="saveChangesInDB" (click)="saveChangesInDB()">שמור</button>
     <table id="tblAllDays">
         <tr>
             <td *ngFor="let item of dayInWeek; let m=index" id="tdDays">
@@ -16,9 +17,15 @@
                     <DayInSchedule [dayInWeek]="dayInWeek" [currentDay]=item [currentDate]="day"></DayInSchedule>
                 </div>
             </td>
-            
         </tr>
     </table>
     <div>{{DateTimeCurrently}}</div>
 </body>
 </html>
+<style>
+    #saveChangesInDB {
+        width: 4vw;
+        height: 2vw;
+        position: relative;
+    }
+</style>

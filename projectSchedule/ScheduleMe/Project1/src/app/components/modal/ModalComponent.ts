@@ -43,5 +43,10 @@ export class ModalComponent extends
         if (this.options) {
             dynamicComponent.initModalProperties(this.options);
         }
+        dynamicComponent.onClose.subscribe(() => {
+            this.result = true;
+            this.close();
+            childComponentRef.destroy();
+        });
     }
 }

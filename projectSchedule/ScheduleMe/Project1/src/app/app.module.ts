@@ -1,11 +1,11 @@
-﻿import { NgModule,Input } from "@angular/core"
+﻿import { NgModule, Input } from "@angular/core"
 import { FormsModule } from "@angular/forms"
 import { AppComponent } from "./components/app.component"
 import { ScheduleBoard }from"./components/scheduleBoard"
 import { DateRangeSelector } from "./components/dateRangeSelector.component"
 import { CourseInSchedule } from "./components/courseInSchedule"
-import {vacation } from "./components/vacation.component"
-import { ReportComponent} from "./components/Report.component"
+import { vacation } from "./components/vacation.component"
+import { ReportComponent } from "./components/Report.component"
 import { SaveCoursesBoard } from "./components/SaveCoursesBoard.component"
 import { VolunteerDetails } from "./components/volunteer-details.component"
 import { Try } from "./components/try.component"
@@ -43,8 +43,7 @@ import { ModalService } from '../app/components/modal/services/modal'
 import { ModalComponent } from '../app/components/modal/ModalComponent';
 import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 import { UpdateScheduleBoard} from "./Services/UpdateScheduleBoard"
-
-
+import { SaveOrCancelPopUp } from "../app/components/SaveOrCancelPopUp"
 const route: Routes =
     [
         {
@@ -57,12 +56,12 @@ const route: Routes =
             path: 'manage', component: Management, children:
             [
                 { path: 'courses', component: Courses },
-                { path: 'NonActiveDays', component: AllDays},
+                { path: 'NonActiveDays', component: AllDays },
                 { path: 'manegmentCourse', component: ManegmentCourse },
                 { path: 'manegmentGroup', component: ManegmentGroup }
             ]
         },
-        { 
+        {
             path: "SaveCoursesBoard", component: SaveCoursesBoard
         }
     ]
@@ -90,7 +89,8 @@ const route: Routes =
         GroupDetails,
         NoActiveSchedule,
         PrintHtml,
-        ModalComponent],
+        ModalComponent,
+        SaveOrCancelPopUp],
     imports: [BrowserModule,
         HttpModule,
         FormsModule,
@@ -113,9 +113,10 @@ const route: Routes =
     ],
     entryComponents: [ModalComponent,
         CourseDetails,
-        GroupDetails]
+        GroupDetails,
+        SaveOrCancelPopUp]
 })
 
 export class AppModule {
-    
+
 }

@@ -1,0 +1,50 @@
+﻿<div id="saveOrCancelDiv" class="container">
+    <span>  ?האם ברצונך לשמור שינויים</span>
+    <div class="row">
+        <div class="col-sm-2">
+            <button (click)="saveToServer(course)">
+                <b>שמור</b>
+                <img src="../../../Content/Images/image_40.png" />
+            </button>
+        </div>
+        <div class="col-sm-2">
+            <button (click)="cancelChanges()">
+                <b>ביטול</b>
+                <b class="glyphicon glyphicon-trash"></b>
+            </button>
+        </div>
+    </div>
+</div>
+<style>
+    #saveOrCancelDiv button {
+        background-color: white;
+        display: inline-flex;
+        border: 1px #266587 solid;
+        width: 7vw;
+        height: 2.3vw;
+        padding: 0.3vw;
+        color: #266587;
+        padding-left: 0.7vw;
+        margin-top: 3vw;
+        direction: rtl;
+    }
+
+        #saveOrCancelDiv button b {
+            margin: 0vw 1vw 0vw 1vw;
+            font-size: 1vw;
+            color: #266587;
+        }
+
+    #saveOrCancelDiv img {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+
+    #saveOrCancelDiv span {
+        font-size: 1vw;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: bold;
+        margin-left: 8vw;
+    }
+</style>

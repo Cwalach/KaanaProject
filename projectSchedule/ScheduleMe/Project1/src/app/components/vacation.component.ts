@@ -3,8 +3,7 @@ import { nonActiveDayStateManager } from "../Services/nonActiveDayStateManager"
 import { NoActiveDay } from "../models/NoActiveDay"
 @Component({
     templateUrl: "./src/app/components/vacation.component.html",
-    selector: "vacation",
-    
+    selector: "vacation"
 })
 export class vacation {
    
@@ -14,6 +13,7 @@ export class vacation {
 
     @Input()
     currentHour: string;
+
     @Input()
     date: Date;
     index: number=0;
@@ -21,28 +21,24 @@ export class vacation {
  
     constructor(private nonActiveStateManager: nonActiveDayStateManager)
     {
-       
         this.active = new NoActiveDay("","","");
-       
-       
     }
+
     Update()
     {
         this.status = !this.status;
         this.active.OrderNumber = this.currentHour;
-       // this.active.Date = this.date;
+        this.active.Date = this.date;
         alert(this.date);
-    //    changed to active
+        // changed to active
         if (status)
             this.nonActiveStateManager.CencelNoActiveDay(this.active);
        
-       // change to no active
+        // change to no active
         else
           this.nonActiveStateManager.AddNoActiveDay(this.active);
-        
-     
-       
     }
+
     updateDate()
     {
         this.index++;

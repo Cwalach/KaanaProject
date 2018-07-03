@@ -28,16 +28,11 @@ export class ManegmentCourse {
             subscribe(data => { this.courseList = data }, error => { alert("error!"); });
     }
     newCourse() {
-        //this.currentCourse = null;
         const modalData = new ModalData();
         modalData.component = CourseDetails;
         modalData.modalHeight = 500;
         modalData.modalWidth = 500;
-        //modalData.options = this.currentCourse;
         this.modalService.openModal(modalData);
-
-        //const newC = new Course(1,);
-        ////this.courseService.newCourse()
     }
     EditCourse(item: Course) {
         this.currentCourse = item;

@@ -1,10 +1,13 @@
 ﻿import { IModalService } from './imodal';
 import { Injectable } from '@angular/core';
-import { DialogService, DialogOptions } from 'ng2-bootstrap-modal';
+import { DialogService, DialogOptions, DialogComponent } from 'ng2-bootstrap-modal';
 import { ModalComponent } from '../ModalComponent';
 import { IModalData } from '../models/imodal-data';
 import { Router } from '@angular/router';
-
+//export interface ConfirmModel {
+//    title: string;
+//    message: string;
+//}
 @Injectable()
 export class ModalService implements IModalService {
 
@@ -22,4 +25,8 @@ export class ModalService implements IModalService {
                 }
             });
     }
+
+    //public closeModal(com: DialogComponent<ConfirmModel, boolean>) {
+    //    this.dialogService.removeDialog(com);
+    //}
 }

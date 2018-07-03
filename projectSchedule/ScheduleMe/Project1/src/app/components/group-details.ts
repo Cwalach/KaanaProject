@@ -1,4 +1,4 @@
-﻿import { Component, Input } from "@angular/core"
+﻿import { Component, Input,Output,EventEmitter } from "@angular/core"
 import { Group } from "../models/group"
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 import { Http } from "@angular/http"
@@ -22,7 +22,7 @@ export class GroupDetails
     title: string;
     message: string;
 
-    g: Group;
+    backup: Group;
     nameGroup: string;
 
     constructor(dialogService: DialogService,
@@ -35,14 +35,29 @@ export class GroupDetails
     public initModalProperties = (data) => {
         if (data) {
             this.group = data;
+            this.backup = this.group;
         }
     }
 
     saveToServer(item: Group) {
+        if (item.Name != null) {
+            this.groupService.saveGroupToServer(item).
+                subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+        }
+        else {
+            this.title = "אין אפשרות לשמור";
+        }
         this.groupService.saveGroupToServer(item).
             subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
     }
-    cancelChanges() {
 
+    @Output()
+    onClose: EventEmitter<Group> = new EventEmitter<Group>();
+
+    cancelChanges() {
+        if (this.group.Id != null) {
+            this.group.Name = this.backup.Name;
+        }
+        this.onClose.emit();
     }
 }

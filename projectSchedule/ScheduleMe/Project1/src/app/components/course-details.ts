@@ -1,4 +1,4 @@
-﻿import { Component, Output, Input, Injectable } from "@angular/core"
+﻿import { Component, Output, Input, Injectable, EventEmitter } from "@angular/core"
 import { Course } from "../models/course"
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 import { Http } from "@angular/http"
@@ -39,13 +39,22 @@ export class CourseDetails
     }
 
     saveToServer(item: Course) {
-        this.courseService.saveCourseToServer(item).
-            subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+        if (item.Name != null || item.Instructor != null) {
+            this.courseService.saveCourseToServer(item).
+                subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+        }
+        else {
+            this.title = "אין אפשרות לשמור";
+        }
     }
+    @Output()
+    onClose: EventEmitter<Course> = new EventEmitter<Course>();
 
     cancelChanges() {
-        this.course.Name = this.backup.Name;
-        this.course.Instructor = this.backup.Instructor;
-        this.close();
+        if (this.course.Id != null) {
+            this.course.Name = this.backup.Name;
+            this.course.Instructor = this.backup.Instructor;
+        }
+        this.onClose.emit();
     }
 }

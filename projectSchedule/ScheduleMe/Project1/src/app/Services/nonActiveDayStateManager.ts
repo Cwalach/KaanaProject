@@ -39,9 +39,7 @@ export class nonActiveDayStateManager {
         }
         else
             this.RemoveNoActiveDay(noActiveDay);
-
     }
-
     
     //clear lists
     ClearNoActiveDay() {

@@ -11,8 +11,7 @@
                 (click)="clickEvent('schduleGroups')"
                 routerLink="/GroupSystem"
                 [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'">
-            <img 
-                  [ngClass]="!statusbtn1 ? 'src_default':'src_default2'"/>
+            <img [ngClass]="!statusbtn1 ? 'src_default':'src_default2'"/>
             <!--src="../../../Content/Images/image_07_2.png"-->
             <span>מערכת קבוצות</span>
         </button><br /><br />
@@ -34,5 +33,5 @@
     </div>
 <router-outlet></router-outlet>
 
-
+<!--(activate)="changeRouter()"-->
 

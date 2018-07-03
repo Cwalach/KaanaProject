@@ -1,7 +1,4 @@
 ﻿export abstract class DynamicComponent {
-    on
-
-
-    : any;
+    onClose: any;
     initModalProperties: Function;
 }
