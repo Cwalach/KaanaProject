@@ -20,16 +20,19 @@ import { AllDays } from "./components/AllDays.component"
 import { DayInSchedule } from "./components/DayInSchedule.component"
 import { ReportDetailsService } from "./Services/ReportDetailsService"
 import { SingleCourseinBoardComponent } from "./components/SingleCourseinBoard.component"
+import { SaveSucceed } from "./components/SaveSucceed.component"
+
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
 import { ExistingCoursesService } from "./Services/ExistingCoursesService"
-// import { HebrewDate } from "./Services/HebrewDate"
+ import { HebrewDate } from "./Services/HebrewDate"
 import { ManegmentCourse } from "./components/manegmentCourse"
 import { CourseDetails } from "./components/course-details"
 import { ManegmentGroup } from "./components/manegmentGroup"
 import { GroupDetails } from "./components/group-details"
 import { ManegmentCoursesService } from "./Services/manegmentCourses-service"
 import { ManegmentGroupsService } from "./Services/manegmentGroups-service"
+import { MoveDateService } from "./Services/MoveDateService"
 import { NoActiveSchedule } from "./components/NoActiveSchedule"
 import { nonActiveDayStateManager } from "./Services/nonActiveDayStateManager"
 import { nonActiveDayService } from "./Services/nonActiveDayService"
@@ -90,8 +93,10 @@ const route: Routes =
         PrintHtml,
         ModalComponent,
         SaveOrCancelPopUp,
-        MainPageComponent],
-    
+        MainPageComponent,
+        SaveSucceed],
+
+
     imports: [BrowserModule,
         HttpModule,
         FormsModule,
@@ -109,13 +114,16 @@ const route: Routes =
         nonActiveDayStateManager,
         ModalService,
         PrintHtmlService,
-        UpdateScheduleBoard
-        // HebrewDate
+        MoveDateService,
+        UpdateScheduleBoard,
+         HebrewDate
     ],
     entryComponents: [ModalComponent,
         CourseDetails,
         GroupDetails,
-        SaveOrCancelPopUp]
+        SaveOrCancelPopUp,
+        SaveSucceed
+    ]
 })
 
 export class AppModule {

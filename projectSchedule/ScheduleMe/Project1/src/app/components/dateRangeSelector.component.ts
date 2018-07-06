@@ -1,5 +1,6 @@
 ﻿import { Component } from "@angular/core"
 import { UpdateScheduleBoard } from "../Services/UpdateScheduleBoard"
+import { MoveDateService } from "../Services/MoveDateService"
 @Component({
     templateUrl: "./src/app/components/DateRangeSelector.component.html",
     selector: "DateRangeSelector"
@@ -13,8 +14,9 @@ export class DateRangeSelector {
     sunday: number;
     saturday: number;
     currentMonth: number;
-
-    constructor(private updateScheduleBoard: UpdateScheduleBoard) {
+    sun: number 
+    constructor(private moveDateService: MoveDateService, 
+        private updateScheduleBoard: UpdateScheduleBoard) {
         this.currentDate = new Date();
         this.date = new Date();
         this.leftDay = new Date();
@@ -50,6 +52,7 @@ export class DateRangeSelector {
         this.UpdateVariables();
         this.day = this.leftDay.getDay();
         this.updateScheduleBoard.ChangeDate(this.date);
+        this.moveDateService.setUpdateNewUserHandler(this.currentDate);
     }
 
     IncreaseDate(): any {
@@ -57,6 +60,7 @@ export class DateRangeSelector {
         this.UpdateVariables();
         this.day = this.leftDay.getDay();
         this.updateScheduleBoard.ChangeDate(this.date);
+        this.moveDateService.setUpdateNewUserHandler(this.currentDate);
     }
 
     UpdateVariables(): any {

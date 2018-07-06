@@ -3,14 +3,16 @@ import { SaveChangesBoardService } from "../Services/SaveChangesBoardService"
 import { ExistingCourse } from "../models/ExistingCourses"
 import { Course } from "../models/Course"
 import { Group } from "../models/Group"
+import { ScheduleBoardStateManager } from '../Services/ScheduleBoardStateManager'
 
 @Component({
     templateUrl: "./src/app/components/SingleCourseinBoard.component.html",
     selector: "SingleCourseinBoard_Component"
 })
 export class SingleCourseinBoardComponent {
-    constructor(private scheduleService: SaveChangesBoardService) {
+    constructor(private scheduleService:SaveChangesBoardService,private ScheduleBoardStateManager: ScheduleBoardStateManager) {
         this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
+        //this.ScheduleBoardStateManager.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
         if (this.CurrentCourse == null)
             this.namecourse = "";
@@ -67,6 +69,8 @@ export class SingleCourseinBoardComponent {
         this.CurrentExistingCourses.CourseId = this.CurrentCourse.Id;
         this.CurrentExistingCourses.GroupId = this.CurrentGroup.Id;
         this.scheduleService.AddExistingCourseThatWasChangedToList(this.CurrentExistingCourses);
+        //this.ScheduleBoardStateManager.AddExistingCourseThatWasChangedToList(this.CurrentExistingCourses);
+
     }
     SetDateForEachDayInWeek() {
         this.CurrentDateOfToday.setFullYear(this.CurrentDateOfSun.getFullYear(), this.CurrentDateOfSun.getMonth(), this.CurrentDateOfSun.getDate());

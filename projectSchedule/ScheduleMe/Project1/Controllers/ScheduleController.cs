@@ -7,7 +7,6 @@ using System.Web.Http;
 using Schedule_Model;
 using Schedule_Bl;
 using System.Collections.ObjectModel;
-using Schedule_Model;
 using System.Data.SqlClient;
 
 namespace Schedule_Model.Controllers
@@ -51,9 +50,8 @@ namespace Schedule_Model.Controllers
                     courseIndex = new SqlParameter("@courseIndex", item.CourseId);
                     groupIndex = new SqlParameter("@groupIndex", item.GroupId);
                     updateUntilDate = new SqlParameter("@updateUntilDate", dateUpdate);
-                    comments = new SqlParameter("@Comments", Comments);
-
-                    result = ctx.Database.ExecuteSqlCommand("insertOrUpdateLessonsUntilDate2 @date,@orderNumber,@courseIndex,@groupIndex,@updateUntilDate", date, orderNumber, courseIndex, groupIndex, updateUntilDate);
+                    comments = Comments !="undifined"?new SqlParameter("@Comments", Comments) : new SqlParameter("@Comments", null);
+                    result = ctx.Database.ExecuteSqlCommand("insertOrUpdateLessonsUntilDate @date,@orderNumber,@courseIndex,@groupIndex,@updateUntilDate,@Comments", date, orderNumber, courseIndex, groupIndex, updateUntilDate, comments);
                 }
                 //int h = 0; 
                 //SqlParameter courseName= new SqlParameter("@courseName", "cobol");
