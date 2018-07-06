@@ -46,6 +46,7 @@
     <Compile Include="CourseService.cs" />
     <Compile Include="ExistingCourseService.cs" />
     <Compile Include="GroupService.cs" />
+    <Compile Include="HourOfLessonService.cs" />
     <Compile Include="NonActiveDaysService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

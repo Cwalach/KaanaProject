@@ -10,8 +10,8 @@
                 <input id="changeAll" type="button" class="activeDay" (click)="ChangeAll()" value="כל השיעורים"
                        [ngClass]="isVacation?'activeDay':'nonActiveDay'" />
            
-        <div *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-          <div id=vacationComponent><vacation [status]='isVacation' [currentHour]=indexs [date]="currentDate"></vacation></div>
+        <div *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]; let dayIndex=index">
+          <div id=vacationComponent><vacation [status]='allStatus[dayIndex]' [currentHour]=indexs [date]="currentDate"></vacation></div>           
         </div>
  
 
