@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, EventEmitter } from "@angular/core"
+﻿import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core"
 import { nonActiveDayService } from "../Services/nonActiveDayService"
 import { nonActiveDayStateManager } from "../Services/nonActiveDayStateManager"
 import { ManegmentCoursesService } from "../Services/manegmentCourses-service"
@@ -6,7 +6,8 @@ import { DialogOptions, DialogService } from "ng2-bootstrap-modal";
 import { ModalData } from './modal/models/modal-data'
 import { ModalService } from './modal/services/modal'
 import { SaveOrCancelPopUp } from "../components/SaveOrCancelPopUp"
-import { Router, NavigationEnd } from "@angular/router"
+import { Router, NavigationEnd, ActivatedRoute, Params } from "@angular/router"
+
 @Component({
     templateUrl: "./src/app/components/try.component.html",
     selector: "try"
@@ -20,9 +21,16 @@ export class Try {
     constructor(private nonActiveDayService: nonActiveDayService,
         private nonActiveDayStateManager: nonActiveDayStateManager,
         private modalService: ModalService,
-        private router: Router) {
+        private router: Router,
+        private ActivatedRouter: ActivatedRoute) {
         router.events.filter(event => event instanceof NavigationEnd).subscribe((val) => {
             console.log('==== change url=====');
+        });
+    }
+    
+    ngOnInit() {
+        this.ActivatedRouter.queryParams.subscribe(params => {
+            this.clickEvent(params['btnId']);
         });
     }
 
@@ -40,20 +48,25 @@ export class Try {
             this.statusbtn1 = true;
             this.statusbtn2 = false;
             this.statusbtn3 = false;
+            this.router.navigate(['/GroupSystem']);
         }
         if (id == "manegement") {
             this.statusbtn2 = true;
             this.statusbtn1 = false;
             this.statusbtn3 = false;
+            this.router.navigate(['/manage']);
+
         }
         if (id == "report") {
             this.statusbtn3 = true;
             this.statusbtn1 = false;
             this.statusbtn2 = false;
+            this.router.navigate(['/ReportDetails']);
+
         }
     }
 
-    saveChangesInDB() { 
+    saveChangesInDB() {
         this.nonActiveDayService.saveActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInActiveDaysList()).
             subscribe(data => { }, error => { console.log("error"); });
         this.nonActiveDayService.saveNonActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInListAddNoActiveDay()).

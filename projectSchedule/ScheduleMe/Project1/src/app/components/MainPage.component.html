@@ -1,27 +1,29 @@
-﻿<div id="div_titel">
-    <div class="rec"></div>
-    <h1 class="h1_titel">מערכת לניהול קורסים</h1>
-    <div class="rec"></div>
-</div>
-<div id="div_btn " class="w3-show-inline-block">
-    <button class="btn_commands">
-        <img [ngClass]="!statusbtn1 ? 'src_default':'src_default2'" />
-        <span>מערכת קבוצות</span>
-    </button>
+﻿<div [style.display]="buttonWasClicked==false ? 'block' : 'none'"><!---->
+    <div id="div_titel">
+        <div class="rec"></div>
+        <h1 class="h1_titel">מערכת לניהול קורסים</h1>
+        <div class="rec"></div>
+    </div>
+    <div id="div_btn " class="w3-show-inline-block">
+        <button class="btn_commands">
+            <img [ngClass]="!statusbtn1 ? 'src_default':'src_default2'" (click)="onButtonClick('schduleGroups')" />
+            <span>מערכת קבוצות</span>
+        </button>
 
-    <button class="btn_commands">
-        <img src="../../../Content/Images/image_03.png" />
-        <span> ניהול</span>
-    </button>
+        <button class="btn_commands">
+            <img src="../../../Content/Images/image_03.png" (click)="onButtonClick('manegement')" />
+            <span> ניהול</span>
+        </button>
 
-    <button class="btn_commands">
-        <img src="../../../Content/Images/image_05.png" />
-        <span>דוחות</span>
-    </button>
+        <button class="btn_commands">
+            <img src="../../../Content/Images/image_05.png" (click)="onButtonClick('report')" />
+            <span>דוחות</span>
+        </button>
+    </div>
 </div>
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+
 <style>
-    /*(click)="clickEvent('schduleGroups')"  [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'"*/
     .h1_titel {
         font-family: inherit;
         color: #266587;
