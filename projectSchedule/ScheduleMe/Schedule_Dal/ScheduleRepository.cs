@@ -60,5 +60,10 @@ namespace Schedule_Dal
             context.Entry(entityToUpdate).State = EntityState.Modified;
             context.SaveChanges();
         }
+
+        public IQueryable<T> GetByQuery(Expression<Func<T, bool>> query)
+        {
+            return dbSet.Where<T>(query);
+        }
     }
 }

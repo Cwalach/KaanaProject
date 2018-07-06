@@ -13,7 +13,7 @@ export class SingleCourseinBoardComponent {
         this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
         if (this.CurrentCourse == null)
-            this.namecourse = "";
+            this.namecourse = "hel";
         else
             this.namecourse = this.CurrentCourse.Name;
     }
@@ -23,6 +23,7 @@ export class SingleCourseinBoardComponent {
     CurrentDateOfToday = new Date();
     CourseList: Course[];
     //GroupList: Group[];
+    @Input()
     CurrentCourse: Course;
     @Input()
     CurrentGroup: Group;

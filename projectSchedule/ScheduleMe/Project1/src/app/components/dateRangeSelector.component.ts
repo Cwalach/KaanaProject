@@ -51,7 +51,6 @@ export class DateRangeSelector {
         this.UpdateDecreaseDate();
         this.UpdateVariables();
         this.day = this.leftDay.getDay();
-        this.updateScheduleBoard.ChangeDate(this.date);
         if (this.eventHandler) {
             this.eventHandler.emit(this.leftDay);
         }
@@ -61,7 +60,6 @@ export class DateRangeSelector {
         this.UpdateIncreaseDate();
         this.UpdateVariables();
         this.day = this.leftDay.getDay();
-        this.updateScheduleBoard.ChangeDate(this.date);
         if (this.eventHandler) {
             this.eventHandler.emit(this.leftDay);
         }
@@ -72,15 +70,5 @@ export class DateRangeSelector {
         this.saturday = this.rightDay.getDate();
         this.currentMonth = this.rightDay.getMonth() + 1;
     }
-
-    //GetLeftDay(): number {
-    //    this.leftDay.setDate(this.currentDate.getDate() - ((this.currentDate.getDay()+1) - 1));
-    //    return this.leftDay.getDate();
-    //}
-
-    //GetRightDay(): number {
-    //    this.rightDay.setDate(this.currentDate.getDate() + (7 - (this.currentDate.getDay()+1)));
-    //    return this.rightDay.getDate();
-    //}
 }
 

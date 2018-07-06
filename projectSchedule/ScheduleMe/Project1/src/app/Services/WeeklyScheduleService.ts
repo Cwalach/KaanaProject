@@ -35,11 +35,17 @@ export class WeeklyScheduleService {
             });
     }
 
-    GetAllExistingCoursesForWeekFromServer(snudayOfWeek: Date, selectedGroup: Group): Observable<ExistingCourse[][]>
+    public GetAllExistingCoursesForWeekFromServer(snudayOfWeek: Date, selectedGroup: Group): Observable<ExistingCourse[][]>
     {
-        return this.http.get("api/WeeklySchedule/GetExistingCoursesForWeek/"+snudayOfWeek+"/"+selectedGroup).map(
-            data => {
+        return this.http.get("api/WeeklySchedule/GetExistingCoursesForWeek/" + snudayOfWeek.toDateString() + "/" + selectedGroup.Id)
+            .map(data => {
                 return data.json() as ExistingCourse[][]
-            });
+            })
+            .catch(this.handleError);
+    }
+
+    private handleError(error: any) {
+        let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        return Observable.throw(error);
     }
 }
