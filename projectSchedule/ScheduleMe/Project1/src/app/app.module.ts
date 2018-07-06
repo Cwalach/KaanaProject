@@ -46,6 +46,9 @@ import { MainPageComponent } from "./components/MainPage.component"
 const route: Routes =
     [
         {
+            path: 'Try', component: Try
+        },
+        {
             path: 'GroupSystem', component: ScheduleBoard
         },
         {
@@ -97,7 +100,7 @@ const route: Routes =
         FormsModule,
         RouterModule.forRoot(route),
         BootstrapModalModule.forRoot({ container: document.body })],
-    bootstrap: [Try],/*[MainPageComponent],*/
+    bootstrap: [MainPageComponent],/*[Try],*/
     providers: [ScheduleBoardStateManager,
         ExistingCoursesService,
         WeeklyScheduleService,

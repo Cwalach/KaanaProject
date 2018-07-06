@@ -1,37 +1,34 @@
 ﻿<div class="col-sm-11">
 </div>
-    <div class="col-sm-1"  style="background-size:cover;
+<div class="col-sm-1" style="background-size:cover;
                                   background-color:lightgray;
                                   margin-top: 4vw;
                                   background-color: lightgray;
                                   width: 25%;
                                   height: 40vw;
                                   float: right;">
-        <button  id="schduleGroups"
-                (click)="clickEvent('schduleGroups')"
-                routerLink="/GroupSystem"
-                [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'">
-            <img [ngClass]="!statusbtn1 ? 'src_default':'src_default2'"/>
-            <!--src="../../../Content/Images/image_07_2.png"-->
-            <span>מערכת קבוצות</span>
-        </button><br /><br />
+    <!--routerLink="/GroupSystem"routerLink="/manage"routerLink="/ReportDetails"-->
+    <button id="schduleGroups"
+            (click)="clickEvent('schduleGroups')"
+            [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'">
+        <img [ngClass]="!statusbtn1 ? 'src_default':'src_default2'" />
+        <!--src="../../../Content/Images/image_07_2.png"-->
+        <span>מערכת קבוצות</span>
+    </button><br /><br />
 
-        <button id="manegement"
-                (click)="clickEvent('manegement')"
-                routerLink="/manage"
-                [ngClass]="!statusbtn2 ? 'btn_default':'btn_default2'">
-            <img src="../../../Content/Images/image_03.png" />
-            <span> ניהול</span>
-        </button><br /><br />
-        <button id="report"
-                (click)="clickEvent('report')"
-                routerLink="/ReportDetails"
-                [ngClass]="!statusbtn3 ? 'btn_default':'btn_default2'">
-            <img src="../../../Content/Images/image_05.png" />
-            <span>דוחות</span> 
-        </button>
-    </div>
+    <button id="manegement"
+            (click)="clickEvent('manegement')"
+            [ngClass]="!statusbtn2 ? 'btn_default':'btn_default2'">
+        <img src="../../../Content/Images/image_03.png" />
+        <span> ניהול</span>
+    </button><br /><br />
+    <button id="report"
+            (click)="clickEvent('report')"
+            [ngClass]="!statusbtn3 ? 'btn_default':'btn_default2'">
+        <img src="../../../Content/Images/image_05.png" />
+        <span>דוחות</span>
+    </button>
+</div>
 <router-outlet></router-outlet>
 
 <!--(activate)="changeRouter()"-->
-
