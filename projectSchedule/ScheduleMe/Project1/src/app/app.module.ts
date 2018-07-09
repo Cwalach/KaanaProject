@@ -23,7 +23,6 @@ import { SingleCourseinBoardComponent } from "./components/SingleCourseinBoard.c
 import { WeeklyScheduleService } from "./Services/WeeklyScheduleService"
 import { ScheduleBoardStateManager } from "./Services/ScheduleBoardStateManager"
 import { ExistingCoursesService } from "./Services/ExistingCoursesService"
-// import { HebrewDate } from "./Services/HebrewDate"
 import { ManegmentCourse } from "./components/manegmentCourse"
 import { CourseDetails } from "./components/course-details"
 import { ManegmentGroup } from "./components/manegmentGroup"
@@ -42,6 +41,7 @@ import { SaveChangesBoardService } from "./Services/SaveChangesBoardService"
 import { SaveOrCancelPopUp } from "../app/components/SaveOrCancelPopUp"
 import { UpdateScheduleBoard } from "./Services/UpdateScheduleBoard";
 import { MainPageComponent } from "./components/MainPage.component"
+import { ParseDate } from "./Services/parseDateService";
 
 const route: Routes =
     [
@@ -109,8 +109,8 @@ const route: Routes =
         nonActiveDayStateManager,
         ModalService,
         PrintHtmlService,
-        UpdateScheduleBoard
-        // HebrewDate
+        UpdateScheduleBoard,
+        ParseDate
     ],
     entryComponents: [ModalComponent,
         CourseDetails,

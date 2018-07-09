@@ -57,7 +57,7 @@ num: number = 0;
             this._nonActiveDaysStateManager.RemoveNoActiveDay(this.day);
     }
     SaveAll() {
-        this._nonActiveDaysService.saveNonActiveDaysListToService(this._nonActiveDaysStateManager.GetChangeInListAddNoActiveDay()).subscribe(data => { alert("save success!!") });
+        this._nonActiveDaysService.saveNonactiveDaysListToService(this._nonActiveDaysStateManager.GetChangeInListAddNoActiveDay()).subscribe(data => { alert("save success!!") });
         this._nonActiveDaysService.saveActiveDaysListToService(this._nonActiveDaysStateManager.GetChangeInActiveDaysList()).subscribe(data => { alert("save success!!") });
         this._nonActiveDaysStateManager.ClearNoActiveDay();
     }

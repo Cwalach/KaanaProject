@@ -46,19 +46,21 @@ namespace Schedule_Dal
 
         public virtual void Delete(T entityToDelete)
         {
-            if (context.Entry(entityToDelete).State == EntityState.Detached)
+            using (var context = new ScheduleDB())
             {
-                dbSet.Attach(entityToDelete);
+                context.Entry(entityToDelete).State = System.Data.Entity.EntityState.Deleted;
+                context.SaveChanges();
             }
-            dbSet.Remove(entityToDelete);
-            context.SaveChanges();
+
         }
 
         public virtual void Update(T entityToUpdate)
         {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
-            context.SaveChanges();
+            using (var context = new ScheduleDB())
+            {
+                context.Entry(entityToUpdate).State = EntityState.Modified;
+                context.SaveChanges(); //Must be in using block
+            }
         }
 
         public IQueryable<T> GetByQuery(Expression<Func<T, bool>> query)

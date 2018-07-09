@@ -31,11 +31,13 @@
         <tr id="tr-Day">
             <td *ngFor="let item of dayInWeek; let m=index"><span class="dayOfMonth">{{getday(m)}}-</span>{{item}}&nbsp;&nbsp;&nbsp;</td>
         </tr>
-        <tr  dir="ltr" *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-            <td *ngFor="let x of dayInWeek; let k=index" >
+        <tr  dir="ltr" *ngFor="let lessonNum of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
+            <td *ngFor="let day of dayInWeek; let i=index" >
                 <!--*ngIf="table[k][indexs]"-->
                 <!--<span *ngIf="table[k][indexs] !==null">{{table[k][indexs].Course.Name}}</span>-->
-                <SingleCourseinBoard_Component [CurrentDayInWeek]="k" [CurrentCourse]="table[k][indexs].Course"  [CurrentComponentOrder]="indexs" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup"></SingleCourseinBoard_Component>
+                <div *ngIf="CourseList">
+                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
+                </div>
 
             </td>
         </tr>     

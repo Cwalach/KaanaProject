@@ -42,7 +42,7 @@ export class AllDays {
             //DB שמירת הרשימות ב  
             this.nonActiveDayService.saveActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInActiveDaysList()).
                 subscribe(data => { alert("seccued") }, error => { alert("error"); });
-            this.nonActiveDayService.saveNonActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInListAddNoActiveDay()).
+            this.nonActiveDayService.saveNonactiveDaysListToService(this.nonActiveDayStateManager.GetChangeInListAddNoActiveDay()).
                 subscribe(data => { alert("seccued") }, error => { alert("error"); });
             //ריקון הרשימות
             this.nonActiveDayStateManager.ClearNoActiveDay();
