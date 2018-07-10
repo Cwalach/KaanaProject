@@ -69,6 +69,7 @@ implements ConfirmModel{
     isbtn3clicked: boolean;
     ExampleCourse: ExistingCourse;
     CourseList: Course[];
+    ChangeGroup: Group;
     //CurrentExistingCourse: ExistingCourse;
 
     constructor(private weeklyScheduleService: WeeklyScheduleService, private updateScheduleBoard: UpdateScheduleBoard, private scheduleService: SaveChangesBoardService, private parseDate: ParseDate, dialogService: DialogService, private hebrewDate: HebrewDate,
@@ -92,6 +93,8 @@ implements ConfirmModel{
         
         this.ExampleCourse = new ExistingCourse(1, this.DateTimeCurrently, new Course(2, 'aaa', 'java'), new Group(1, 'year2'));
         //this.ChangeTable();
+        this.ChangeGroup;
+        this.ChangeTable();
     }
     HebrewDate: string;
     //CurrentExistingCourse: ExistingCourse;
@@ -116,13 +119,19 @@ implements ConfirmModel{
         this.listsForEdit.forEach(x => x.EditCourse());
     }
 
-    SelectGroup() {
-        alert(this.SelectedGroup.Name);
-        this.ChangeTable();
-    }
+
 
     updateWeeklyData() {
         this.ChangeTable();
+    }
+    ngOnInit() {
+        this.updateScheduleBoard.getNewDate().subscribe(date => { this.ChangeDate = date; });
+        this.updateScheduleBoard.getSelectedGroup().subscribe(group => { this.ChangeGroup = group; });
+    }
+
+    SelectGroup(group) {
+        this.SelectedGroup = this.GroupList.find(g => g.Id == group);
+        this.updateScheduleBoard.ChangeGroup(group);
     }
     ClickEvent(btnId: string): any {
         if (btnId == "btnEdit") {

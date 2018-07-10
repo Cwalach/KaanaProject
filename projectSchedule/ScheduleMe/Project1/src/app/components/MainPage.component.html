@@ -1,4 +1,4 @@
-﻿<div [style.display]="buttonWasClicked==false ? 'block' : 'none'"><!---->
+﻿<div [style.display]="buttonWasClicked==false ? 'block' : 'none'">
     <div id="div_titel">
         <div class="rec"></div>
         <h1 class="h1_titel">מערכת לניהול קורסים</h1>
@@ -21,7 +21,7 @@
         </button>
     </div>
 </div>
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 
 <style>
     .h1_titel {
@@ -50,5 +50,6 @@
         height: 12vw;
         width: 12vw;
         background-color: #266587;
+        margin-left: 70px;
     }
 </style>

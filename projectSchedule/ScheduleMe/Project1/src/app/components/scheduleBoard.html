@@ -14,9 +14,8 @@
     <div style="margin-right: 20vw;margin-top:3vh">
         <span id="spnGroupName">שם קבוצה</span>
         <!--<select id="selectGroup" [(ngModel)]="selectedGroup" [SelectedGroup]="selectedGroup" (change)="SelectGroup(selectedGroup)"/>-->
-            <select id="selectGroup" [(ngModel)] ="SelectedGroup" (change)="SelectGroup()"> <!--(ngModelChange)="SelectGroup($event.target)" -->
-                <!--[SelectedGroup]="selectedGroup"-->
-                <option *ngFor="let g of GroupList; let i =index" [ngValue]="g">{{g.Name}}</option>
+            <select #selectGroup  (change)="SelectGroup(selectGroup.value)"> <!--[(ngModel)]="selectedGroup"-->
+                <option *ngFor="let group of GroupList" [value]="group.Id">{{group.Name}}</option>
             </select>
             <DateRangeSelector (eventHandler)="updateWeeklyData()"></DateRangeSelector>
             <br />
@@ -38,6 +37,7 @@
                 <div *ngIf="CourseList">
                     <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
                 </div>
+
 
             </td>
         </tr>     
