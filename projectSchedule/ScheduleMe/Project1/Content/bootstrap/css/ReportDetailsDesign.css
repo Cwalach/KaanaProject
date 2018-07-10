@@ -1,0 +1,52 @@
+﻿body {
+}
+
+#print {
+    /*border-style:solid;*/
+    /*color: #266587;*/
+    text-align: center;
+    margin: 1vw;
+    margin-right: 22.7vw;
+    height: 3vw;
+}
+
+.ToShow {
+    background-color: #ede969;
+    color: #266587;
+    font-weight: bold;
+    text-align: center;
+    margin: 1vw;
+    height: 3vh;
+    width: 5vw;
+}
+
+.headerTableReport {
+    font-weight: bold;
+}
+
+td {
+    /*padding: 2vw;*/
+    border: solid #266587;
+    /*border-style: solid;*/
+    font-weight: lighter;
+    width: 10vw;
+    text-align: center;
+    height: 2vw;
+    width: 15vw;
+}
+
+.btn {
+    margin-right: 15vw;
+}
+
+.middle {
+    height: 2.5vw;
+    width: 10vw;
+    margin-left: 2vw;
+    border-style: solid;
+    border-color: #266587;
+}
+
+.lbl {
+    padding-left: 8vw;
+}

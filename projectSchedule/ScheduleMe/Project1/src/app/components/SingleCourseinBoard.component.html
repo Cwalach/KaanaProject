@@ -1,58 +1,69 @@
 ﻿
 <div class="DetailsCourse">
-        <div class="div_commands">
-            <button id="btnRemove" class="btn_commands glyphicon glyphicon-trash" (click)="RemoveCourse(item)"></button>
-            <button [disabled]="IsChange==false" id="btnSave" class="btn_commands glyphicon glyphicon-cloud-upload"
-                    (click)="SaveCourse(item,selectCourses)" routerLink="/SaveCoursesBoard"></button>
-            <button id="btnEdit" class="btn_commands glyphicon glyphicon-pencil" (click)="EditCourse()"></button>
+    <div class="div_commands">
+        <button id="btnRemove" class="btn_commands glyphicon glyphicon-trash" (click)="RemoveCourse(item)"></button>
+        <button [disabled]="IsChange==false" id="btnSave" class="btn_commands glyphicon glyphicon-cloud-upload"
+                (click)="SaveCourse(item,selectCourses)"></button><!--routerLink="/SaveCoursesBoard"-->
+        <button id="btnEdit" class="btn_commands glyphicon glyphicon-pencil" (click)="EditCourse()"></button>
+        <span class="span_CourseName"></span>
+    </div>
+    <div class="div_commands">
+        <span class="span_CourseName" [style.display]="flag==true ? 'block' : 'none'">{{namecourse}}</span><!--course's name-->
+        <span class="span_CourseName" [style.display]="flag==true ? 'block' : 'none'">{{nameTeachercourse}}</span><!--Teachercourse's name-->
+
+        <div *ngIf="flag==false">
+            <input class="input_Courses" list="datalistcourses" (change)="onChange($event.target)">
+            <datalist id="datalistcourses">
+                <option *ngFor="let item of CourseList" data-id="{{item.Id}}" value="{{item.Name}}-{{item.Instructor}}"></option>
+            </datalist>
+           
         </div>
-        <div class="div_commands">
-            <span class="span_CourseName" [style.display]="flag==true ? 'block' : 'none'">{{namecourse}}</span><!--course's name-->
-            <div *ngIf="flag==false">
-                <input class="input_Courses" list="datalistcourses" (change)="onChange($event.target)" >
-                <datalist id="datalistcourses">
-                    <option *ngFor="let item of CourseList" data-id="{{item.Id}}" value="{{item.Name}}-{{item.Instructor}}"></option>
-                </datalist>
-            </div>
-        </div>
+    </div>
 </div>
 <router-outlet></router-outlet>
 <style>
     .DetailsCourse {
-        font-size:medium;
+        font-size: medium;
         border-style: double;
         border-color: gray;
-        margin:0.5vw;
+        margin: 0.5vw;
         display: table-cell;
-        padding:0;
+        padding: 0;
     }
+
     .div_commands {
         display: table-cell;
-        padding:0; 
-        width: 48px;  
+        padding: 0;
+        width: 55px;
+        height:30px;
     }
-    .btn_commands {
-        width:1px;
-        height:2px;
-        align-content:center;
-        display: table-cell;
-        background-color:white;
-        margin:0;
-    }
-    #btnEdit {
-        margin-right:1vw;
-    }
-    .glyphicon{
-        font-size: 10px;
-        color:black;
-    }
-    .span_CourseName {
-         width:45px;
-         font-size:10px;
 
+    .btn_commands {
+        width: 1px;
+        height: 2px;
+        align-content: center;
+        display: table-cell;
+        background-color: white;
+        margin: 0;
     }
+
+    #btnEdit {
+        /*margin-right:1vw;*/
+    }
+
+    .glyphicon {
+        font-size: 10px;
+        color: black;
+    }
+
+    .span_CourseName {
+        width: 55px;
+        font-size: 10px;
+        margin-left: 5px;
+    }
+
     .input_Courses {
-         width:45px;
-         font-size:10px;
+        width: 55px;
+        font-size: 10px;
     }
 </style>

@@ -14,10 +14,13 @@ export class SingleCourseinBoardComponent {
         this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.ScheduleBoardStateManager.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
-        if (this.CurrentCourse == null)
-            this.namecourse = "hel";
-        else
-            this.namecourse = this.CurrentCourse.Name;
+
+        if (this.CurrentCourse == null) {
+            this.namecourse = ""; this.nameTeachercourse = "";
+        }
+        else {
+            this.namecourse = this.CurrentCourse.Name; this.nameTeachercourse = this.CurrentCourse.Instructor;
+        }
     }
 
     @Input()
@@ -36,6 +39,7 @@ export class SingleCourseinBoardComponent {
     CurrentExistingCourses: ExistingCourse;
     @Input()
     namecourse: string;
+    nameTeachercourse: string;
     flag = true;
     IsChange = false;
 
@@ -51,9 +55,11 @@ export class SingleCourseinBoardComponent {
         this.flag = true;
         this.CurrentCourse = null;
         this.namecourse = "";
+        this.nameTeachercourse = "";
     }
     SaveCourse(course: Course, selectCourses) {
-        this.namecourse = this.CurrentCourse.Instructor + "-" + this.CurrentCourse.Name;
+        this.namecourse = this.CurrentCourse.Name + "-";
+        this.nameTeachercourse = this.CurrentCourse.Instructor;
         this.flag = true;
     }
 

@@ -24,7 +24,7 @@ export class ReportComponent {
         return this.ListExistingCourseFromServer; 
     }   
     Print_Html(): void {
-        this.printHtmlService.printHtml(document.getElementById('print-section').innerHTML);
+        this.printHtmlService.printHtml(document.getElementById('printSection').innerHTML);
    }
    
 }

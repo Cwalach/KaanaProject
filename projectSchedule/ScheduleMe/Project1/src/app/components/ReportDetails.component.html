@@ -1,34 +1,28 @@
-﻿﻿<div>
+﻿
+<link href="../../../Content/bootstrap/css/ReportDetailsDesign.css" rel="stylesheet" />
+﻿<div>
     <div class="rec"></div>
     <h1 class="col-md-offset-1">דוחות</h1>
     <div class="rec"></div>
 </div>
 
-
-<!--<select>
-    <option *ngfor="let item in ReportDeatils;let i=index">{{GetCourseName(i)}}</option>
-</select>-->
-
- <!--(change)="onChangeGroup(selectCourses)"-->
-
-
-<button class="btn ToShow" (click)="Print_Html()">
-    הדפס
-    <span class="glyphicon glyphicon-print"></span>
-</button>
-
+<print_html [TextToPrint]="printSection"></print_html>
 
 <br />
 
-<div id="middle">
-   
-    <input class="middle" type="date" [(ngModel)]="dateStart" [value]="date1 | date:'yyyy-MM-dd'" (input)="date1=parseDate($event.target.value)" />
-    <input class="middle" type="date" [value]="date2 | date:'yyyy-MM-dd'" (input)="date2=parseDate($event.target.value)" />
-
+<div id="middle"> 
+    <div class="labels">
+        <label class="lbl">תאריך סיום</label><!--&nbsp;&nbsp;-->
+        <label class="lbl">תאריך התחלה</label>
+        <label class="lbl">שם קורס</label>
+    </div>
+    <input type="date" class="middle" id="date" [(ngModel)]="dateStart" [value]="date1 | date:'yyyy-MM-dd'" (input)="date1=parseDate($event.target.value)" />
+    <input type="date" class="middle" id="date" [value]="date2 | date:'yyyy-MM-dd'" (input)="date2=parseDate($event.target.value)" />
     <select class="middle" [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox($event)">
-        <option *ngFor="let item of CourseList">{{item.Name}}</option>
+        <option class="middle" *ngFor="let item of CourseList">{{item.Name}}</option>
     </select>
 </div>
+
 <br />
 
 <button class="btn ToShow" id="show" (click)="GetReport1(date2,date1,selectedCourse)"> 
@@ -37,24 +31,17 @@
 </button>
 
 
-<!--<select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox(selectedCourse)">
-    <option *ngFor="let item of CourseList">{{item.Name}}</option>
-</select>-->
-<!--<select (click)="courseService.GetAll()" itemscope="">
-    <option></option>
-</select>-->
 
 
 
-
-
-<div id="print-section">
-    <table>
-        <tr class="headerTableReport">
-            <td>מס' שעות בפועל</td>
-            <td>קבוצה</td>
-            <td>מורה</td>
-            <td>קורס</td>
+<div #printSection>
+    <table id="print">
+       
+            <tr class="headerTableReport">
+                <td><b>מס' שעות בפועל</b></td>
+        <td><b>קבוצה</b></td>
+        <td><b>מורה</b></td>
+        <td><b>קורס</b></td>
         </tr>
         <tr *ngFor="let item of ReportDeatilsList">
             <td>{{item.NumHours}}</td>
@@ -64,72 +51,6 @@
         </tr>
     </table>
 </div>
-<style>
-
-    .ToShow{
-    background-color: #ede969;
-    color: #266587;
-    height: 3vh;
-    width: 5vw;
-    font-weight: bold;
-    text-align: center;
-    margin: 1vw;
-    }
-
-
-    table {
-        border: solid;
-    }
-
-    td {
-        padding: 3px;
-        border-style: solid;
-        border-width: thin;
-        width: 14vw;
-        text-align: center;
-    }
-
-    .headerTableReport {
-        font-weight: bold;
-    }
-    .btn{
-        margin-right:15vw;
-    }
-
-    /*#show{
-        margin-top:3vw;
-    }*/
-
-    .middle{
-        height:2.5vw;
-        width:10vw;
-        margin-left:2vw;
-    }
-
-</style>
-
-<!--
 
 
 
-<style>
-    table{
-        border:solid;
-    }
-    td{
-    padding: 3px;
-    border-style: solid;
-    border-width: thin;
-    width: 14vw;
-    text-align: center;
-    }
-    .headerTableReport{
-        font-weight:bold;
-    }
-    .ToShow{
-        text-align:center;      
-       margin:1vw;
-    }
-</style>
-
--->
