@@ -1,6 +1,9 @@
 ﻿import { Component, Output, Input, Injectable, EventEmitter } from "@angular/core"
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 import { Http } from "@angular/http"
+import { Router } from "@angular/router"
+import { nonActiveDayService } from "../Services/nonActiveDayService"
+import { nonActiveDayStateManager } from "../Services/nonActiveDayStateManager"
 export interface ConfirmModel {
     title: string;
     message: string;
@@ -16,32 +19,32 @@ export class SaveOrCancelPopUp
 
     title: string;
     message: string;
-    
 
-    constructor(dialogService: DialogService) {
+
+    constructor(dialogService: DialogService, private router: Router,
+        private nonActiveDayService: nonActiveDayService,
+        private nonActiveDayStateManager: nonActiveDayStateManager) {
         super(dialogService);
     }
 
-    //public initModalProperties = (data) => {
-    //    if (data) {
-    //        this.course = data;
-    //        this.backup = this.course;
-    //    }
-    //}
-
-    //saveToServer(item: Course) {
-    //    if (item.Name != null || item.Instructor != null) {
-    //        this.courseService.saveCourseToServer(item).
-    //            subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
-    //    }
-    //    else {
-    //        this.title = "אין אפשרות לשמור";
-    //    }
-    //}
     @Output()
     onClose: EventEmitter<any> = new EventEmitter<any>();
 
     cancelChanges() {
         this.onClose.emit();
+        this.nonActiveDayStateManager.ClearNoActiveDay();
+    }
+
+    saveChanges() {
+        if (!this.nonActiveDayStateManager.IsStillChanges()) {
+            //DB שמירת הרשימות ב  
+            this.nonActiveDayService.saveActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInActiveDaysList()).
+                subscribe(data => { }, error => { console.log("error"); });
+            this.nonActiveDayService.saveNonActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInListAddNoActiveDay()).
+                subscribe(data => { }, error => { console.log("error"); });
+            //ריקון הרשימות
+            this.nonActiveDayStateManager.ClearNoActiveDay();
+            this.onClose.emit();
+        }
     }
 }

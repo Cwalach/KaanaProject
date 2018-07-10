@@ -41,12 +41,12 @@ export class CourseDetails
     saveToServer(item: Course) {
         if (item.Name != null || item.Instructor != null) {
             this.courseService.saveCourseToServer(item).
-                subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+                subscribe(data => { }, error => { console.log("error") });
+            this.courseService.listCourse = item;
         }
-        else {
-            this.title = "אין אפשרות לשמור";
-        }
+        this.onClose.emit();
     }
+
     @Output()
     onClose: EventEmitter<Course> = new EventEmitter<Course>();
 

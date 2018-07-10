@@ -25,7 +25,7 @@ export class ManegmentGroup {
     }
     GetGroups() {
         this.groupService.GetGroupFromServer().
-            subscribe(data => { this.groupsList = data; }, error => { alert("Error!") });
+            subscribe(data => { this.groupsList = data; }, error => { console.log("error"); });
     }
     newGroup() {
         const modalData = new ModalData();
@@ -48,10 +48,10 @@ export class ManegmentGroup {
         this.groupsList.splice(index, 1);
         //שמירה בשרת
         this.groupService.removeGroupFromServer(item).
-            subscribe(data => { alert("נמחק") }, error => { alert("לא נשמר") });
+            subscribe(data => { }, error => { console.log("error");});
     }
     saveToServer(item: Group) {
-        this.groupService.saveGroupToServer(item).subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר") });
+        this.groupService.saveGroupToServer(item).subscribe(data => { }, error => { console.log("error"); });
     }
     clickEvent(id: string) {
         if (id == 'btnCourse') {

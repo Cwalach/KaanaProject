@@ -42,13 +42,9 @@ export class GroupDetails
     saveToServer(item: Group) {
         if (item.Name != null) {
             this.groupService.saveGroupToServer(item).
-                subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+                subscribe(data => { }, error => { console.log('error'); });
         }
-        else {
-            this.title = "אין אפשרות לשמור";
-        }
-        this.groupService.saveGroupToServer(item).
-            subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+        this.onClose.emit();
     }
 
     @Output()

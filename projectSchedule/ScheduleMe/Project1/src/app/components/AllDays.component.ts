@@ -1,6 +1,5 @@
 ﻿import { Component, Output, Input, EventEmitter, ViewChild, AfterViewInit } from "@angular/core"
 import { DateRangeSelector } from "./dateRangeSelector.component"
-
 import { nonActiveDayService } from "../Services/nonActiveDayService"
 import { nonActiveDayStateManager } from "../Services/nonActiveDayStateManager"
 //import {CourseInSchedule }from "../components/courseInSchedule"
@@ -41,9 +40,9 @@ export class AllDays {
         if (this.nonActiveDayStateManager.IsStillChanges()) {
             //DB שמירת הרשימות ב  
             this.nonActiveDayService.saveActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInActiveDaysList()).
-                subscribe(data => { alert("seccued") }, error => { alert("error"); });
+                subscribe(data => { }, error => { console.log("error"); });
             this.nonActiveDayService.saveNonActiveDaysListToService(this.nonActiveDayStateManager.GetChangeInListAddNoActiveDay()).
-                subscribe(data => { alert("seccued") }, error => { alert("error"); });
+                subscribe(data => { }, error => { console.log("error"); });
             //ריקון הרשימות
             this.nonActiveDayStateManager.ClearNoActiveDay();
         }

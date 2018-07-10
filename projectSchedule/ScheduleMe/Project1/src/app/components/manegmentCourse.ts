@@ -1,4 +1,4 @@
-﻿import { Component, NgModule, Input, Output, EventEmitter } from "@angular/core"
+﻿import { Component, NgModule, Input, Output, EventEmitter,NgZone } from "@angular/core"
 import { CourseDetails } from "../components/course-details"
 import { Course } from "../models/course"
 import "rxjs/add/operator/map"
@@ -19,13 +19,15 @@ export class ManegmentCourse {
     btnDays: boolean = false;
 
     constructor(private courseService: ManegmentCoursesService,
-        private modalService: ModalService) {
+        private modalService: ModalService, private zone: NgZone) {
         this.GetCourse();
         this.btnCourse = true;
     }
     GetCourse() {
         this.courseService.GetCoursesFromServer().
-            subscribe(data => { this.courseList = data }, error => { alert("error!"); });
+            subscribe(data => {
+                this.zone.run(() => {  this.courseList = data  });
+            }, error => { console.log("error"); });
     }
     newCourse() {
         const modalData = new ModalData();
@@ -47,11 +49,11 @@ export class ManegmentCourse {
         var index = this.courseList.indexOf(item);
         this.courseList.splice(index, 1);
         //שמירה בשרת
-        this.courseService.removeCourseFromServer(item).subscribe(data => { alert("נמחק") }, error => { alert("שגיאה") });
+        this.courseService.removeCourseFromServer(item).subscribe(data => { }, error => { console.log("error"); });
     }
     saveToServer(item: Course) {
         this.courseService.saveCourseToServer(item).
-            subscribe(data => { alert("נשמר") }, error => { alert("לא נשמר:(") });
+            subscribe(data => { }, error => { console.log("error"); });
     }
     clickEvent(id: string) {
         if (id == 'btnCourse') {

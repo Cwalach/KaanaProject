@@ -5,6 +5,9 @@ import "rxjs/add/operator/map"
 import { Observable } from "rxjs/Observable"
 @Injectable()
 export class ManegmentCoursesService {
+
+    listCourse: Course;
+
     constructor(private http: Http) {
     }
     GetCoursesFromServer(): Observable<Course[]> {
