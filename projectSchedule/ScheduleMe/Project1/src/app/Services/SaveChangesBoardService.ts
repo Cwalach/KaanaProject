@@ -48,4 +48,4 @@ export class SaveChangesBoardService {
         return this.http.post("api/Schedule/Post", this.ExistingCoursesThatWasChangedList).map(res => { return true; });
 
     }
-    }
+}

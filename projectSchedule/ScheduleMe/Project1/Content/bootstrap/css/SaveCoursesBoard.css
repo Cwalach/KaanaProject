@@ -1,0 +1,50 @@
+﻿   /*.Border {
+        border: 2px solid #266587;
+    }*/
+    .container {
+        height:20vw;
+        width:18vw;
+    }
+    .labelPadding {
+        padding-right:1vw;
+    }
+    .btn {
+        height:2vw;
+        width:5vw;
+    }
+    img {
+        width:2vw;
+        height:1.5vw;
+    }
+    #btnSave {
+        position:relative;
+        right:6vw;
+    } 
+    h2, h3 {
+        text-align:center;
+    }
+    h2 {
+       
+       padding-bottom:1vw;
+    }
+    h3 {
+        padding-top:2vw;
+    }
+    .savePopUp button {
+        position:relative;
+        top:2vw;
+        right:2vw;
+        margin-left:45px;
+    }
+        input.ng-invalid {
+        border-left: 5px solid red;
+    }
+
+    input.ng-valid {
+        border-left: 5px solid green;
+    }
+    textarea {
+      resize: none;
+      grid-row:30;
+      grid-column:30;
+    }

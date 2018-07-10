@@ -1,0 +1,14 @@
+﻿   h3 {
+        text-align:center;
+    }
+    h3 {
+        padding-top:2.5vw;
+    }
+     /*.Border {
+       border: 1px solid #266587;
+       border-radius: 12px;
+    }*/
+    .container {
+        height:10vw;
+        width:18vw;
+    }

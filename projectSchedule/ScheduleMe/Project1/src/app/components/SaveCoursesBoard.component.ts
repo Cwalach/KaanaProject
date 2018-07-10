@@ -4,7 +4,6 @@ import { ScheduleBoardStateManager } from "../Services/ScheduleBoardStateManager
 import { SaveChangesBoardService } from "../Services/SaveChangesBoardService"
 import { ExistingCoursesService } from "../Services/ExistingCoursesService"
 import { MoveDateService } from "../Services/MoveDateService"
-//import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 import { Subscription } from 'rxjs/Subscription';
 import { SaveSucceed } from "../components/SaveSucceed.component"
 
@@ -18,7 +17,8 @@ export interface ConfirmModel {
 }
 @Component({
     templateUrl: "./src/app/components/SaveCoursesBoard.component.html",
-    selector: "SaveCoursesBoard"
+    selector: "SaveCoursesBoard",
+    styleUrls: ['../../../Content/bootstrap/css/SaveCoursesBoard.css'],
 })
 export class SaveCoursesBoard extends DialogComponent< ConfirmModel, boolean >
     implements ConfirmModel {
@@ -29,10 +29,6 @@ export class SaveCoursesBoard extends DialogComponent< ConfirmModel, boolean >
         private modalService: ModalService)
     {
         super(dialogService);
-        this.moveDateService.getUpdateNewUserHandler().subscribe(data => {
-            console.log('============');
-            this.thisWeekOnly = data;
-        });
     }
 
     public date;
@@ -43,15 +39,13 @@ export class SaveCoursesBoard extends DialogComponent< ConfirmModel, boolean >
     btnSave: boolean = false;
     btnSaveChange: boolean = false;
     btnEndSave: boolean = false;
-    isChecked: boolean;
+    isChecked: boolean=false;
     listExistingCourse: ExistingCourse[];
     comments: string;
     valid: boolean = true;
 
     title: string;
     message: string;
-    //@Output()
-    //onSavaChanges: EventEmitter<any> = new EventEmitter<any>();
     @Output()
     onClose: EventEmitter<any> = new EventEmitter<any>();
     SaveChanges() {
@@ -60,24 +54,15 @@ export class SaveCoursesBoard extends DialogComponent< ConfirmModel, boolean >
         
     }
     CancelProcess() {
+        this.CloseModal();
         this.btnSaveChange = false;
     }
     EndSave() {
-        this.onClose.emit();
-        //this.listExistingCourse = this.ScheduleBoardStateManager.GetAllExistingCourseThatWasChanged();
-       this.listExistingCourse = this.scheduleService.GetAllExistingCourseThatWasChanged();
-
-        this.existingCoursesService.save(this.listExistingCourse, this.dateToPost, this.comments).subscribe(data => { alert("Saved succsessed!!!") });
-
-        const modalData = new ModalData();
-        modalData.component = SaveSucceed;
-        modalData.modalHeight = 500;
-        modalData.modalWidth = 345;
-        this.modalService.openModal(modalData);
-        this.btnSaveChange = false;
-        this.btnEndSave = true;
-        this.listExistingCourse = this.ScheduleBoardStateManager.GetAllExistingCourseThatWasChanged();
-        this.existingCoursesService.save(this.listExistingCourse, this.dateToPost, this.comments).subscribe(data => { alert("Saved succsessed!!!") });
+        this.CloseModal();
+        this.listExistingCourse = this.scheduleService.GetAllExistingCourseThatWasChanged();
+        this.existingCoursesService.save(this.listExistingCourse, this.dateToPost, this.comments).subscribe(data => {
+            this.OpenModalSaveSucceed();
+        });
     }
     parseDate(dateString: string): Date {
         if (dateString) {
@@ -92,14 +77,27 @@ export class SaveCoursesBoard extends DialogComponent< ConfirmModel, boolean >
         this.isChecked= true;
     }
    
-    ThisWeekUntil() {
-        //this.moveDateService.getUpdateNewUserHandler().subscribe((data: Date) => {
-        //    console.log('-----data-----', data);
-        //    this.thisWeekOnly = data
-        //});
-        //this.moveDateService.getUpdateNewUserHandler().subscribe(data => { this.thisWeekOnly = data; });
-        //this.moveDateService.getUpdateNewUserHandler().subscribe(data => { this.thisWeekOnly = data; });
-        //this.moveDateService.setUpdateNewUserHandler(new Date());
+    ThisWeekOnly() {
+        this.isChecked = false;
         this.dateToPost = this.thisWeekOnly;// new Date("12-12-18");
+    }
+
+    public initModalProperties = (data) => {
+        if (data) {
+            this.thisWeekOnly = data;
+        }
+    }
+    CloseModal() {
+        this.onClose.emit();
+    }
+    OpenModalSaveSucceed()
+    {
+        const modalData = new ModalData();
+        modalData.component = SaveSucceed;
+        modalData.modalHeight = 600;
+        modalData.modalWidth = 345;
+        this.modalService.openModal(modalData);
+        this.btnSaveChange = false;
+        this.btnEndSave = true;
     }
 }

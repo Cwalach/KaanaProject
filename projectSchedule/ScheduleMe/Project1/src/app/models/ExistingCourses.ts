@@ -10,8 +10,8 @@ export class ExistingCourse {
     public Course: Course;
     public Group: Group;
     public Comments: string;
-    constructor(id, date, course, group) {
-        this.Id = id;
+    constructor(orderNumber, date, course, group) {
+        this.OrderNumber = orderNumber;
         this.Date = date;
         this.Course = course;
         this.Group = group;

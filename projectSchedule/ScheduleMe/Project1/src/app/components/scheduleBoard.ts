@@ -7,7 +7,7 @@ import { Course } from "../models/Course"
 import { Group } from "../models/Group"
 import { DateRangeSelector } from "../components/dateRangeSelector.component"
 import { UpdateScheduleBoard } from "../Services/UpdateScheduleBoard"
-import { SingleCourseinBoardComponent} from "../components/SingleCourseinBoard.component"
+import { SingleCourseinBoardComponent } from "../components/SingleCourseinBoard.component"
 import { SaveCoursesBoard } from "../components/SaveCoursesBoard.component"
 import { DialogOptions, DialogService, DialogComponent } from "ng2-bootstrap-modal";
 import { ModalData } from './modal/models/modal-data'
@@ -34,7 +34,10 @@ implements ConfirmModel{
         dialogService: DialogService) {
         super(dialogService);
         this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
-        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => { this.GroupList = data }, error => { });
+        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
+            this.GroupList = data
+            this.SelectedGroup = this.GroupList[0];
+        }, error => { });
         this.dayInWeek = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי"];
         this.date = new Date();
         this.ChangeDate = this.date;
@@ -151,7 +154,7 @@ implements ConfirmModel{
         modalData.component = SaveCoursesBoard;
         modalData.modalHeight = 1000;
         modalData.modalWidth = 345;
+        modalData.options = this.dateTimeCurrentlyFromComponent.rightDay;
         this.modalService.openModal(modalData);
-        
     }
 }
