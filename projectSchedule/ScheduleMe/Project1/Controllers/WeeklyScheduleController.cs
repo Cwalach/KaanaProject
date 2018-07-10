@@ -9,6 +9,7 @@ using Schedule_Model;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Linq.Expressions;
 
 namespace ScheduleMe.Controllers
 {
@@ -20,6 +21,7 @@ namespace ScheduleMe.Controllers
         ExistingCourseService ECservice = new ExistingCourseService();
         GroupService Gservice = new GroupService();
         ICollection<ExistingCourses> ECourseslist;
+        IQueryable<ExistingCourses> ECourseslistForWeek;
         ICollection<Course> Courseslist;
         ICollection<Group> listGroups;
         [Route("api/WeeklySchedule/GetExistingCourses")]
@@ -29,24 +31,33 @@ namespace ScheduleMe.Controllers
             ECourseslist = ECservice.GetAll();
             return ECourseslist;
         }
-        [Route("api/WeeklySchedule/GetExistingCoursesForWeek/{snudayOfWeek}/{selectedGroup}")]
+
+        [HttpGet]
+        [Route("api/WeeklySchedule/GetExistingCoursesForWeek/{snudayOfWeek}/{selectedGroupId}")]
         //האם חייב להחזיר משהו מסוג
         //ICollection?????
-        public List<List<ExistingCourses>> GetExistingCoursesForWeek(DateTime snudayOfWeek,Group selectedGroup)
+        //public List<ExistingCourses>[] GetExistingCoursesForWeek(string snudayOfWeek, int selectedGroupId)
+        public ExistingCourses[][] GetExistingCoursesForWeek(string snudayOfWeek, int selectedGroupId)
         {
-            //סנכרון עם הפרוצדורה שרחלי כתבה - שליפה מהדטה בייס לפי תנאי
-            //Expression<Func<ExistingCourses, bool>> 
-         
-              
+            DateTime date = DateTime.Parse(snudayOfWeek);
+            DateTime d =new DateTime();
+            d = date;
+            d=d.AddDays(5);
+            List<Expression<Func<ExistingCourses, bool>>> queryList = new List<Expression<Func<ExistingCourses, bool>>>();
+            Expression<Func<ExistingCourses, bool>> query = e => e.Group.Id == selectedGroupId && (e.Date >= date && e.Date <= d);
+            ECourseslistForWeek = ECservice.GetByQuery(query);
+            //List<ExistingCourses>[] arr = new List<ExistingCourses>[6];
+            ExistingCourses[][] arr = new ExistingCourses[][] 
+            {new ExistingCourses[17],new ExistingCourses[17], new ExistingCourses[17], new ExistingCourses[17], new ExistingCourses[17] ,new ExistingCourses[17]};
 
-            ECourseslist = ECservice.GetAll();
-            //ECourseslist = GetExistingCourses();
-            List<List<ExistingCourses>> arr=new List<List<ExistingCourses>>();
-            DateTime d = new DateTime();
-            foreach (var course in ECourseslist)
+
+
+            foreach (var course in ECourseslistForWeek)
             {
-                if (course.Group == selectedGroup && (course.Date >= snudayOfWeek && course.Date <= snudayOfWeek))
-                    arr[(course.Date.Value.Day) - 1].Add(course);
+                int day = (int)(course.Date.Value.DayOfWeek);
+                if(arr[day]==null)
+                    arr[day] = new ExistingCourses[17];
+                arr[day][int.Parse(course.OrderNumber.ToString())]=course;
             }
             return arr;
         }
@@ -64,6 +75,7 @@ namespace ScheduleMe.Controllers
             listGroups = Gservice.GetAll();
             return listGroups;
         }
+
         [Route("api/WeeklySchedule/AllGroups")]
         [HttpGet]
         public List<Group> AllGroups()

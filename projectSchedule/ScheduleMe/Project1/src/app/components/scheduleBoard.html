@@ -14,12 +14,13 @@
     <div style="margin-right: 20vw;margin-top:3vh">
         <span id="spnGroupName">שם קבוצה</span>
         <!--<select id="selectGroup" [(ngModel)]="selectedGroup" [SelectedGroup]="selectedGroup" (change)="SelectGroup(selectedGroup)"/>-->
-            <select id="selectGroup" (change)="SelectGroup(selectedGroup)">
+            <select id="selectGroup" [(ngModel)] ="SelectedGroup" (change)="SelectGroup()"> <!--(ngModelChange)="SelectGroup($event.target)" -->
                 <!--[SelectedGroup]="selectedGroup"-->
-                <option *ngFor="let g of GroupList; let i =index" value="{{g.Id}}">{{g.Instructor}} {{g.Name}}</option>
+                <option *ngFor="let g of GroupList; let i =index" [ngValue]="g">{{g.Name}}</option>
             </select>
-            <DateRangeSelector></DateRangeSelector>
+            <DateRangeSelector (eventHandler)="updateWeeklyData()"></DateRangeSelector>
             <br />
+        <!--(eventHandler)="updateWeeklyData($event)"-->
 </div>
     <div id="div-buttons" >
         <button (click)="ClickEvent('btnEdit')"  [ngClass]="!isbtn1clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">עריכה כללית</button>
@@ -30,10 +31,14 @@
         <tr id="tr-Day">
             <td *ngFor="let item of dayInWeek; let m=index"><span class="dayOfMonth">{{getday(m)}}-</span>{{item}}&nbsp;&nbsp;&nbsp;</td>
         </tr>
-        <tr dir="ltr" *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-            <td *ngFor="let x of dayInWeek; let k=index">
-                <!--<span>{{table[k][indexs].Course.Name}}</span>-->
-                <SingleCourseinBoard_Component [CurrentDayInWeek]="k" [namecourse]="hghg" [CurrentComponentOrder]="indexs" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup"></SingleCourseinBoard_Component>
+        <tr  dir="ltr" *ngFor="let lessonNum of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
+            <td *ngFor="let day of dayInWeek; let i=index" >
+                <!--*ngIf="table[k][indexs]"-->
+                <!--<span *ngIf="table[k][indexs] !==null">{{table[k][indexs].Course.Name}}</span>-->
+                <div *ngIf="CourseList">
+                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
+                </div>
+
             </td>
         </tr>     
     </table>

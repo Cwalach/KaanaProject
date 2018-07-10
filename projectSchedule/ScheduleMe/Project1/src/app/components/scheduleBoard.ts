@@ -6,7 +6,9 @@ import { Course } from "../models/Course"
 import { Group } from "../models/Group"
 import { DateRangeSelector } from "../components/dateRangeSelector.component"
 import { UpdateScheduleBoard } from "../Services/UpdateScheduleBoard"
-import { SingleCourseinBoardComponent} from "../components/SingleCourseinBoard.component"
+import { SingleCourseinBoardComponent } from "../components/SingleCourseinBoard.component"
+import { SaveChangesBoardService } from "../Services/SaveChangesBoardService"
+import { ParseDate } from '../Services/parseDateService';
 
 @Component({
     templateUrl: "./src/app/components/scheduleBoard.html",
@@ -24,15 +26,21 @@ export class ScheduleBoard {
     SelectedGroup: Group;
 
     ChangeDate: Date;
-    ChangeGroup: Group;
     isbtn1clicked: boolean;
     isbtn2clicked: boolean;
     isbtn3clicked: boolean;
+    ExampleCourse: ExistingCourse;
+    CourseList: Course[];
     //CurrentExistingCourse: ExistingCourse;
 
-    constructor(private weeklyScheduleService: WeeklyScheduleService, private updateScheduleBoard: UpdateScheduleBoard) {
+    constructor(private weeklyScheduleService: WeeklyScheduleService, private updateScheduleBoard: UpdateScheduleBoard, private scheduleService: SaveChangesBoardService, private parseDate: ParseDate) {
         this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
-        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => { this.GroupList = data }, error => { });
+        this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data });
+        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
+            this.GroupList = data;
+            this.SelectedGroup = this.GroupList[0];
+            this.ChangeTable();
+        }, error => { });
         this.dayInWeek = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי"];
         this.date = new Date();
         this.ChangeDate = this.date;
@@ -40,8 +48,10 @@ export class ScheduleBoard {
         this.isbtn1clicked = false;
         this.isbtn2clicked = false;
         this.isbtn3clicked = false;
-        this.ChangeGroup;//= this.GroupList[0];
-        this.ChangeTable();
+        this.table = new Array< ExistingCourse[]>();
+        
+        this.ExampleCourse = new ExistingCourse(1, this.DateTimeCurrently, new Course(2, 'aaa', 'java'), new Group(1, 'year2'));
+        //this.ChangeTable();
     }
 
     @ViewChildren(SingleCourseinBoardComponent)
@@ -55,24 +65,22 @@ export class ScheduleBoard {
         this.DateTimeCurrently = this.dateTimeCurrentlyFromComponent.leftDay;
     }
 
-    getday(i: number): number {
+    getday(i: number): string {
         this.d.setTime(this.dateTimeCurrentlyFromComponent.leftDay.getTime() + (i * (1000 * 60 * 60 * 24)));
-        return this.d.getDate();
+        return this.parseDate.getHebrowNameByGreb( this.d);
     }
     
     GeneralEditing(): any {
         this.listsForEdit.forEach(x => x.EditCourse());
     }
 
-    ngOnInit() {
-        //this.ChangeGroup= this.GroupList[0];
-        this.updateScheduleBoard.getNewDate().subscribe(date => { this.ChangeDate = date; });
-        this.updateScheduleBoard.getSelectedGroup().subscribe(group => { this.ChangeGroup = group; });
+    SelectGroup() {
+        alert(this.SelectedGroup.Name);
+        this.ChangeTable();
     }
 
-    SelectGroup(group: Group) {
-        this.SelectedGroup = group;
-        this.updateScheduleBoard.ChangeGroup(group);
+    updateWeeklyData() {
+        this.ChangeTable();
     }
 
     ClickEvent(btnId: string): any {
@@ -95,23 +103,8 @@ export class ScheduleBoard {
     }
 
     ChangeTable(): any {
-        this.weeklyScheduleService.GetAllExistingCoursesForWeekFromServer(this.DateTimeCurrently, this.ChangeGroup).subscribe(courses => { this.table = courses; });
+        this.weeklyScheduleService.GetAllExistingCoursesForWeekFromServer(this.dateTimeCurrentlyFromComponent.leftDay, this.SelectedGroup).subscribe(courses => {
+            this.table = courses;
+        });
     }
-
-    //ChangeTable(selectedGroup: Group): any {
-    //    //this.SelectedGroup = selectedGroup;
-    //    //שינוי-עדכון הטבלה בעת בחירת קבוצה
-    //    //html-איך אני עוברת על הטבלה - איך תופסים אלמנט מה
-    //}
-
-    // //להוסיף
-    // //, day: number
-    // //לבדוק מה הבעיה עם התאריך
-    // getExistingCourseName(lesson: number): string {
-    //     //לעשות בדיקת תקינות שישנו כזה קורס
-    //     this.CurrentExistingCourse = this.ExistingCourses.find(c => c.GroupId == this.ChangeGroup.Id /*&& c.Date.getDay() == day*/ && c.OrderNumber == lesson);
-    //     if (this.CurrentExistingCourse != undefined)
-    //         return this.CurrentExistingCourse.Course.Name;
-    //     return "Undefined";
-    // }
 }

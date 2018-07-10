@@ -24,104 +24,60 @@ namespace ScheduleMe.Controllers
             new ReportDetails() {Id=3,SrartDate=new DateTime(2018,06,22),EndDate=new DateTime(2018,06,22), Name = "java", Teacher = "תמר",Group="שנה א", NumHours=10}
 
     };
-        //internal static List<ReportDetailsCs> ReportDetailsList
-        //{
-        //    get
-        //    {
-        //        return reportDetailsList;
-        //    }
 
-        //    set
-        //    {
-        //        reportDetailsList = value;
-        //    }
-        //}
-
-        public ReportController()
-        {
-            //courseService = new CourseService();
-        }
-
-        //[HttpGet]
-        ////decimal id,DateTime startDate,DateTime endDate
-        //[Route("api/Report/GetReportDetails/{startDateString}/{endDateString}")]
-        //public ICollection<ReportDetails> GetReportDetails(string endDateString, string startDateString )//show
-        //{
-        // //שתי התאריכים מגיעים אותו דבר  
-        //    DateTime startDate =  DateTime.Parse(startDateString);
-        //    DateTime endDate = DateTime.Parse(endDateString);
-        //    //foreach (var item in reportDetailsList)
-        //    //{
-        //    //    if (reportDetailsList[1].SrartDate == startDate && reportDetailsList[2].EndDate == endDate)
-        //    //        return reportDetailsList;//.Where(c => c.SrartDate == date1 && c.EndDate==date2).ToList();
-        //    //}
-        //    //return null;
-        //    return reportDetailsList.Where(c => c.SrartDate== startDate && c.EndDate==endDate).ToList();
-        //}
         [HttpGet]
-        //decimal id,DateTime startDate,DateTime endDate
         [Route("api/Report/GetReportDetails/{startDateString}/{endDateString}/{courseName}")]
         public ICollection<ReportDetails> GetReportDetails(string startDateString, string endDateString, string courseName)//show
         {
-            //שתי התאריכים מגיעים אותו דבר-מטופל  
             DateTime startDate = DateTime.Parse(startDateString);
             DateTime endDate = DateTime.Parse(endDateString);
-            //foreach (var item in reportDetailsList)
-            //{
-            //    if (reportDetailsList[1].SrartDate == startDate && reportDetailsList[2].EndDate == endDate)
-            //        return reportDetailsList;//.Where(c => c.SrartDate == date1 && c.EndDate==date2).ToList();
-            //}
-            //return null;
-            return reportDetailsList.Where(c => c.SrartDate == startDate && c.EndDate == endDate&& c.Name== courseName).ToList();
 
+            try
+            {
+                using (ScheduleDB db = new ScheduleDB())
+                {
+                    var name = new SqlParameter
+                    {
+                        ParameterName = "@CourseName",
+                        Value = courseName
+                    };
+                    var start = new SqlParameter
+                    {
+                        ParameterName = "@StartDate",
+                        Value = startDate
+                    };
+                    var end = new SqlParameter
+                    {
+                        ParameterName = "@EndDate",
+                        Value = endDate
+                    };
+
+
+                    ICollection<ReportDetails> dataList = db.Database.SqlQuery<ReportDetails>("exec ReportResponse @CourseName, @StartDate, @EndDate ", name, start, end).ToList<ReportDetails>();
+                    return dataList.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+            return null;
         }
-
 
         [Route("api/Report/GetCourses")]
         [HttpGet]
-        //DateTime startDate,DateTime endDate,string name
         public ICollection<Course> GetCourses()//to the comboBox
         {
             List<Course> ac = new List<Course>();
-            ac = courseService.GetAll().ToList();//.Where(e=>e.Id==id).ToList();
+            ac = courseService.GetAll().ToList();
             return ac.ToList();
         }
 
         public ICollection<Group> GetGroups()//to the comboBox
         {
             List<Group> gr = new List<Group>();
-            gr = groupService.GetAll().ToList();//.Where(e=>e.Id==id).ToList();
+            gr = groupService.GetAll().ToList();
             return gr.ToList();
-        }
-
-
-
-
-
-        public ReportDetails getReportDeatilsFromServer(DateTime startDate, DateTime endDate, string courseName)
-        {
-            ReportDetails rs = new ReportDetails();
-            //DateTime startDate = DateTime.Parse(startDate);
-            int result = 0;
-            using (var ctx = new ScheduleDB())
-            {
-                SqlParameter name, sDate, eDate;
-               // foreach (ReportDetails item in ExistingCoursesToSave)
-               //{
-                    sDate = new SqlParameter("@Date", rs.SrartDate);
-                    eDate = new SqlParameter("@Date", rs.EndDate);
-                    name = new SqlParameter("@Name",rs.Name);
-
-                    result = ctx.Database.ExecuteSqlCommand("ReportResponse, @CourseName nvarchar(50), @StartDate smalldatetime, @EndDate smalldatetime",courseName, startDate, endDate);
-               // }
-                //int h = 0; 
-                //SqlParameter courseName= new SqlParameter("@courseName", "cobol");
-                //SqlParameter coursId = new SqlParameter("@coursId", 1);
-
-                //result = ctx.Database.ExecuteSqlCommand("SaveTry @courseName,@coursId", courseName,coursId);
-
-            }
-            return rs;
         }
     }
 }

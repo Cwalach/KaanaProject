@@ -3,7 +3,7 @@
         <div class="div_commands">
             <button id="btnRemove" class="btn_commands glyphicon glyphicon-trash" (click)="RemoveCourse(item)"></button>
             <button [disabled]="IsChange==false" id="btnSave" class="btn_commands glyphicon glyphicon-cloud-upload"
-                    (click)="SaveCourse(item,selectCourses)"></button>
+                    (click)="SaveCourse(item,selectCourses)" routerLink="/SaveCoursesBoard"></button>
             <button id="btnEdit" class="btn_commands glyphicon glyphicon-pencil" (click)="EditCourse()"></button>
         </div>
         <div class="div_commands">
@@ -16,6 +16,7 @@
             </div>
         </div>
 </div>
+<router-outlet></router-outlet>
 <style>
     .DetailsCourse {
         font-size:medium;

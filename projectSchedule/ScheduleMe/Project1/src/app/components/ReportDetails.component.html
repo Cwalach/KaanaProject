@@ -1,5 +1,8 @@
-﻿<h1>דוחות</h1>
-
+﻿﻿<div>
+    <div class="rec"></div>
+    <h1 class="col-md-offset-1">דוחות</h1>
+    <div class="rec"></div>
+</div>
 
 
 <!--<select>
@@ -9,23 +12,31 @@
  <!--(change)="onChangeGroup(selectCourses)"-->
 
 
-<button class="btn btn-default ToShow" (click)="Print_Html()">
+<button class="btn ToShow" (click)="Print_Html()">
     הדפס
     <span class="glyphicon glyphicon-print"></span>
 </button>
 
-<input type="date"  [(ngModel)]="dateStart" [value]="date1 | date:'yyyy-MM-dd'" (input)="date1=parseDate($event.target.value)" />
-<input type="date"  [value]="date2 | date:'yyyy-MM-dd'" (input)="date2=parseDate($event.target.value)"/>
 
+<br />
 
-<button class="btn btn-default ToShow" (click)="GetReport1(date2,date1)"> 
+<div id="middle">
+   
+    <input class="middle" type="date" [(ngModel)]="dateStart" [value]="date1 | date:'yyyy-MM-dd'" (input)="date1=parseDate($event.target.value)" />
+    <input class="middle" type="date" [value]="date2 | date:'yyyy-MM-dd'" (input)="date2=parseDate($event.target.value)" />
+
+    <select class="middle" [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox($event)">
+        <option *ngFor="let item of CourseList">{{item.Name}}</option>
+    </select>
+</div>
+<br />
+
+<button class="btn ToShow" id="show" (click)="GetReport1(date2,date1,selectedCourse)"> 
     הצג
     <span class="glyphicon glyphicon-search"></span>
 </button>
 
-<select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox($event)">
-    <option *ngFor="let item of CourseList">{{item.Name}}</option>
-</select>
+
 <!--<select [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox(selectedCourse)">
     <option *ngFor="let item of CourseList">{{item.Name}}</option>
 </select>-->
@@ -54,6 +65,18 @@
     </table>
 </div>
 <style>
+
+    .ToShow{
+    background-color: #ede969;
+    color: #266587;
+    height: 3vh;
+    width: 5vw;
+    font-weight: bold;
+    text-align: center;
+    margin: 1vw;
+    }
+
+
     table {
         border: solid;
     }
@@ -69,11 +92,20 @@
     .headerTableReport {
         font-weight: bold;
     }
-
-    .ToShow {
-        text-align: center;
-        margin: 1vw;
+    .btn{
+        margin-right:15vw;
     }
+
+    /*#show{
+        margin-top:3vw;
+    }*/
+
+    .middle{
+        height:2.5vw;
+        width:10vw;
+        margin-left:2vw;
+    }
+
 </style>
 
 <!--

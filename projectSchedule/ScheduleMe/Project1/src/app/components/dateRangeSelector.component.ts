@@ -1,10 +1,12 @@
-﻿import { Component } from "@angular/core"
+﻿import { Component, Output, EventEmitter } from "@angular/core"
 import { UpdateScheduleBoard } from "../Services/UpdateScheduleBoard"
 @Component({
     templateUrl: "./src/app/components/DateRangeSelector.component.html",
     selector: "DateRangeSelector"
 })
 export class DateRangeSelector {
+
+    @Output() public eventHandler: EventEmitter<any> = new EventEmitter();
     currentDate: Date;
     date: Date;
     day: number;
@@ -49,14 +51,18 @@ export class DateRangeSelector {
         this.UpdateDecreaseDate();
         this.UpdateVariables();
         this.day = this.leftDay.getDay();
-        this.updateScheduleBoard.ChangeDate(this.date);
+        if (this.eventHandler) {
+            this.eventHandler.emit(this.leftDay);
+        }
     }
 
     IncreaseDate(): any {
         this.UpdateIncreaseDate();
         this.UpdateVariables();
         this.day = this.leftDay.getDay();
-        this.updateScheduleBoard.ChangeDate(this.date);
+        if (this.eventHandler) {
+            this.eventHandler.emit(this.leftDay);
+        }
     }
 
     UpdateVariables(): any {
@@ -64,15 +70,5 @@ export class DateRangeSelector {
         this.saturday = this.rightDay.getDate();
         this.currentMonth = this.rightDay.getMonth() + 1;
     }
-
-    //GetLeftDay(): number {
-    //    this.leftDay.setDate(this.currentDate.getDate() - ((this.currentDate.getDay()+1) - 1));
-    //    return this.leftDay.getDate();
-    //}
-
-    //GetRightDay(): number {
-    //    this.rightDay.setDate(this.currentDate.getDate() + (7 - (this.currentDate.getDay()+1)));
-    //    return this.rightDay.getDate();
-    //}
 }
 

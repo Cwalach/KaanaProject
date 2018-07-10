@@ -1,0 +1,52 @@
+﻿<div id="div_titel">
+    <div class="rec"></div>
+    <h1 class="h1_titel">מערכת לניהול קורסים</h1>
+    <div class="rec"></div>
+</div>
+<div id="div_btn " class="w3-show-inline-block">
+    <button class="btn_commands">
+        <img [ngClass]="!statusbtn1 ? 'src_default':'src_default2'" />
+        <span>מערכת קבוצות</span>
+    </button>
+
+    <button class="btn_commands">
+        <img src="../../../Content/Images/image_03.png" />
+        <span> ניהול</span>
+    </button>
+
+    <button class="btn_commands">
+        <img src="../../../Content/Images/image_05.png" />
+        <span>דוחות</span>
+    </button>
+</div>
+<router-outlet></router-outlet>
+<style>
+    /*(click)="clickEvent('schduleGroups')"  [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'"*/
+    .h1_titel {
+        font-family: inherit;
+        color: #266587;
+        display: inline-block;
+        margin: 0.6vw;
+        margin-right: 7vw;
+        margin-left: 7vw;
+    }
+
+    #div_titel {
+        margin-bottom: 300px;
+        margin-top: 100px;
+        margin-left: 55px;
+    }
+
+    #div_btn {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 400px;
+    }
+
+    .btn_commands {
+        height: 12vw;
+        width: 12vw;
+        background-color: #266587;
+    }
+</style>
