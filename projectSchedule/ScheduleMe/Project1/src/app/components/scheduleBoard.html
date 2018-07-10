@@ -14,9 +14,8 @@
     <div style="margin-right: 20vw;margin-top:3vh">
         <span id="spnGroupName">שם קבוצה</span>
         <!--<select id="selectGroup" [(ngModel)]="selectedGroup" [SelectedGroup]="selectedGroup" (change)="SelectGroup(selectedGroup)"/>-->
-            <select id="selectGroup" (change)="SelectGroup(selectedGroup)">
-                <!--[SelectedGroup]="selectedGroup"-->
-                <option *ngFor="let g of GroupList; let i =index" value="{{g.Id}}">{{g.Instructor}} {{g.Name}}</option>
+            <select #selectGroup  (change)="SelectGroup(selectGroup.value)"> <!--[(ngModel)]="selectedGroup"-->
+                <option *ngFor="let group of GroupList" [value]="group.Id">{{group.Name}}</option>
             </select>
             <DateRangeSelector></DateRangeSelector>
             <br />
@@ -33,7 +32,7 @@
         <tr dir="ltr" *ngFor="let indexs of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
             <td *ngFor="let x of dayInWeek; let k=index">
                 <!--<span>{{table[k][indexs].Course.Name}}</span>-->
-                <SingleCourseinBoard_Component [CurrentDayInWeek]="k" [namecourse]="hghg" [CurrentComponentOrder]="indexs" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup"></SingleCourseinBoard_Component>
+                <SingleCourseinBoard_Component [CurrentDayInWeek]="k"  [CurrentComponentOrder]="indexs" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup"></SingleCourseinBoard_Component>
             </td>
         </tr>     
     </table>

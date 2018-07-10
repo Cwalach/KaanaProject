@@ -31,8 +31,12 @@ export class ScheduleBoard {
     //CurrentExistingCourse: ExistingCourse;
 
     constructor(private weeklyScheduleService: WeeklyScheduleService, private updateScheduleBoard: UpdateScheduleBoard) {
-        this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
-        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => { this.GroupList = data }, error => { });
+        this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(
+            data => { this.ExistingCourses = data }, error => { alert("error!"); });
+        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
+            this.GroupList = data
+            this.SelectedGroup = this.GroupList[0]
+        }, error => { });
         this.dayInWeek = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי"];
         this.date = new Date();
         this.ChangeDate = this.date;
@@ -40,7 +44,7 @@ export class ScheduleBoard {
         this.isbtn1clicked = false;
         this.isbtn2clicked = false;
         this.isbtn3clicked = false;
-        this.ChangeGroup;//= this.GroupList[0];
+        this.ChangeGroup;
         this.ChangeTable();
     }
 
@@ -65,13 +69,12 @@ export class ScheduleBoard {
     }
 
     ngOnInit() {
-        //this.ChangeGroup= this.GroupList[0];
         this.updateScheduleBoard.getNewDate().subscribe(date => { this.ChangeDate = date; });
         this.updateScheduleBoard.getSelectedGroup().subscribe(group => { this.ChangeGroup = group; });
     }
 
-    SelectGroup(group: Group) {
-        this.SelectedGroup = group;
+    SelectGroup(group) {
+        this.SelectedGroup = this.GroupList.find(g => g.Id == group);
         this.updateScheduleBoard.ChangeGroup(group);
     }
 
