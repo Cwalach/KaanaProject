@@ -17,7 +17,8 @@ export class DayInSchedule {
     currentDate: Date;
     @Input()
     allStatus: Array<boolean> = new Array<boolean>(17);
-    
+    @Input()
+    nonActiveId: number;
   
     @ViewChildren(vacation)
     private myVacation: vacation[];

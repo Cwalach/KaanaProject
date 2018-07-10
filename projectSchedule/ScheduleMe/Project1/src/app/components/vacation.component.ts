@@ -6,7 +6,10 @@ import { NoActiveDay } from "../models/NoActiveDay"
     selector: "vacation"
 })
 export class vacation {
-   
+
+    @Input()
+    currentId: number;
+
     @Input()
     status: boolean;
     active: NoActiveDay;
@@ -29,10 +32,11 @@ export class vacation {
         this.status = !this.status;
         this.active.OrderNumber = this.currentHour;
         this.active.Date = this.date;
+        this.active.Id = this.currentId;
 
         alert(this.active.Date+"");
     //    changed to active
-        if (status)
+        if (this.status)
             this.nonActiveStateManager.CencelNoActiveDay(this.active);
        
         // change to no active

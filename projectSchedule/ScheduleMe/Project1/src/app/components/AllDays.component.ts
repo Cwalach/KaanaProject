@@ -23,56 +23,60 @@ export class AllDays {
     //    status: boolean;
     //}
 
-    allStatusDays: Array<{ day: Date, status: boolean[] }> = Array({ 'day': new Date(), 'status': new Array<boolean>() });
+    allStatusDays: Array<{ day: Date, status: boolean[], indexs: number[] }> = Array({ 'day': new Date(), 'status': new Array<boolean>(), 'indexs': new Array<number>() });
 
     dayInWeek: string[] = ["ראשון", "שני", "שלישי ", "רביעי", "חמישי ", "שישי"];
 
     constructor(private service: nonActiveDayService, private manager: nonActiveDayStateManager) {
-        this.allNonActiveDays = new Array<NoActiveDay>();
-        service.getAllNoActiveDayFromService().subscribe(d => { this.allNonActiveDays = (d as Array<NoActiveDay>) });
+        this.allNonActiveDays = new Array<NoActiveDay>();       
+        //service.getAllNoActiveDayFromService().subscribe(d => { this.allNonActiveDays = (d as Array<NoActiveDay>) });
         this.DateTimeCurrently = new Date();
         this.nonActive = new Array<NoActiveDay>();
         // this.allStatusDays = new Array<{ day: Date, status: boolean }>(7);
         //      this.allStatusDays.forEach((d) => { d.day = new Date(); d.status = true; }); 
         for (var _i = 0; _i < 7; _i++) {
-            this.allStatusDays.push({ 'day': new Date(), 'status': new Array<boolean>(17) });
+            this.allStatusDays.push({ 'day': new Date(), 'status': new Array<boolean>(17), 'indexs': new Array<number>(17) });
         }
+    }
 
-
-
-
+    ngOnInit() {
+        this.service.getNoActiveDayByWeekDateFromService(this.dateTimeCurrentlyFromComponent.leftDay).subscribe(d => {
+            this.DateTimeCurrently = this.dateTimeCurrentlyFromComponent.date;
+            this.allNonActiveDays = (d as Array<NoActiveDay>)
+            for (var i = 0; i < 7; i++) {
+                this.updateStatus(i);
+            }
+        });    
     }
 
     @ViewChild(DateRangeSelector)
     private dateTimeCurrentlyFromComponent: DateRangeSelector;
 
-    @ViewChildren(vacation)
-    private listvacation: vacation[];
+    @ViewChildren(DayInSchedule)
+    private listvacation: DayInSchedule[];
 
     DateTimeCurrently: Date;
     ChangeAll() {
         this.isVacation = !this.isVacation;
     }
     day: NoActiveDay;
-    ngAfterViewInit() {
-        this.service.getAllNoActiveDayFromService().subscribe(d => {
-            this.allNonActiveDays = (d as Array<NoActiveDay>)
-
-            setTimeout(this.DateTimeCurrently = this.dateTimeCurrentlyFromComponent.currentDate, 0);
-            for (var i = 0; i < 7; i++) {
-            }
-            this.updateStatus(i);
-            })
-        //this.allNonActiveDays = new Array<NoActiveDay>();
-        //this.day = new NoActiveDay(new Date(this.allStatusDays[i].day.toString()), 1, "המורה חולה");
-        //this.allNonActiveDays.push(this.day);
-        //this.service.getAllNoActiveDayFromService().subscribe(d => { this.allNonActiveDays = (d as Array<NoActiveDay>) });
-      
-    }
+    //ngAfterViewInit() {
+    //    this.service.getNoActiveDayByWeekDateFromService(this.dateTimeCurrentlyFromComponent.leftDay).subscribe(d => {
+    //        setTimeout(this.DateTimeCurrently = this.dateTimeCurrentlyFromComponent.date, 0);
+    //        this.allNonActiveDays = (d as Array<NoActiveDay>)        
+    //        for (var i = 0; i < 7; i++) {
+    //        }
+    //        this.updateStatus(i);
+    //    });         
+    //    //this.allNonActiveDays = new Array<NoActiveDay>();
+    //    //this.day = new NoActiveDay(new Date(this.allStatusDays[i].day.toString()), 1, "המורה חולה");
+    //    //this.allNonActiveDays.push(this.day);
+    //    //this.service.getAllNoActiveDayFromService().subscribe(d => { this.allNonActiveDays = (d as Array<NoActiveDay>) });
+    //}
     updateStatus(i: number) {
         this.allNonActiveDays.forEach((day) => {
             var x = new Date(day.Date.toString());
-
+            var a = this.allStatusDays[i];
             if (x.getFullYear() == this.allStatusDays[i].day.getFullYear() &&
                 x.getMonth() == this.allStatusDays[i].day.getMonth() &&
                 x.getDate() == this.allStatusDays[i].day.getDate()) {
@@ -83,13 +87,15 @@ export class AllDays {
         );
 
         this.allStatusDays[i].status = new Array<boolean>(17);
-        for (var x = 0; x < 17; x++) {
+        for (var x = 0; x < 17; x++) {            
+            this.allStatusDays[i].indexs[x] = 0;
             this.allStatusDays[i].status[x] = true;
         }
 
 
         if (this.nonActive.length != 0) {
             this.nonActive.forEach((no) => {
+                this.allStatusDays[i].indexs[parseInt(no.OrderNumber) - 1] = no.Id;
                 this.allStatusDays[i].status[parseInt(no.OrderNumber) - 1] = false;
             })
         }
@@ -100,23 +106,26 @@ export class AllDays {
 
     getdays(i: number): number {
         this.allStatusDays[i].day = new Date();
-
+        this.allStatusDays[i].day.setMonth(this.DateTimeCurrently.getMonth());
         if (i == 0)
             this.allStatusDays[i].day.setDate(this.DateTimeCurrently.getDate() - ((this.DateTimeCurrently.getDay() + 1) - (i + 1)));
         else
             this.allStatusDays[i].day.setDate(this.allStatusDays[i - 1].day.getDate() + 1);
-        this.updateStatus(i);
+        //this.updateStatus(i);
         return this.allStatusDays[i].day.getDate();
     }
 
-    getDatesCurrentWeekFromdb(date: Date) {
-        this.service.getNoActiveDayByWeekDateFromService(date).subscribe(d => { this.allNonActiveDays = (d as Array<NoActiveDay>) });
-
-    }
+    //getDatesCurrentWeekFromdb(date: Date) {
+    //    this.service.getNoActiveDayByWeekDateFromService(date).subscribe(d => { this.allNonActiveDays = (d as Array<NoActiveDay>) });
+    //}
 
     getDatesFromServies() {
-       // this.dateTimeCurrentlyFromComponent.rightDay;
-        this.service.getNoActiveDayByWeekDateFromService(this.allStatusDays[0].day).subscribe(d => { this.allNonActiveDays = (d as Array<NoActiveDay>) });
+        this.service.getNoActiveDayByWeekDateFromService(this.dateTimeCurrentlyFromComponent.leftDay).subscribe(d => {
+            this.allNonActiveDays = (d as Array<NoActiveDay>);
+            for (var i = 0; i < 7; i++) {
+                this.updateStatus(i);
+            }
+        });
     }
     saveChangesInDB()
     {

@@ -15,7 +15,7 @@
                 <span class="span-day-in-week">{{getdays(m)}}-{{item}}   </span><br />
                 
                 <div id="dayInWeek">
-                    <DayInSchedule  [dayInWeek]="dayInWeek" [currentDay]=item [currentDate]="allStatusDays[m].day" [allStatus]="allStatusDays[m].status"></DayInSchedule>
+                    <DayInSchedule  [dayInWeek]="dayInWeek" [currentDay]=item [currentDate]="allStatusDays[m].day" [allStatus]="allStatusDays[m].status" [nonActiveId]="allStatusDays[m].indexs"></DayInSchedule>
                 </div>            
             </td>
         </tr>

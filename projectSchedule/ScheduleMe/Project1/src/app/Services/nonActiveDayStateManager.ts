@@ -5,8 +5,8 @@ import { NoActiveDay } from "../models/NoActiveDay"
 @Injectable()
 export class nonActiveDayStateManager {
 
-   private nonActiveDaysList: NoActiveDay[]; 
-   private activeDaysList: Array<number>;
+    private nonActiveDaysList: NoActiveDay[];
+    private activeDaysList: Array<number>;
 
    constructor() {
        //change to no active
@@ -20,7 +20,7 @@ export class nonActiveDayStateManager {
         return this.nonActiveDaysList;
     }
 
-   GetChangeInActiveDaysList(): Array<number> {
+    GetChangeInActiveDaysList(): Array<number> {
         return this.activeDaysList;
     }
 
@@ -49,7 +49,7 @@ export class nonActiveDayStateManager {
 
     //is stil change
     IsStillChanges(): boolean {
-        return this.nonActiveDaysList[0] == null && this.activeDaysList[0] == null;
+        return this.nonActiveDaysList[0] != null || this.activeDaysList[0] != null;
     }
 
     //update for remove from db
