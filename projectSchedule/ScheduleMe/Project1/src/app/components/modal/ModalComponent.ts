@@ -49,4 +49,10 @@ export class ModalComponent extends
             childComponentRef.destroy();
         });
     }
+    //dynamicComponent.onClose.subscribe(() => {
+    //    this.result = true;
+    //    this.close();
+    //    childComponentRef.destroy();
+    //});
+
 }

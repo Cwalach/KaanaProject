@@ -1,91 +1,35 @@
-﻿<div dir="rtl" class="Border container">
+﻿
+<div dir="rtl" class="Border container">
     <div>
         <div *ngIf="!btnSaveChange && !btnEndSave">
             <h2>שמור שינוי זה עבור:</h2>
             <div class="form-group">
                 <div class="radio">
-                    <input type="radio" name="week" ng-model="week.day">
-                    <label class="labelPadding" (click)="ThisWeekUntil()"> שבוע זה בלבד</label>
+                    <input type="radio" name="week" ng-model="week.day" (click)="ThisWeekOnly()">
+                    <label class="labelPadding" > שבוע זה בלבד</label>
                 </div>
                 <div class="radio">
                     <input type="radio" name="week" ng-model="week.day" (click)="SetChecked()">
                     <label class="labelPadding" >שבוע זה עד לתאריך</label>
-                    <input type="date" [value]="date | date:'yyyy-MM-dd'" (input)="date=parseDate($event.target.value)" />
+                    <input type="date" [value]="date | date:'yyyy-MM-dd'" (input)="date=parseDate($event.target.value)" [disabled]="!isChecked"/>
                     <div class="alert alert-danger" *ngIf="btnSaveChange">
                        date is required!!!
                     </div>  
                 </div>
             </div>
             <textarea id="TextArea1" rows="7" cols="40" class="Border" placeholder="הערות..." [(ngModel)]="comments" ></textarea><br />
-         
             <button id="btnSave" class="btn btn-default Border " (click)="SaveChanges()">
                 <span><img src="../../../image_40.png" />שמור</span>
             </button>
         </div>
         <div *ngIf="btnSaveChange " class="savePopUp ">
             <h3>שינוי זה דורס את השינויים הקודמים שלך האם להמשיך? </h3>
-            <button id="ButtonCancel" class="btn btn-success" (click)="CancelProcess()">
-                <span class="glyphicon glyphicon-trash" >ביטול</span>
-            </button>
             <button id="ButtonSave" class="btn btn-default Border">
                 <span><img src="../../../Content/Images/image_40.png"  dir="rtl" (click)="EndSave()"/>שמור</span>
             </button>
-        </div>
-        <div *ngIf="btnEndSave">
-           <h3>שינוייך נשמרו בהצלחה !</h3> 
+            <button id="ButtonCancel" class="btn btn-default Border" (click)="CancelProcess()">
+                <span class="glyphicon glyphicon-trash">ביטול</span>
+            </button>
         </div>
     </div>
 </div>
-<style>
-    .Border {
-        border: 2px solid #266587;
-    }
-    .container {
-        position:absolute;
-        height:20vw;
-        width:18vw;
-    }
-    .labelPadding {
-        padding-right:1vw;
-    }
-    .btn {
-        height:2vw;
-        width:5vw;
-    }
-    img {
-        width:2vw;
-        height:1.5vw;
-    }
-    #btnSave {
-        position:relative;
-        right:6vw;
-    } 
-    h2, h3 {
-        text-align:center;
-    }
-    h2 {
-       
-       padding-bottom:1vw;
-    }
-    h3 {
-        padding-top:2vw;
-    }
-    .savePopUp button {
-        position:relative;
-        top:2vw;
-        right:2vw;
-        margin-left:45px;
-    }
-        input.ng-invalid {
-        border-left: 5px solid red;
-    }
-
-    input.ng-valid {
-        border-left: 5px solid green;
-    }
-    textarea {
-      grid-row:30;
-      grid-column:30;
-    }
-
-</style>

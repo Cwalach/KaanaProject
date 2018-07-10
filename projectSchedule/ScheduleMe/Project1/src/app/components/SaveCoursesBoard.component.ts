@@ -1,40 +1,71 @@
-﻿import { Component } from "@angular/core"
+﻿import { Component, Output, EventEmitter, ViewChild} from "@angular/core"
 import { ExistingCourse } from "../models/ExistingCourses"
 import { ScheduleBoardStateManager } from "../Services/ScheduleBoardStateManager"
-import { ExistingCoursesService} from "../Services/ExistingCoursesService"
+import { SaveChangesBoardService } from "../Services/SaveChangesBoardService"
+import { ExistingCoursesService } from "../Services/ExistingCoursesService"
+import { MoveDateService } from "../Services/MoveDateService"
+import { Subscription } from 'rxjs/Subscription';
+import { SaveSucceed } from "../components/SaveSucceed.component"
+
+import { DialogOptions, DialogService, DialogComponent} from "ng2-bootstrap-modal";
+import { ModalData } from './modal/models/modal-data'
+import { ModalService } from './modal/services/modal'
+
+export interface ConfirmModel {
+    title: string;
+    message: string;
+}
 @Component({
     templateUrl: "./src/app/components/SaveCoursesBoard.component.html",
-    selector: "SaveCoursesBoard"
+    selector: "SaveCoursesBoard",
+    styleUrls: ['../../../Content/bootstrap/css/SaveCoursesBoard.css'],
 })
-export class SaveCoursesBoard {
-    constructor(private ScheduleBoardStateManager: ScheduleBoardStateManager, private existingCoursesService: ExistingCoursesService) { }
+export class SaveCoursesBoard extends DialogComponent< ConfirmModel, boolean >
+    implements ConfirmModel {
+    constructor(private scheduleService:SaveChangesBoardService,private ScheduleBoardStateManager: ScheduleBoardStateManager,
+        private existingCoursesService: ExistingCoursesService,
+        dialogService: DialogService,
+        private moveDateService: MoveDateService,
+        private modalService: ModalService)
+    {
+        super(dialogService);
+    }
+
     public date;
     dateToPost: Date;
+    thisWeekOnly: any;
+    subscription: Subscription;
+
     btnSave: boolean = false;
     btnSaveChange: boolean = false;
     btnEndSave: boolean = false;
-    isChecked: boolean;
+    isChecked: boolean=false;
     listExistingCourse: ExistingCourse[];
     comments: string;
     valid: boolean = true;
+
+    title: string;
+    message: string;
+    @Output()
+    onClose: EventEmitter<any> = new EventEmitter<any>();
     SaveChanges() {
         this.btnSave = false;
         this.btnSaveChange = true;
-        this.listExistingCourse=this.ScheduleBoardStateManager.GetAllExistingCourseThatWasChanged();
-        this.existingCoursesService.save(this.listExistingCourse, this.dateToPost, this.comments).subscribe(data => { alert("Saved succsessed!!!") });
-    
+        
     }
     CancelProcess() {
+        this.CloseModal();
         this.btnSaveChange = false;
     }
     EndSave() {
-      
-        this.btnSaveChange = false;
-        this.btnEndSave = true;
+        this.CloseModal();
+        this.listExistingCourse = this.scheduleService.GetAllExistingCourseThatWasChanged();
+        this.existingCoursesService.save(this.listExistingCourse, this.dateToPost, this.comments).subscribe(data => {
+            this.OpenModalSaveSucceed();
+        });
     }
     parseDate(dateString: string): Date {
         if (dateString) {
-            alert(dateString + " is selected");
             this.date = new Date(dateString);
             this.dateToPost = this.date;
             return this.date;
@@ -45,8 +76,28 @@ export class SaveCoursesBoard {
     SetChecked() { 
         this.isChecked= true;
     }
-    ThisWeekUntil() {
-       
-        this.dateToPost = new Date("12-12-18");
+   
+    ThisWeekOnly() {
+        this.isChecked = false;
+        this.dateToPost = this.thisWeekOnly;// new Date("12-12-18");
+    }
+
+    public initModalProperties = (data) => {
+        if (data) {
+            this.thisWeekOnly = data;
+        }
+    }
+    CloseModal() {
+        this.onClose.emit();
+    }
+    OpenModalSaveSucceed()
+    {
+        const modalData = new ModalData();
+        modalData.component = SaveSucceed;
+        modalData.modalHeight = 600;
+        modalData.modalWidth = 345;
+        this.modalService.openModal(modalData);
+        this.btnSaveChange = false;
+        this.btnEndSave = true;
     }
 }

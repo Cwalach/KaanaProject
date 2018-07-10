@@ -22,14 +22,14 @@ export class ScheduleBoardStateManager {
     //קבלת מערך השיוניים
     GetAllExistingCourseThatWasChanged(): Array<ExistingCourse>
     {
-        return [
-            {
-                Id: 1, Date: new Date("2014/12/01",), OrderNumber: 1, CourseId: 1,GroupId: 1,
-                Course: new Course(1, "aaa", "Chani"), Group: new Group(1, "Computer"),Comments:"None"
-            }
+        //return [
+        //    {
+        //        Id: 1, Date: new Date("2017/12/01",), OrderNumber: 1, CourseId: 2,GroupId: 1,
+        //        Course: new Course(1, "aaa", "Chani"), Group: new Group(1, "Computer"),Comments:"None"
+        //    }
 
-        ]
-        // return this.ExistingCoursesThatWasChangedList;
+        //]
+        return this.ExistingCoursesThatWasChangedList;
     }
    
     //מחיקת מערך השינויים לאחר שכל השינויים התעדכנו
