@@ -12,10 +12,12 @@ export class SingleCourseinBoardComponent {
     constructor(private scheduleService: SaveChangesBoardService) {
         this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
-        if (this.CurrentCourse == null)
+        if (this.CurrentExistingCourses == null)
             this.namecourse = "hel";
-        else
+        else {
+            this.CurrentCourse = this.CurrentExistingCourses.Course;
             this.namecourse = this.CurrentCourse.Name;
+        }
     }
 
     @Input()
@@ -23,7 +25,6 @@ export class SingleCourseinBoardComponent {
     CurrentDateOfToday = new Date();
     CourseList: Course[];
     //GroupList: Group[];
-    @Input()
     CurrentCourse: Course;
     @Input()
     CurrentGroup: Group;
@@ -31,6 +32,7 @@ export class SingleCourseinBoardComponent {
     CurrentComponentOrder: number;
     @Input()
     CurrentDayInWeek: number;
+    @Input()
     CurrentExistingCourses: ExistingCourse;
     @Input()
     namecourse: string;

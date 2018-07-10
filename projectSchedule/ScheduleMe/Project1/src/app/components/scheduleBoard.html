@@ -1,75 +1,42 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-    <link href="../../../Content/bootstrap/css/ScheduleBoard.css" rel="stylesheet" />
-</head>
-<body dir="rtl">
-    <div>
+﻿<body dir="rtl">
+    <div dir="ltr">
         <div class="rec"></div>
         <h1 class="col-md-offset-1">מערכת קבוצות</h1>
         <div class="rec"></div>
     </div>
     <div style="margin-right: 20vw;margin-top:3vh">
         <span id="spnGroupName">שם קבוצה</span>
-        <!--<select id="selectGroup" [(ngModel)]="selectedGroup" [SelectedGroup]="selectedGroup" (change)="SelectGroup(selectedGroup)"/>-->
-            <select id="selectGroup" [(ngModel)] ="SelectedGroup" (change)="SelectGroup()"> <!--(ngModelChange)="SelectGroup($event.target)" -->
-                <!--[SelectedGroup]="selectedGroup"-->
-                <option *ngFor="let g of GroupList; let i =index" [ngValue]="g">{{g.Name}}</option>
-            </select>
-            <DateRangeSelector (eventHandler)="updateWeeklyData()"></DateRangeSelector>
-            <br />
-        <!--(eventHandler)="updateWeeklyData($event)"-->
-</div>
-    <div id="div-buttons" >
-        <button (click)="ClickEvent('btnEdit')"  [ngClass]="!isbtn1clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">עריכה כללית</button>
-        <button (click)="ClickEvent('btnSave')"  [ngClass]="!isbtn2clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">שמירה</button>
-        <button (click)="ClickEvent('btnPrint')" [ngClass]="!isbtn3clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">הדפסה</button>
+        <select id="selectGroup" [(ngModel)]="SelectedGroup" (change)="SelectGroup()">
+            <option *ngFor="let g of GroupList; let i =index" [ngValue]="g">{{g.Name}}</option>
+        </select>
+        <DateRangeSelector (eventHandler)="updateWeeklyData()"></DateRangeSelector>
+        <br />
     </div>
-    <table id="table_schedule">
+    <div id="div-buttons">
+        <button (click)="ClickEvent('btnEdit')" [ngClass]="!isbtn1clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">
+            <!--<span class="glyphicon glyphicon-edit"></span>-->
+            עריכה כללית
+        </button>
+        <button (click)="ClickEvent('btnSave')" [ngClass]="!isbtn2clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">
+            <span class="glyphicon glyphicon-save"></span>
+            שמירה
+        </button>
+        <print_html (click)="ClickEvent('btnPrint')" [TextToPrint]="name"></print_html>
+        <!--<button class="ToShow"  (click)="ClickEvent('btnPrint')" [ngClass]="!isbtn3clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">הדפסה</button>-->
+        <!--(click)="ClickEvent('btnPrint')"-->
+    </div>
+    <table id="table_schedule" #name>
         <tr id="tr-Day">
             <td *ngFor="let item of dayInWeek; let m=index"><span class="dayOfMonth">{{getday(m)}}-</span>{{item}}&nbsp;&nbsp;&nbsp;</td>
         </tr>
-        <tr  dir="ltr" *ngFor="let lessonNum of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-            <td *ngFor="let day of dayInWeek; let i=index" >
+        <tr dir="ltr" *ngFor="let lessonNum of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
+            <td *ngFor="let day of dayInWeek; let i=index">
                 <!--*ngIf="table[k][indexs]"-->
                 <!--<span *ngIf="table[k][indexs] !==null">{{table[k][indexs].Course.Name}}</span>-->
-                <div *ngIf="CourseList">
-                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
+                <div *ngIf="CourseList && tableUpdated">
+                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="getcourse(i,lessonNum)" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup"></SingleCourseinBoard_Component>
                 </div>
-
             </td>
-        </tr>     
+        </tr>
     </table>
 </body>
-</html>
- <style>
-     SingleCourseinBoard_Component {
-     margin:0.5vw;
-     }
- </style>
-            <!-- לבדוק למה לא עובד בקורס קיים - עם תאריך!!!!
-            <! day-להוסיף--> 
-            <!-- <td *ngFor="let x of dayInWeek; let k=index">{{getExistingCourseName(indexs)}}</td> -->
-
-            <!--<td *ngFor="let x of dayInWeek; let k=index">{{getCourseNameById(k)}}</td>-->
-        <!-- </tr>
-    </table>
-</body>
-</html> --> 
-
-
-<!--<script>
-    var isclicked = false;
-    $(".btn_schedulboard").click(function () {
-        if (IsCustomBG == false) {
-            $(this).css("background-color", "red");
-            IsCustomBG = true;
-        }
-        else {
-            $(this).css("background-color", "");
-            IsCustomBG = false;
-        }
-    });
-</script>-->

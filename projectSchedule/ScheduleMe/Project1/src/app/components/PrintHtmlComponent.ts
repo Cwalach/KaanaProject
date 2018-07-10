@@ -2,6 +2,7 @@
 import { PrintHtmlService } from "../Services/PrintHtmlService"
 
 @Component({
+    styleUrls: ['../../../Content/bootstrap/css/ScheduleBoard.css'],
     templateUrl: "./src/app/components/PrintHtmlComponent.html",
     selector: "print_html"
 

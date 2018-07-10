@@ -11,9 +11,12 @@ import { SaveChangesBoardService } from "../Services/SaveChangesBoardService"
 import { ParseDate } from '../Services/parseDateService';
 
 @Component({
+    styleUrls: ['../../../Content/bootstrap/css/ScheduleBoard.css' ],
+    
     templateUrl: "./src/app/components/scheduleBoard.html",
     selector: "scheduleBoard"
 })
+
 export class ScheduleBoard {
     date: Date;
     DateTimeCurrently: Date;
@@ -24,7 +27,7 @@ export class ScheduleBoard {
     table: ExistingCourse[][];
 
     SelectedGroup: Group;
-
+    tableUpdated: boolean;
     ChangeDate: Date;
     isbtn1clicked: boolean;
     isbtn2clicked: boolean;
@@ -37,8 +40,10 @@ export class ScheduleBoard {
         this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
         this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data });
         this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
+            //this.table = new Array<ExistingCourse[]>();
             this.GroupList = data;
             this.SelectedGroup = this.GroupList[0];
+            this.tableUpdated = false;
             this.ChangeTable();
         }, error => { });
         this.dayInWeek = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי"];
@@ -48,10 +53,15 @@ export class ScheduleBoard {
         this.isbtn1clicked = false;
         this.isbtn2clicked = false;
         this.isbtn3clicked = false;
-        this.table = new Array< ExistingCourse[]>();
         
         this.ExampleCourse = new ExistingCourse(1, this.DateTimeCurrently, new Course(2, 'aaa', 'java'), new Group(1, 'year2'));
         //this.ChangeTable();
+    }
+
+    ngOnInit() {
+        //this.table = new Array<ExistingCourse[]>();
+        let arr: Array<ExistingCourse[]> = [ExistingCourse[17], ExistingCourse[17], ExistingCourse[17], ExistingCourse[17], ExistingCourse[17], ExistingCourse[17]];
+        this.table = arr;
     }
 
     @ViewChildren(SingleCourseinBoardComponent)
@@ -75,7 +85,7 @@ export class ScheduleBoard {
     }
 
     SelectGroup() {
-        alert(this.SelectedGroup.Name);
+     //   alert(this.SelectedGroup.Name);
         this.ChangeTable();
     }
 
@@ -105,6 +115,13 @@ export class ScheduleBoard {
     ChangeTable(): any {
         this.weeklyScheduleService.GetAllExistingCoursesForWeekFromServer(this.dateTimeCurrentlyFromComponent.leftDay, this.SelectedGroup).subscribe(courses => {
             this.table = courses;
+            this.tableUpdated = true;
         });
+    }
+    getcourse(i: number, j: number): ExistingCourse
+    {
+        console.log(this.table[i][j]);
+        return this.table[i][j];
+
     }
 }

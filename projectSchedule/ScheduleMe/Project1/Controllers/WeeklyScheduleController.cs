@@ -34,9 +34,6 @@ namespace ScheduleMe.Controllers
 
         [HttpGet]
         [Route("api/WeeklySchedule/GetExistingCoursesForWeek/{snudayOfWeek}/{selectedGroupId}")]
-        //האם חייב להחזיר משהו מסוג
-        //ICollection?????
-        //public List<ExistingCourses>[] GetExistingCoursesForWeek(string snudayOfWeek, int selectedGroupId)
         public ExistingCourses[][] GetExistingCoursesForWeek(string snudayOfWeek, int selectedGroupId)
         {
             DateTime date = DateTime.Parse(snudayOfWeek);
@@ -49,8 +46,6 @@ namespace ScheduleMe.Controllers
             //List<ExistingCourses>[] arr = new List<ExistingCourses>[6];
             ExistingCourses[][] arr = new ExistingCourses[][] 
             {new ExistingCourses[17],new ExistingCourses[17], new ExistingCourses[17], new ExistingCourses[17], new ExistingCourses[17] ,new ExistingCourses[17]};
-
-
 
             foreach (var course in ECourseslistForWeek)
             {
