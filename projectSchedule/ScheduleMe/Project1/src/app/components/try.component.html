@@ -9,7 +9,8 @@
                                   float: right;">
         <button  id="schduleGroups"
                 (click)="clickEvent('schduleGroups')"
-                routerLink="/GroupSystem"
+                routerLink="GroupSystem"
+                routerLinkActive="active"
                 [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'">
             <img src="../../../Content/Images/image_07_2.png"/>
             <span>מערכת קבוצות</span>
@@ -17,14 +18,16 @@
 
         <button id="manegement"
                 (click)="clickEvent('manegement')"
-                routerLink="/manage"
+                routerLink="manage"
+                routerLinkActive="active"
                 [ngClass]="!statusbtn2 ? 'btn_default':'btn_default2'">
             <img src="../../../Content/Images/image_03.png" />
             <span> ניהול</span>
         </button><br /><br />
         <button id="report"
                 (click)="clickEvent('report')"
-                routerLink="/ReportDetails"
+                routerLink="ReportDetails"
+                routerLinkActive="active"
                 [ngClass]="!statusbtn3 ? 'btn_default':'btn_default2'">
             <img src="../../../Content/Images/image_05.png" />
             <span>דוחות</span> 

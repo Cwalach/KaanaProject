@@ -49,21 +49,21 @@ import { ParseDate } from "./Services/parseDateService";
 const route: Routes =
     [
         {
-            path: 'Try', component: Try
-        },
-        {
-            path: 'GroupSystem', component: ScheduleBoard
-        },
-        {
-            path: 'ReportDetails', component: ReportDetailsComponent
-        },
-        {
-            path: 'manage', component: Management, children:
-            [
-                { path: 'courses', component: Courses },
-                { path: 'NonActiveDays', component: AllDays },
-                { path: 'manegmentCourse', component: ManegmentCourse },
-                { path: 'manegmentGroup', component: ManegmentGroup }
+             path: 'Try',
+             component: Try,
+             children: [
+                 { path: 'GroupSystem', component: ScheduleBoard },
+                 { path: 'ReportDetails', component: ReportDetailsComponent },
+                 {
+                     path: 'manage', component: Management, children:
+                         [
+                             { path: 'courses', component: Courses },
+                             { path: 'NonActiveDays', component: AllDays },
+                             { path: 'manegmentCourse', component: ManegmentCourse },
+                             { path: 'manegmentGroup', component: ManegmentGroup }
+                         ]
+                 }
+
             ]
         },
         {
@@ -98,7 +98,6 @@ const route: Routes =
         SaveOrCancelPopUp,
         MainPageComponent,
         SaveSucceed],
-
 
     imports: [BrowserModule,
         HttpModule,

@@ -1,14 +1,14 @@
 ﻿<div>
     <input class="btn_Manegment" id="Button3" type="button" value="ימים לא פעילים"
-           routerLink="/manage/NonActiveDays"
+           routerLink="NonActiveDays"
            [ngClass]="!btnDays ? 'btn_Manegment' : 'btn_default3'"
            (click)="clickEvent('btnDays')" />
     <input class="btn_Manegment" id="Button2" type="button" value="קבוצות"
-           routerLink="/manage/manegmentGroup"
+           routerLink="manegmentGroup"
            [ngClass]="!btnGroup ? 'btn_Manegment' : 'btn_default3'"
            (click)="clickEvent('btnGroup')" />
     <input class="btn_Manegment" id="Button1" type="button" value="קורסים"
-           routerLink="/manage/manegmentCourse"
+           routerLink="manegmentCourse"
            [ngClass]="!btnCourse ? 'btn_Manegment' : 'btn_default3'"
            (click)="clickEvent('btnCourse')" />
     <input class="btn_Manegment btn_Add" id="btn_AddGroup" type="button" value="הוספת קבוצה"

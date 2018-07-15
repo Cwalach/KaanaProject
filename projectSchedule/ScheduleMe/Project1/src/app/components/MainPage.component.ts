@@ -15,6 +15,6 @@ export class MainPageComponent {
 
     onButtonClick(id) {
         this.buttonWasClicked = true;
-        this.router.navigate(['/Try'], { queryParams: { btnId: id } });
+        this.router.navigate(['/Try'], { queryParams: { btnId: id }, skipLocationChange: true });
     }
 } 
