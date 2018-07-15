@@ -158,10 +158,4 @@ implements ConfirmModel {
         modalData.options = this.dateTimeCurrentlyFromComponent.rightDay;
         this.modalService.openModal(modalData);
     }
-    getcourse(i: number, j: number): ExistingCourse
-    {
-        console.log(this.table[i][j]);
-        return this.table[i][j];
-
-    }
 }

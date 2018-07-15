@@ -41,6 +41,7 @@ export class GroupDetails
 
     saveToServer(item: Group) {
         if (item.Name != null) {
+            this.groupService.addGroup(item);
             this.groupService.saveGroupToServer(item).
                 subscribe(data => { }, error => { console.log('error'); });
         }

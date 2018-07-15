@@ -26,6 +26,13 @@ export class ManegmentGroup {
         this.GetGroups();
         this.btnGroup = true;
     }
+
+    ngOnInit() {
+        this.groupService.getNewGroup().subscribe((item: Group) => {
+            this.groupsList.push(item);
+        })
+    }
+
     GetGroups() {
         this.groupService.GetGroupFromServer().
             subscribe(data => { this.groupsList = data; }, error => { console.log("error"); });

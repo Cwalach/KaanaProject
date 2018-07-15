@@ -3,10 +3,15 @@ import { Group } from "../models/group"
 import { Http } from "@angular/http"
 import "rxjs/add/operator/map"
 import { Observable } from "rxjs/Observable"
+import { Subject } from 'rxjs/Subject';
+
 @Injectable()
 export class ManegmentGroupsService {
     constructor(private http: Http) {
     }
+
+    private group = new Subject<any>();
+
     GetGroupFromServer(): Observable<Group[]> {
         return this.http.get("api/Group/Get").map(
             data => {
@@ -21,5 +26,13 @@ export class ManegmentGroupsService {
     }
     newGroup(newGroup: Group): Observable<boolean> {
         return this.http.post("api/Group/AddGroup/" + newGroup, newGroup).map(res => { return true; });
+    }
+
+    addGroup(newGroup: Group) {
+        this.group.next({ group: newGroup});
+    }
+
+    getNewGroup(): Observable<any> {
+        return this.group.asObservable();
     }
 }

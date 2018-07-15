@@ -25,6 +25,13 @@ export class ManegmentCourse {
         this.GetCourse();
         this.btnCourse = true;
     }
+    ngOnInit() {
+        this.courseService.getNewCourse().subscribe((item: Course) =>
+        {
+            this.courseList.push(item);
+        })
+    }
+
     GetCourse() {
         this.courseService.GetCoursesFromServer().
             subscribe(data => {

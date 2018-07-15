@@ -40,6 +40,7 @@ export class CourseDetails
 
     saveToServer(item: Course) {
         if (item.Name != null || item.Instructor != null) {
+            this.courseService.addCourse(item);
             this.courseService.saveCourseToServer(item).
                 subscribe(data => { }, error => { console.log("error") });
             this.courseService.listCourse = item;

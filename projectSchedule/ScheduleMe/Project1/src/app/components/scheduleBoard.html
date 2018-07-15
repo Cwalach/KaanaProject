@@ -38,7 +38,7 @@
                 <!--*ngIf="table[k][indexs]"-->
                 <!--<span *ngIf="table[k][indexs] !==null">{{table[k][indexs].Course.Name}}</span>-->
                 <div *ngIf="CourseList && tableUpdated">
-                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="getcourse(i,lessonNum)" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
+                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
                 </div>
             </td>
         </tr>

@@ -23,7 +23,10 @@ export class ReportDetailsComponent {
     public date2: Date;
     selectedCourse:string = '';
     constructor(private ReportDetailsList: ReportDetailsService) {
-        this.ReportDetailsList.GetCoursesFromServer().subscribe(data => { this.CourseList = data }, error => { alert("errorComboBox!"); });
+        this.ReportDetailsList.GetCoursesFromServer().subscribe(data => {
+            this.CourseList = data;
+            this.selectedCourse = this.CourseList[0].Name;
+        }, error => {  });
     }
 
 
@@ -48,6 +51,6 @@ export class ReportDetailsComponent {
 
     GetReport1(date1: Date, date2: Date, courseName: string): void {
         this.ReportDetailsList.GetReportDetailsFromServer(date1,date2,courseName).subscribe
-            (data => { this.ReportDeatilsList = data }, error => { alert("erroraaa!"); });
+            (data => { this.ReportDeatilsList = data }, error => {  });
     }
 }

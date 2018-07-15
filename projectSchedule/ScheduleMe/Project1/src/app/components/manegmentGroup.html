@@ -31,7 +31,7 @@
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </div>
-                <div class="col-sm-2">{{item.Name}}</div>
+                <div class="col-sm-2">{{item.Name || (item.group && item.group.Name)}}</div>
             </li>
         </ul>
     </div>

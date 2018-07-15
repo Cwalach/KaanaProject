@@ -4,13 +4,24 @@ import { ExistingCourse } from "../models/ExistingCourses"
 import { Course } from "../models/Course"
 import { Group } from "../models/Group"
 import { ScheduleBoardStateManager } from '../Services/ScheduleBoardStateManager'
+import { ModalData } from './modal/models/modal-data'
+import { ModalService } from './modal/services/modal'
+import { DialogOptions, DialogService, DialogComponent } from "ng2-bootstrap-modal";
+import { SaveCoursesBoard } from "../components/SaveCoursesBoard.component"
+
+export interface ConfirmModel {
+    title: string;
+    message: string;
+}
 
 @Component({
     templateUrl: "./src/app/components/SingleCourseinBoard.component.html",
     selector: "SingleCourseinBoard_Component"
 })
-export class SingleCourseinBoardComponent {
-    constructor(private scheduleService:SaveChangesBoardService,private ScheduleBoardStateManager: ScheduleBoardStateManager) {
+export class SingleCourseinBoardComponent extends DialogComponent<ConfirmModel, boolean>
+    implements ConfirmModel {
+    constructor(private scheduleService: SaveChangesBoardService, private ScheduleBoardStateManager: ScheduleBoardStateManager, dialogService: DialogService, private modalService: ModalService) {
+        super(dialogService)
         //this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.ScheduleBoardStateManager.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
@@ -37,6 +48,9 @@ export class SingleCourseinBoardComponent {
     nameTeachercourse: string;
     flag = true;
     IsChange = false;
+    title: string;
+    message: string;
+
 
     ngOnInit() {
         if (this.CurrentExistingCourses && this.CurrentExistingCourses.Course) {
@@ -44,7 +58,8 @@ export class SingleCourseinBoardComponent {
             this.nameTeachercourse = this.CurrentExistingCourses.Course.Instructor;
         }
         else {
-            this.namecourse = "ccc"; this.nameTeachercourse = "ttt";
+            this.namecourse = "";
+            this.nameTeachercourse = "";
         }
     }
     EditCourse() {
@@ -64,6 +79,7 @@ export class SingleCourseinBoardComponent {
         this.namecourse = this.CurrentCourse.Name + "-";
         this.nameTeachercourse = this.CurrentCourse.Instructor;
         this.flag = true;
+        this.saveDate();
     }
 
     onChange(selectCourses) {
@@ -85,6 +101,15 @@ export class SingleCourseinBoardComponent {
     SetDateForEachDayInWeek() {
         this.CurrentDateOfToday.setFullYear(this.CurrentDateOfSun.getFullYear(), this.CurrentDateOfSun.getMonth(), this.CurrentDateOfSun.getDate());
         this.CurrentDateOfToday.setDate(this.CurrentDateOfToday.getDate() + this.CurrentDayInWeek);
+    }
+
+    saveDate() {
+        const modalData = new ModalData();
+        modalData.component = SaveCoursesBoard;
+        modalData.modalHeight = 1000;
+        modalData.modalWidth = 345;
+        modalData.options = this.CurrentDateOfSun;
+        this.modalService.openModal(modalData);
     }
 
 }

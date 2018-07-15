@@ -32,8 +32,8 @@
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </div>
-                <div class="col-sm-3">{{item.Instructor}}</div>
-                <div class="col-sm-3">{{item.Name}}</div>
+                <div class="col-sm-3">{{item.Instructor || (item.course && item.course.Instructor)}}</div>
+                <div class="col-sm-3">{{item.Name || (item.course &&  item.course.Name)}}</div>
             </li>
         </ul>
     </div>
