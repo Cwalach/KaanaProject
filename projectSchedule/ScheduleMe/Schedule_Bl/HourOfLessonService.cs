@@ -8,29 +8,29 @@ using Schedule_Model;
 using System.Linq.Expressions;
 namespace Schedule_Bl
 {
-  public  class GroupService
+    class HourOfLessonService
     {
-        private GroupRepository repository;
+        private HourOfLessonRepository repository;
         private ScheduleDB context;
-        public GroupService()
+        public HourOfLessonService()
         {
             context = new ScheduleDB();
-            repository = new GroupRepository(context);
+            repository = new HourOfLessonRepository(context);
         }
-        public void Insert(Group g)
+        public void Insert(HourOfLesson g)
         {
             repository.Insert(g);
         }
-        public Group GetByID(int id)
+        public HourOfLesson GetByID(int id)
         {
             return repository.GetByID(id);
         }
-        public ICollection<Group> GetAll()
+        public ICollection<HourOfLesson> GetAll()
         {
             return repository.GetAll();
         }
 
-        public void Update(Group g)
+        public void Update(HourOfLesson g)
         {
             repository.Update(g);
         }
@@ -38,13 +38,9 @@ namespace Schedule_Bl
         {
             repository.Delete(id);
         }
-        public void Delete(Group g)
+        public void Delete(HourOfLesson g)
         {
             repository.Delete(g);
         }
-        public IQueryable<Group> GetByQuery(Expression<Func<Group, bool>> p)
-        {
-            return repository.GetByQuery(p);
-        }
-}
+    }
 }

@@ -55,6 +55,7 @@
     <Compile Include="CourseRepository.cs" />
     <Compile Include="ExistinCourseRepository.cs" />
     <Compile Include="GroupRepository.cs" />
+    <Compile Include="HourOfLessonRepository.cs" />
     <Compile Include="NonActiveDaysRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

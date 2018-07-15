@@ -7,15 +7,16 @@
 </head>
 <body dir="rtl">
     <h1>מערכת קבוצות</h1>
-    <DateRangeSelector></DateRangeSelector>
+    <DateRangeSelector (eventHandler)="getDatesFromServies()"></DateRangeSelector>
     <button id="saveChangesInDB" (click)="saveChangesInDB()">שמור</button>
     <table id="tblAllDays">
         <tr>
             <td *ngFor="let item of dayInWeek; let m=index" id="tdDays">
-                <span class="span-day-in-week">{{getday(m)}}-{{item}}</span><br />
+                <span class="span-day-in-week">{{getdays(m)}}-{{item}}   </span><br />
+                
                 <div id="dayInWeek">
-                    <DayInSchedule [dayInWeek]="dayInWeek" [currentDay]=item [currentDate]="day"></DayInSchedule>
-                </div>
+                    <DayInSchedule  [dayInWeek]="dayInWeek" [currentDay]=item [currentDate]="allStatusDays[m].day" [allStatus]="allStatusDays[m].status"></DayInSchedule>
+                </div>            
             </td>
         </tr>
     </table>

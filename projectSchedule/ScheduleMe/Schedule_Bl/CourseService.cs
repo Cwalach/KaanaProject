@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Schedule_Dal;
 using Schedule_Model;
+using System.Linq.Expressions;
 namespace Schedule_Bl
 {
     public class CourseService
@@ -42,5 +43,9 @@ namespace Schedule_Bl
         {
             repository.Delete(c);
         }
-    }
+        public IQueryable<Course> GetByQuery(Expression<Func<Course, bool>> p)
+        {
+            return repository.GetByQuery(p);
+        }
+}
 }

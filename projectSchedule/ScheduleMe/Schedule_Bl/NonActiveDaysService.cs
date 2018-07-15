@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Schedule_Dal;
 using Schedule_Model;
-using Schedule_Dal;
+using System.Linq.Expressions;
 namespace Schedule_Bl
 {
   public  class NonActiveDaysService
@@ -43,6 +43,9 @@ namespace Schedule_Bl
             repository.Delete(n);
         }
 
-
-    }
+        public IQueryable<NonActiveDays> GetByQuery(Expression<Func<NonActiveDays, bool>> p)
+        {
+            return repository.GetByQuery(p);
+        }
+}
 }
