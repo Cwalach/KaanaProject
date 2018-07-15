@@ -1,4 +1,5 @@
-﻿import { Component, NgModule, Input, Output, EventEmitter,NgZone } from "@angular/core"
+﻿import { Component, NgModule, Input, Output, EventEmitter, NgZone } from "@angular/core"
+import { Router } from "@angular/router"
 import { CourseDetails } from "../components/course-details"
 import { Course } from "../models/course"
 import "rxjs/add/operator/map"
@@ -19,6 +20,7 @@ export class ManegmentCourse {
     btnDays: boolean = false;
 
     constructor(private courseService: ManegmentCoursesService,
+        private router: Router,
         private modalService: ModalService, private zone: NgZone) {
         this.GetCourse();
         this.btnCourse = true;
@@ -60,18 +62,22 @@ export class ManegmentCourse {
             this.btnCourse = true;
             this.btnGroup = false;
             this.btnDays = false;
+            this.router.navigate(['Try/manage/manegmentCourse']);
         }
         else {
             if (id == 'btnGroup') {
                 this.btnCourse = false;
                 this.btnGroup = true;
                 this.btnDays = false;
+                this.router.navigate(['Try/manage/manegmentGroup']);
             }
             else {
                 if (id == 'btnDays') {
                     this.btnCourse = false;
                     this.btnGroup = false;
                     this.btnDays = true;
+                    this.router.navigate(['Try/manage/NonActiveDays']);
+
                 }
             }
         }

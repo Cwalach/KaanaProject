@@ -1,4 +1,6 @@
 ﻿import { Component, NgModule } from "@angular/core"
+import { Router} from "@angular/router"
+
 import { Group } from "../models/group"
 import { ManegmentGroupsService } from "../Services/manegmentGroups-service"
 import { GroupDetails } from "../components/group-details"
@@ -19,6 +21,7 @@ export class ManegmentGroup {
     btnDays: boolean = false;
 
     constructor(private groupService: ManegmentGroupsService,
+        private router: Router,
         private modalService: ModalService) {
         this.GetGroups();
         this.btnGroup = true;
@@ -58,18 +61,23 @@ export class ManegmentGroup {
             this.btnCourse = true;
             this.btnGroup = false;
             this.btnDays = false;
+            this.router.navigate(['Try/manage/manegmentCourse']);
+
         }
         else {
             if (id == 'btnGroup') {
                 this.btnCourse = false;
                 this.btnGroup = true;
                 this.btnDays = false;
+                this.router.navigate(['Try/manage/manegmentGroup']);
+
             }
             else {
                 if (id == 'btnDays') {
                     this.btnCourse = false;
                     this.btnGroup = false;
                     this.btnDays = true;
+                    this.router.navigate(['Try/manage/NonActiveDays']);
                 }
             }
         }

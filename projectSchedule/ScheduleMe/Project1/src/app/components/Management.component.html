@@ -6,12 +6,12 @@
 <div id="manegmentButtons" *ngIf="!buttonClicked" class="col-md-offset-2">
 
 <input class="btn_Manegment" id="Button1" type="button" value="קורסים" (click)="HideDiv()"
-       routerLink="/manage/manegmentCourse" ng-/><br/>
+       routerLink="manegmentCourse" ng-/><br/>
 
 <input class="btn_Manegment" id="Button2" type="button" value="קבוצות" (click)="HideDiv()"
-       routerLink="/manage/manegmentGroup" /><br/>
+       routerLink="manegmentGroup" /><br/>
 
 <input class="btn_Manegment" id="Button3" type="button" value="ימים לא פעילים" (click)="HideDiv()"
-    routerLink="/manage/NonActiveDays" ng-/><br />
+    routerLink="NonActiveDays" ng-/><br />
 </div>
 <router-outlet></router-outlet>

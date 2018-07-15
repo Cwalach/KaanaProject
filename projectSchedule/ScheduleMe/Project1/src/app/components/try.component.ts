@@ -48,20 +48,20 @@ export class Try {
             this.statusbtn1 = true;
             this.statusbtn2 = false;
             this.statusbtn3 = false;
-            this.router.navigate(['/GroupSystem']);
+            this.router.navigate(['Try/GroupSystem']);
         }
         if (id == "manegement") {
             this.statusbtn2 = true;
             this.statusbtn1 = false;
             this.statusbtn3 = false;
-            this.router.navigate(['/manage']);
+            this.router.navigate(['Try/manage']);
 
         }
         if (id == "report") {
             this.statusbtn3 = true;
             this.statusbtn1 = false;
             this.statusbtn2 = false;
-            this.router.navigate(['/ReportDetails']);
+            this.router.navigate(['Try/ReportDetails']);
 
         }
     }
