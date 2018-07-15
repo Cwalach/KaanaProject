@@ -14,13 +14,15 @@
     width: 5vw;
     font-weight: bold;
 }
-.btn_schedulboardOnClick{
+
+.btn_schedulboardOnClick {
     background-color: #266587;
     color: white;
     height: 3vh;
     width: 5vw;
     font-weight: bold;
 }
+
 #selectGroup {
     border: 0.5px solid #266587;
     width: 14vw;
@@ -39,10 +41,15 @@
     margin-top: 3vh;
 }
 
-#tr-Day{
-    color:#266587; 
-    font-weight:bold;
+#tr-Day {
+    color: #266587;
+    font-weight: bold;
 }
+
 .dayOfMonth {
-    font-weight:normal;
+    font-weight: normal;
+}
+
+SingleCourseinBoard_Component {
+    margin: 0.5vw;
 }

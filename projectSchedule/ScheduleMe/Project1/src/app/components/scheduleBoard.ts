@@ -22,37 +22,15 @@ export interface ConfirmModel {
     message: string;
 }
 @Component({
+    styleUrls: ['../../../Content/bootstrap/css/ScheduleBoard.css' ],
+    
     templateUrl: "./src/app/components/scheduleBoard.html",
     selector: "scheduleBoard"
 })
 
+
 export class ScheduleBoard extends DialogComponent<ConfirmModel, boolean>
-implements ConfirmModel{
-
-    // constructor(private weeklyScheduleService: WeeklyScheduleService,
-    //     private updateScheduleBoard: UpdateScheduleBoard,
-    //     private hebrewDate: HebrewDate,
-    //     private modalService: ModalService,
-    //     dialogService: DialogService) {
-    //     super(dialogService);
-    //     this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
-    //     this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
-    //         this.GroupList = data
-    //         this.SelectedGroup = this.GroupList[0];
-    //     }, error => { });
-    //     this.dayInWeek = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי"];
-    //     this.date = new Date();
-    //     this.ChangeDate = this.date;
-    //     this.DateTimeCurrently = new Date();
-    //     this.isbtn1clicked = false;
-    //     this.isbtn2clicked = false;
-    //     this.isbtn3clicked = false;
-    //     this.ChangeGroup;//= this.GroupList[0];
-    //     this.ChangeTable();
-    // }
-    title: string;
-    message: string;
-
+implements ConfirmModel {
     date: Date;
     DateTimeCurrently: Date;
     d: Date = new Date();
@@ -62,7 +40,7 @@ implements ConfirmModel{
     table: ExistingCourse[][];
 
     SelectedGroup: Group;
-
+    tableUpdated: boolean;
     ChangeDate: Date;
     isbtn1clicked: boolean;
     isbtn2clicked: boolean;
@@ -70,18 +48,22 @@ implements ConfirmModel{
     ExampleCourse: ExistingCourse;
     CourseList: Course[];
     ChangeGroup: Group;
+    title: string;
+    message:string;
     //CurrentExistingCourse: ExistingCourse;
 
-    constructor(private weeklyScheduleService: WeeklyScheduleService, private updateScheduleBoard: UpdateScheduleBoard, private scheduleService: SaveChangesBoardService, private parseDate: ParseDate, dialogService: DialogService, private hebrewDate: HebrewDate,
+    constructor(private weeklyScheduleService: WeeklyScheduleService, private updateScheduleBoard: UpdateScheduleBoard, private scheduleService: SaveChangesBoardService, private parseDate: ParseDate, dialogService: DialogService,
         private modalService: ModalService) {
         super(dialogService);
-        this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
-        this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data });
-        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
-            this.GroupList = data;
-            this.SelectedGroup = this.GroupList[0];
-            this.ChangeTable();
-        }, error => { });
+        //this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
+        //this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data });
+        //this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
+        //    //this.table = new Array<ExistingCourse[]>();
+        //    this.GroupList = data;
+        //    this.SelectedGroup = this.GroupList[0];
+        //    this.tableUpdated = false;
+        //    this.ChangeTable();
+        //}, error => { });
         this.dayInWeek = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי"];
         this.date = new Date();
         this.ChangeDate = this.date;
@@ -89,12 +71,10 @@ implements ConfirmModel{
         this.isbtn1clicked = false;
         this.isbtn2clicked = false;
         this.isbtn3clicked = false;
-        this.table = new Array< ExistingCourse[]>();
         
         this.ExampleCourse = new ExistingCourse(1, this.DateTimeCurrently, new Course(2, 'aaa', 'java'), new Group(1, 'year2'));
         //this.ChangeTable();
         this.ChangeGroup;
-        this.ChangeTable();
     }
     HebrewDate: string;
     //CurrentExistingCourse: ExistingCourse;
@@ -119,12 +99,19 @@ implements ConfirmModel{
         this.listsForEdit.forEach(x => x.EditCourse());
     }
 
-
-
     updateWeeklyData() {
+        this.tableUpdated = false;
         this.ChangeTable();
     }
     ngOnInit() {
+        this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data });
+        this.weeklyScheduleService.GetAllGroupsFromServer().subscribe(data => {
+            //this.table = new Array<ExistingCourse[]>();
+            this.GroupList = data;
+            this.SelectedGroup = this.GroupList[0];
+            this.tableUpdated = false;
+            this.ChangeTable();
+        }, error => { });
         this.updateScheduleBoard.getNewDate().subscribe(date => { this.ChangeDate = date; });
         this.updateScheduleBoard.getSelectedGroup().subscribe(group => { this.ChangeGroup = group; });
     }
@@ -132,6 +119,8 @@ implements ConfirmModel{
     SelectGroup(group) {
         this.SelectedGroup = this.GroupList.find(g => g.Id == group);
         this.updateScheduleBoard.ChangeGroup(group);
+        this.tableUpdated = false;
+        this.ChangeTable();
     }
     ClickEvent(btnId: string): any {
         if (btnId == "btnEdit") {
@@ -156,33 +145,10 @@ implements ConfirmModel{
     ChangeTable(): any {
         this.weeklyScheduleService.GetAllExistingCoursesForWeekFromServer(this.dateTimeCurrentlyFromComponent.leftDay, this.SelectedGroup).subscribe(courses => {
             this.table = courses;
+            this.tableUpdated = true;
         });
     }
 
-
-    //ChangeTable(selectedGroup: Group): any {
-    //    //this.SelectedGroup = selectedGroup;
-    //    //שינוי-עדכון הטבלה בעת בחירת קבוצה
-    //    //html-איך אני עוברת על הטבלה - איך תופסים אלמנט מה
-    //}
-
-    // //להוסיף
-    // //, day: number
-    // //לבדוק מה הבעיה עם התאריך
-    // getExistingCourseName(lesson: number): string {
-    //     //לעשות בדיקת תקינות שישנו כזה קורס
-    //     this.CurrentExistingCourse = this.ExistingCourses.find(c => c.GroupId == this.ChangeGroup.Id /*&& c.Date.getDay() == day*/ && c.OrderNumber == lesson);
-    //     if (this.CurrentExistingCourse != undefined)
-    //         return this.CurrentExistingCourse.Course.Name;
-    //     return "Undefined";
-    // }
-
-    getHebrewDate(date: Date, numDaysToAdd: number): string
-    {
-        this.HebrewDate = this.hebrewDate.getHebrewDate(date, numDaysToAdd);
-        return this.HebrewDate;
-
-    }
     saveDate()
     {
         const modalData = new ModalData();
@@ -191,5 +157,11 @@ implements ConfirmModel{
         modalData.modalWidth = 345;
         modalData.options = this.dateTimeCurrentlyFromComponent.rightDay;
         this.modalService.openModal(modalData);
+    }
+    getcourse(i: number, j: number): ExistingCourse
+    {
+        console.log(this.table[i][j]);
+        return this.table[i][j];
+
     }
 }

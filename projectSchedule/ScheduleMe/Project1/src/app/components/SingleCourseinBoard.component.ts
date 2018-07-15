@@ -11,24 +11,18 @@ import { ScheduleBoardStateManager } from '../Services/ScheduleBoardStateManager
 })
 export class SingleCourseinBoardComponent {
     constructor(private scheduleService:SaveChangesBoardService,private ScheduleBoardStateManager: ScheduleBoardStateManager) {
-        this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
+        //this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.ScheduleBoardStateManager.getAllCoursesFromService().subscribe(data => { this.CourseList = data }, error => { });
         //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
-
-        if (this.CurrentCourse == null) {
-            this.namecourse = ""; this.nameTeachercourse = "";
-        }
-        else {
-            this.namecourse = this.CurrentCourse.Name; this.nameTeachercourse = this.CurrentCourse.Instructor;
-        }
+       
     }
 
     @Input()
     CurrentDateOfSun: Date;
     CurrentDateOfToday = new Date();
+    @Input()
     CourseList: Course[];
     //GroupList: Group[];
-    @Input()
     CurrentCourse: Course;
     @Input()
     CurrentGroup: Group;
@@ -36,6 +30,7 @@ export class SingleCourseinBoardComponent {
     CurrentComponentOrder: number;
     @Input()
     CurrentDayInWeek: number;
+    @Input()
     CurrentExistingCourses: ExistingCourse;
     @Input()
     namecourse: string;
@@ -43,7 +38,15 @@ export class SingleCourseinBoardComponent {
     flag = true;
     IsChange = false;
 
-
+    ngOnInit() {
+        if (this.CurrentExistingCourses && this.CurrentExistingCourses.Course) {
+            this.namecourse = this.CurrentExistingCourses.Course.Name;
+            this.nameTeachercourse = this.CurrentExistingCourses.Course.Instructor;
+        }
+        else {
+            this.namecourse = "ccc"; this.nameTeachercourse = "ttt";
+        }
+    }
     EditCourse() {
         if (this.flag)
             this.flag = false;
