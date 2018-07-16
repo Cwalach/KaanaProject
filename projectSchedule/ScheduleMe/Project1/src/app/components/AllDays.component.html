@@ -6,27 +6,19 @@
     <link href="../../../CSS/NonActiveDay.css" rel="stylesheet" />
 </head>
 <body dir="rtl">
-    <h1>מערכת קבוצות</h1>
+    <h1 class="headerNonActiveDay">מערכת קבוצות</h1>
     <DateRangeSelector (eventHandler)="getDatesFromServies()"></DateRangeSelector>
     <button id="saveChangesInDB" (click)="saveChangesInDB()">שמור</button>
     <table id="tblAllDays">
         <tr>
             <td *ngFor="let item of dayInWeek; let m=index" id="tdDays">
-                <span class="span-day-in-week">{{getdays(m)}}-{{item}}   </span><br />
+                <span class="span-day-in-week"><span class="headerDay">{{item}}</span> {{getdays(m)}}</span><br />
                 
                 <div id="dayInWeek">
                     <DayInSchedule  [dayInWeek]="dayInWeek" [currentDay]=item [currentDate]="allStatusDays[m].day" [allStatus]="allStatusDays[m].status"></DayInSchedule>
                 </div>            
             </td>
         </tr>
-    </table>
-    <div>{{DateTimeCurrently}}</div>
+    </table>   
 </body>
 </html>
-<style>
-    #saveChangesInDB {
-        width: 4vw;
-        height: 2vw;
-        position: relative;
-    }
-</style>

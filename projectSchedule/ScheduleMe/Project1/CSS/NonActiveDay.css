@@ -1,11 +1,20 @@
 ﻿body {
 }
+.headerDay{
+    font-size: 19px;
+    font-weight: bold;
+}
+.headerNonActiveDay{
+    color: #008FB9;
+}
 #changeAll{  
     margin: 0px;
     height: 2vw;
-    border: 2px solid gray;
+    border: 4px solid gray;
     width: 100%;
-    margin:3%
+    margin:3%;
+    font-weight: bold;
+    font-size: 17px;
 }
 #dayInWeek{
 margin:0px;
@@ -13,6 +22,7 @@ margin:0px;
 #tdDays{
     /*width:70%;*/
     padding-left:1vw;
+    width: 50px;
   
 }
 #vacationComponent{
@@ -42,7 +52,14 @@ margin:0px;
    
     }
     .span-day-in-week{
-          color: #266587;
-          font-size:medium;
-          font-weight: bold;
+          color: #008FB9;
+          font-size:15px;       
+    }
+    #saveChangesInDB {       
+    position: relative;
+    background-color: #F6AE1D;
+    color: #008FB9;
+    height: 3vh;
+    width: 5vw;
+    font-weight: bold;
     }

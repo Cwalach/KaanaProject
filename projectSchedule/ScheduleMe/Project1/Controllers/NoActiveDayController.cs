@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Schedule_Bl;
 using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 
 namespace Schedule_Model.Controllers
 {
@@ -70,5 +71,13 @@ namespace Schedule_Model.Controllers
                 noActiveDaysService.DeleteById(day);
             }            
         }
-    }
+        [Route("api/NoActiveDay/GetByWeekDate")]
+        [HttpGet]
+        public List<NonActiveDays> GetByWeekDate(DateTime fromDate)
+        {
+            DateTime toDate = fromDate.AddDays(7);
+            Expression<Func<NonActiveDays, bool>> e1 = c => c.Date >= fromDate && c.Date < (toDate);         
+            return noActiveDaysService.GetByQuery(e1).ToList();                     
+        }
+}
 }
