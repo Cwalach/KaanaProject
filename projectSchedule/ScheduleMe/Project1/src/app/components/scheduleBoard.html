@@ -5,7 +5,7 @@
         <div class="rec"></div>
     </div>
     <div style="margin-right: 20vw;margin-top:3vh">
-        <span id="spnGroupName">שם קבוצה</span>
+        <span id="spnGroupName">שם התמחות</span>
         <!-- <select #selectGroup  (change)="SelectGroup(selectGroup.value)"> <!--[(ngModel)]="selectedGroup"-->
             <!--<option *ngFor="let group of GroupList" [value]="group.Id">{{group.Name}}</option>-->
         <!--</select>--> 
@@ -38,7 +38,9 @@
                 <!--*ngIf="table[k][indexs]"-->
                 <!--<span *ngIf="table[k][indexs] !==null">{{table[k][indexs].Course.Name}}</span>-->
                 <div *ngIf="CourseList && tableUpdated">
-                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
+                    <!--
+                    [IsAction]="CheckActionDay(lessonNum)"-->
+                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList" [IsAction]="CheckActionDay(lessonNum)"></SingleCourseinBoard_Component>
                 </div>
             </td>
         </tr>

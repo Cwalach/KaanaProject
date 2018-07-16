@@ -27,7 +27,8 @@ export class SingleCourseinBoardComponent extends DialogComponent<ConfirmModel, 
         //this.scheduleService.AllGroupesFromService().subscribe(data => { this.GroupList = data }, error => { });
        
     }
-
+    @Input()
+    IsAction: boolean;
     @Input()
     CurrentDateOfSun: Date;
     CurrentDateOfToday = new Date();

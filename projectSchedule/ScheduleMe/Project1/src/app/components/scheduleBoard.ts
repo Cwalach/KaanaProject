@@ -14,7 +14,10 @@ import { SaveCoursesBoard } from "../components/SaveCoursesBoard.component"
 import { DialogOptions, DialogService, DialogComponent } from "ng2-bootstrap-modal";
 import { ModalData } from './modal/models/modal-data'
 import { ModalService } from './modal/services/modal'
-import { MoveDateService } from   "../Services/MoveDateService"
+import { MoveDateService } from "../Services/MoveDateService"
+import { nonActiveDayService } from "../Services/nonActiveDayService"
+import { NoActiveDay } from "../models/NoActiveDay"
+
 //declare function getHebrowNameByGreb(Date): any;
 
 export interface ConfirmModel {
@@ -23,12 +26,9 @@ export interface ConfirmModel {
 }
 @Component({
     styleUrls: ['../../../Content/bootstrap/css/ScheduleBoard.css' ],
-    
     templateUrl: "./src/app/components/scheduleBoard.html",
     selector: "scheduleBoard"
 })
-
-
 export class ScheduleBoard extends DialogComponent<ConfirmModel, boolean>
 implements ConfirmModel {
     date: Date;
@@ -47,13 +47,14 @@ implements ConfirmModel {
     isbtn3clicked: boolean;
     ExampleCourse: ExistingCourse;
     CourseList: Course[];
+    NoActiveCourses: NoActiveDay[];
     ChangeGroup: Group;
     title: string;
     message:string;
     //CurrentExistingCourse: ExistingCourse;
 
     constructor(private weeklyScheduleService: WeeklyScheduleService, private updateScheduleBoard: UpdateScheduleBoard, private scheduleService: SaveChangesBoardService, private parseDate: ParseDate, dialogService: DialogService,
-        private modalService: ModalService) {
+        private modalService: ModalService, private nonActiveDays: nonActiveDayService ) {
         super(dialogService);
         //this.weeklyScheduleService.GetAllExistingCoursesFromServer().subscribe(data => { this.ExistingCourses = data }, error => { alert("error!"); });
         //this.scheduleService.getAllCoursesFromService().subscribe(data => { this.CourseList = data });
@@ -114,6 +115,18 @@ implements ConfirmModel {
         }, error => { });
         this.updateScheduleBoard.getNewDate().subscribe(date => { this.ChangeDate = date; });
         this.updateScheduleBoard.getSelectedGroup().subscribe(group => { this.ChangeGroup = group; });
+        this.nonActiveDays.getNoActiveDayByWeekDateFromService(this.dateTimeCurrentlyFromComponent.leftDay).subscribe(data => { this.NoActiveCourses = data; alert("OK") });
+    }
+
+    //CheckActionDay(day: number, order: number): boolean
+    CheckActionDay(order: number): boolean
+    {
+     //   let d: Date;
+     //  d = this.dateTimeCurrentlyFromComponent.leftDay;
+        /*x.Date == date && */
+        if (this.NoActiveCourses.find(x=> x.OrderNumber == order.toString()))
+            return true;
+        return false;
     }
 
     SelectGroup(group) {

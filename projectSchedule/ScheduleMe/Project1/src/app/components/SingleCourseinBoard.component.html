@@ -1,5 +1,5 @@
 ﻿
-<div class="DetailsCourse">
+<div [ngClass]="IsAction?'DetailsCourse_DisplayNone':'DetailsCourse'">
     <div class="div_commands">
         <button id="btnRemove" class="btn_commands glyphicon glyphicon-trash" (click)="RemoveCourse(item)"></button>
         <button [disabled]="IsChange==false" id="btnSave" class="btn_commands glyphicon glyphicon-cloud-upload"
@@ -30,7 +30,14 @@
         display: table-cell;
         padding: 0;
     }
-
+    .DetailsCourse_DisplayNone{
+        font-size: medium;
+        border-style: double;
+        border-color: gray;
+        margin: 0.5vw;
+        display: none;
+        padding: 0;
+    }
     .div_commands {
         display: table-cell;
         padding: 0;
