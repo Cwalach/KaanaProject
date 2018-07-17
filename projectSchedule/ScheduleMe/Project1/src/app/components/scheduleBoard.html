@@ -29,20 +29,20 @@
         <!--<button class="ToShow"  (click)="ClickEvent('btnPrint')" [ngClass]="!isbtn3clicked ? 'btn_schedulboard':'btn_schedulboardOnClick'">הדפסה</button>-->
         <!--(click)="ClickEvent('btnPrint')"-->
     </div>
-    <table id="table_schedule" #name>
-        <tr id="tr-Day">
-            <td *ngFor="let item of dayInWeek; let m=index">
-                -{{item}}<span class="dayOfMonth">{{getday(m)}}</span>&nbsp;&nbsp;&nbsp;
-            </td>
-        </tr>
-        <tr dir="ltr" *ngFor="let lessonNum of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
-            <td *ngFor="let day of dayInWeek; let i=index" >
-                <!--*ngIf="table[k][indexs]"-->
-                <!--<span *ngIf="table[k][indexs] !==null">{{table[k][indexs].Course.Name}}</span>-->
-                <div *ngIf="CourseList && tableUpdated" >
-                    <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList" ></SingleCourseinBoard_Component>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div #name>
+        <table id="table_schedule">
+            <tr id="tr-Day">
+                <td *ngFor="let item of dayInWeek; let m=index"><span class="dayOfMonth">{{getday(m)}}-</span>{{item}}&nbsp;&nbsp;&nbsp;</td>
+            </tr>
+            <tr dir="ltr" *ngFor="let lessonNum of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]">
+                <td *ngFor="let day of dayInWeek; let i=index">
+                    <!--*ngIf="table[k][indexs]"-->
+                    <!--<span *ngIf="table[k][indexs] !==null">{{table[k][indexs].Course.Name}}</span>-->
+                    <div *ngIf="CourseList && tableUpdated">
+                        <SingleCourseinBoard_Component [CurrentDayInWeek]="i" [CurrentExistingCourses]="table[i][lessonNum]" [CurrentComponentOrder]="lessonNum" [CurrentDateOfSun]="DateTimeCurrently" [CurrentGroup]="SelectedGroup" [CourseList]="CourseList"></SingleCourseinBoard_Component>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
