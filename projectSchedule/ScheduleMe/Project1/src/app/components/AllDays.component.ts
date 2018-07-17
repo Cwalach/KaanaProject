@@ -115,7 +115,7 @@ export class AllDays {
         //else
         //    this.allStatusDays[i].day.setDate(this.allStatusDays[i - 1].day.getDate() + 1);
         //this.updateStatus(i);
-        return this.parseDate.getHebrowNameByGreb( this.allStatusDays[i].day);
+        return  this.parseDate.getHebrowNameByGreb( this.allStatusDays[i].day);
     }
 
     //getDatesCurrentWeekFromdb(date: Date) {

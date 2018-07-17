@@ -14,12 +14,12 @@
     <div class="labels">
         <label class="lbl">תאריך סיום</label><!--&nbsp;&nbsp;-->
         <label class="lbl">תאריך התחלה</label>
-        <label class="lbl">שם קורס</label>
+        <label class="lbl">שם התמחות</label>
     </div>
     <input type="date" class="middle" id="date" [(ngModel)]="dateStart" [value]="date1 | date:'yyyy-MM-dd'" (input)="date1=parseDate($event.target.value)" />
     <input type="date" class="middle" id="date" [value]="date2 | date:'yyyy-MM-dd'" (input)="date2=parseDate($event.target.value)" />
     <select class="middle" [(ngModel)]="selectedCourse" (change)="GetReportCourseByComboBox($event)">
-        <option class="middle" *ngFor="let item of CourseList">{{item.Name}}</option>
+        <option class="middle" *ngFor="let item of GroupList">{{item.Name}}</option>
     </select>
 </div>
 
@@ -39,15 +39,11 @@
        
             <tr class="headerTableReport">
                 <td><b>מס' שעות בפועל</b></td>
-        <td><b>קבוצה</b></td>
-        <td><b>מורה</b></td>
-        <td><b>קורס</b></td>
+        <td><b>התמחות</b></td>
         </tr>
-        <tr *ngFor="let item of ReportDeatilsList">
+        <tr *ngFor="let item of ReportDeatilsList1">
             <td>{{item.NumHours}}</td>
             <td>{{item.Group}}</td>
-            <td>{{item.Teacher}}</td>
-            <td>{{item.Name}}</td>
         </tr>
     </table>
 </div>

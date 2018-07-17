@@ -1,16 +1,16 @@
 ﻿<div [style.display]="buttonWasClicked==false ? 'block' : 'none'">
     <div>
-        <img id="logo" src="../../../לוגו_Page_1.png" />
+        <img id="logo" src="../../../Content/Images/logo.png" />
     </div>
     <div id="div_titel">
         <div class="rec"></div>
-        <h1 class="h1_titel">מערכת לניהול קורסים</h1>
+        <h1 class="h1_titel">מערכת לניהול שעות</h1>
         <div class="rec"></div>
     </div>
     <div id="div_btn " class="w3-show-inline-block">
         <button class="btn_commands">
             <img [ngClass]="!statusbtn1 ? 'src_default':'src_default2'" (click)="onButtonClick('schduleGroups')" />
-            <span>מערכת קבוצות</span>
+            <span>מערכת שעות</span>
         </button>
 
         <button class="btn_commands">
@@ -29,7 +29,7 @@
 <style>
     .h1_titel {
         font-family: inherit;
-        color: #266587;
+        color: #008FB9;
         display: inline-block;
         margin: 0.6vw;
         margin-right: 7vw;
@@ -51,11 +51,11 @@
         width: 100%;
         height: 400px;
     }
-
+    
     .btn_commands {
         height: 12vw;
         width: 12vw;
-        background-color: #266587;
+        background-color: #008FB9;
         margin-left: 70px;
     }
 </style>

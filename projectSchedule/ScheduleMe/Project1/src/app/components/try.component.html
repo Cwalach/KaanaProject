@@ -7,14 +7,15 @@
                                   width: 25%;
                                   height: 40vw;
                                   float: right;">
-    <button id="schduleGroups"
-            (click)="clickEvent('schduleGroups')"
-            routerLink="GroupSystem"
-            routerLinkActive="active"
-            [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'">
-        <img src="../../../Content/Images/image_07_2.png" />
-        <span>מערכת קבוצות</span>
-    </button><br /><br />
+
+        <button  id="schduleGroups"
+                (click)="clickEvent('schduleGroups')"
+                routerLink="GroupSystem"
+                routerLinkActive="active"
+                [ngClass]="!statusbtn1 ? 'btn_default':'btn_default2'">
+            <img src="../../../Content/Images/image_07_2.png"/>
+            <span>מערכת שעות</span>
+        </button><br /><br />
 
     <button id="manegement"
             (click)="clickEvent('manegement')"
@@ -33,7 +34,7 @@
         <span>דוחות</span>
     </button>
 </div>
-<img src="../../../לוגו_Page_1.png" id="logo" />
+<img src="../../../Content/Images/logo.png" id="logo" />
 <router-outlet></router-outlet>
 
 <style>

@@ -3,7 +3,7 @@
 
 #print {
     /*border-style:solid;*/
-    /*color: #266587;*/
+    /*color: #008FB9;*/
     text-align: center;
     margin: 1vw;
     margin-right: 22.7vw;
@@ -11,8 +11,8 @@
 }
 
 .ToShow {
-    background-color: #ede969;
-    color: #266587;
+    background-color: #F6AE1D;
+    color: #008FB9;
     font-weight: bold;
     text-align: center;
     margin: 1vw;
@@ -26,7 +26,7 @@
 
 td {
     /*padding: 2vw;*/
-    border: solid #266587;
+    border: solid #008FB9;
     /*border-style: solid;*/
     font-weight: lighter;
     width: 10vw;
@@ -44,7 +44,7 @@ td {
     width: 10vw;
     margin-left: 2vw;
     border-style: solid;
-    border-color: #266587;
+    border-color: #008FB9;
 }
 
 .lbl {

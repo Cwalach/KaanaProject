@@ -30,7 +30,6 @@ export class vacation {
         this.active.OrderNumber = this.currentHour;
         this.active.Date = this.date;
 
-        alert(this.active.Date+"");
     //    changed to active
         if (status)
             this.nonActiveStateManager.CencelNoActiveDay(this.active);

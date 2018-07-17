@@ -5,13 +5,13 @@
     width: 1vw;
     height: 1vh;
     background-color: white;
-    color: #266587;
+    color: #008FB9;
     margin-left: 0.1vw;
     outline:none;
 }
 
 #borderDate {
-    border: 0.5px solid #266587;
+    border: 0.5px solid #008FB9;
     width: 5vw;
     display: inline-block;
     margin: 0vw;

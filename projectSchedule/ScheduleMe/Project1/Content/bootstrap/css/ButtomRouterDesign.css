@@ -7,8 +7,8 @@ button {
     height: 7vw;
     width: 7vw;
     text-align: center;
-    background-color: #266587;
-    border-color: #266587;
+    background-color: #008FB9;
+    border-color: #008FB9;
     border-radius: 0px;
     border-style: none;
     color: white;
@@ -31,15 +31,15 @@ button img {
 button1 {
     height: 2vw;
     width: 15vw;
-    background-color: #266587;
+    background-color: #008FB9;
 }
 /*#Button1, #Button2, #Button3*/
 .btn_Manegment {
-    background-color: #266587;
+    background-color: #008FB9;
     width: 12vw;
     height: 3.2vw;
     margin-top: 0.7vw;
-    border-color: #ede969;
+    border-color: #F6AE1D;
     color: white;
     font-family: inherit;
     font-size: 1.22vw;
@@ -51,7 +51,7 @@ button1 {
 
 h1 {
     font-family: inherit;
-    color: #266587;
+    color: #008FB9;
     display: inline-block;
     margin: 0.6vw;
     margin-right: 7vw;
@@ -60,7 +60,7 @@ h1 {
 .rec {
     height: 0.2vw;
     width: 10vw;
-    background-color: #ede969;
+    background-color: #F6AE1D;
     display: inline-block;
     margin-top: 4vw;
 }
@@ -75,17 +75,17 @@ ul {
 }
 
 .btn_default {
-    background-color: #266587;
+    background-color: #008FB9;
 }
 
 .btn_default2 {
     background-color: white;
-    color: #266587;
+    color: #008FB9;
 }
 
 .btn_default3 {
-    background-color: #ede969;
-    color: #266587;
+    background-color: #F6AE1D;
+    color: #008FB9;
 }
 
 .src_default {
@@ -105,7 +105,7 @@ src_default2 {
 }
 
     .course-details .editData input {
-        border: 1px #266587 solid;
+        border: 1px #008FB9 solid;
         height: 1.8vw;
         width: 10vw;
         margin-bottom: 1.3vw;
@@ -115,7 +115,7 @@ src_default2 {
 .course-details button {
     background-color: white;
     display: inline-flex;
-    border: 1px #266587 solid;
+    border: 1px #008FB9 solid;
     width: 7vw;
     height: 2.3vw;
     padding: 0.3vw;
@@ -128,7 +128,7 @@ src_default2 {
 }
 
 .course-details button b {
-    color: #266587;
+    color: #008FB9;
     font-size: 1vw;
     margin-right: 1vw;
 }

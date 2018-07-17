@@ -8,15 +8,15 @@
 }
 
 .btn_schedulboard {
-    background-color: #ede969;
-    color: #266587;
+    background-color: #F6AE1D;
+    color: #008FB9;
     height: 3vh;
     width: 5vw;
     font-weight: bold;
 }
 
 .btn_schedulboardOnClick {
-    background-color: #266587;
+    background-color: #008FB9;
     color: white;
     height: 3vh;
     width: 5vw;
@@ -24,7 +24,7 @@
 }
 
 #selectGroup {
-    border: 0.5px solid #266587;
+    border: 0.5px solid #008FB9;
     width: 14vw;
     height: 4vh;
     font-weight: bold;
@@ -42,7 +42,7 @@
 }
 
 #tr-Day {
-    color: #266587;
+    color: #008FB9;
     font-weight: bold;
 }
 
